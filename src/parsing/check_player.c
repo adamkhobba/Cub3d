@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:57:19 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/08 00:18:20 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	one_or_zero(char c)
 	return (0);
 }
 
-void	validate_player_position(t_data *data, int i, int j, int *count)
+void	validate_player_position(t_map *data, int i, int j, int *count)
 {
 	if (i == data->last_line_in_map || i == data->first_line_in_map)
 	{
@@ -39,7 +39,7 @@ void	validate_player_position(t_data *data, int i, int j, int *count)
 	(*count)++;
 }
 
-int	check_player_valid_pos(t_data *data)
+int	check_player_valid_pos(t_map *data)
 {
 	int (i), (j), (count);
 	i = data->first_line_in_map;

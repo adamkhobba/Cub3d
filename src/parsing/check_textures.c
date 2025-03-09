@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:40:39 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/08 00:35:25 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	check_valid_file(char *line, t_data *data)
+void	check_valid_file(char *line, t_map *data)
 {
 	if ((!line && data->height == 0) || count_len(data) == 0)
 	{
@@ -22,7 +22,7 @@ void	check_valid_file(char *line, t_data *data)
 	}
 }
 
-void	validate_texture_format(char **split, t_data *data)
+void	validate_texture_format(char **split, t_map *data)
 {
 	if (count_split(split) != 2)
 	{
@@ -32,7 +32,7 @@ void	validate_texture_format(char **split, t_data *data)
 	}
 }
 
-void check_free(t_data *data , int flag)
+void check_free(t_map *data , int flag)
 {
 	if (flag)
 	{
@@ -41,7 +41,7 @@ void check_free(t_data *data , int flag)
 	}
 }
 
-void	process_texture_line(t_data *data, char **split)
+void	process_texture_line(t_map *data, char **split)
 {
 	validate_texture_format(split, data);
 	if (!ft_strcmp(split[0], "NO"))
@@ -58,7 +58,7 @@ void	process_texture_line(t_data *data, char **split)
 		set_floor_and_ceiling_color(data, split, 0);
 }
 
-void	process_texture_data(t_data *data, char *line, int *j)
+void	process_texture_data(t_map *data, char *line, int *j)
 {
 	char	**split;
 	int		k;
@@ -82,7 +82,7 @@ void	process_texture_data(t_data *data, char *line, int *j)
 	(*j)++;
 }
 
-int	parse_textures(t_data *data)
+int	parse_textures(t_map *data)
 {
 	int		fd;
 	char	*line;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   count.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:04:43 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/04 01:28:03 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	count_textures(t_data *data)
+int	count_textures(t_map *data)
 {
 	int		count;
 	int		fd;
@@ -51,7 +51,7 @@ int	count_split(char **split)
 	return (i);
 }
 
-void	map_height(t_data *data, char *av[])
+void	map_height(t_map *data, char *av[])
 {
 	int		i;
 	char	*line;
