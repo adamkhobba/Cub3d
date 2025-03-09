@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/09 23:40:25 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,24 +73,24 @@ int	free_memory(t_map *data)
 	exit(1);
 }
 
-int	main(int ac, char *av[])
-{
-	t_map	*data;
+// int	main(int ac, char *av[])
+// {
+// 	t_map	*data;
 
-	data = malloc(sizeof(t_map));
-	ft_memset(data, 0, sizeof(t_map));
-	ft_check_file_path(data, ac, av);
-	last_line(data);
-	parse_textures(data);
-	if (check_xpm(data))
-	{
-		free_elements(data);
-		free_memory(data);
-	}
-	first_line_in_map(data);
-	if (first_and_last_lines_check(data))
-		free_memory(data);
-	check_player_valid_pos(data);
-	free_memory(data);
-	return (0);
-}
+// 	data = malloc(sizeof(t_map));
+// 	ft_memset(data, 0, sizeof(t_map));
+// 	ft_check_file_path(data, ac, av);
+// 	last_line(data);
+// 	parse_textures(data);
+// 	if (check_xpm(data))
+// 	{
+// 		free_elements(data);
+// 		free_memory(data);
+// 	}
+// 	first_line_in_map(data);
+// 	if (first_and_last_lines_check(data))
+// 		free_memory(data);
+// 	check_player_valid_pos(data);
+// 	free_memory(data);
+// 	return (0);
+// }

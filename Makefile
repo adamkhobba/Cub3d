@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: csouita <csouita@student.42.fr>            +#+  +:+       +#+         #
+#    By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-#    Updated: 2025/03/09 23:40:36 by csouita          ###   ########.fr        #
+#    Updated: 2025/03/09 23:46:34 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror #-g3 -fsanitize=address
 MLXFLAGS	=	-lmlx -lX11 -lXext -lm
 HEADERS		=	headers/cub3d.h
+INCLUDES	=	-I./headers -I./libft/headers
 INCLUDES	=	-I./headers -I./libft/headers
 
 # Name
@@ -29,7 +30,10 @@ NC			=	\033[0m
 
 # Sources
 SRCDIR		=	src
-SRC			=	src/*.c  src/*/*.c
+SRC			=	src/parsing/check_boundaries.c src/parsing/check_color.c src/parsing/check_textures_2.c \
+				src/parsing/cub3d.c src/parsing/check.c src/parsing/check_lines.c src/parsing/check_textures.c \
+				src/parsing/get_next_line.c src/parsing/check_character.c   src/parsing/check_player.c\
+				src/parsing/count.c src/parsing/get_next_line_utils.c
 
 OBJDIR		=	obj
 OBJ			=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o,$(SRC))
