@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+         #
+#    By: csouita <csouita@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-#    Updated: 2025/03/09 04:28:19 by akhobba          ###   ########.fr        #
+#    Updated: 2025/03/09 23:40:36 by csouita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror #-g3 -fsanitize=address
 MLXFLAGS	=	-lmlx -lX11 -lXext -lm
 HEADERS		=	headers/cub3d.h
-INCLUDES	=	-I./headers -I./libft/
+INCLUDES	=	-I./headers -I./libft/headers
 
 # Name
 NAME		=	cub3d
