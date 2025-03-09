@@ -6,9 +6,11 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/09 23:20:39 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/09 23:39:06 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "cub3d.h"
 
 t_data	*g_data(void)
 {
@@ -22,25 +24,25 @@ t_data	*g_data(void)
  * Initialize the mlx instance
  * @return void
 */
-void	mlx_setup_env(void)
-{
-	t_data	*data;
+// void	mlx_setup_env(void)
+// {
+// 	t_data	*data;
 
-	data = g_data();
-	data->mlx.win = mlx_new_window(data->mlx.instance, WIDTH, HEIGHT, "miniRT");
-	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH, HEIGHT);
-	data->mlx.image.addr = mlx_get_data_addr(data->mlx.image.img,
-			&data->mlx.image.bpp, &data->mlx.image.line_len,
-			&data->mlx.image.endian);
-	mlx_hook(g_data()->mlx.win, DestroyNotify, StructureNotifyMask, ft_close,
-		NULL);
-	mlx_hook(g_data()->mlx.win, KeyPress, KeyPressMask, key_press_hook, NULL);
-	mlx_hook(g_data()->mlx.win, KeyRelease, KeyReleaseMask, key_release_hook,
-		NULL);
-	mlx_mouse_hook(g_data()->mlx.win, mouse_hook, NULL);
-}
+// 	data = g_data();
+// 	data->mlx.win = mlx_new_window(data->mlx.instance, WIDTH, HEIGHT, "miniRT");
+// 	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH, HEIGHT);
+// 	data->mlx.image.addr = mlx_get_data_addr(data->mlx.image.img,
+// 			&data->mlx.image.bpp, &data->mlx.image.line_len,
+// 			&data->mlx.image.endian);
+// 	mlx_hook(g_data()->mlx.win, DestroyNotify, StructureNotifyMask, ft_close,
+// 		NULL);
+// 	mlx_hook(g_data()->mlx.win, KeyPress, KeyPressMask, key_press_hook, NULL);
+// 	mlx_hook(g_data()->mlx.win, KeyRelease, KeyReleaseMask, key_release_hook,
+// 		NULL);
+// 	mlx_mouse_hook(g_data()->mlx.win, mouse_hook, NULL);
+// }
 
-int main (int ac, char **av)
+int main (int ac,__attribute((unused)) char **av)
 {
 	if (ac != 2)
 	{

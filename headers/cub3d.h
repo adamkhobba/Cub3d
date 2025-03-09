@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/09 23:34:38 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/09 23:39:46 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@
  * @param first_line_in_map 	Index of the first line in the map array.
  * @param last_line_in_map 	Index of the last line in the map array.
  */
-typedef struct s_data
+typedef struct s_map
 {
     int height;
     int width ;
@@ -103,18 +103,18 @@ typedef struct s_img
 	int					height;
 }						t_img;
 
-// typedef struct s_mlx
-// {
-// 	void				*instance;
-// 	void				*win;
-// 	struct s_img		image;
-// }						t_mlx;
+typedef struct s_mlx
+{
+	void				*instance;
+	void				*win;
+	struct s_img		image;
+}						t_mlx;
 
-// typedef struct s_data
-// {
-// 	t_mlx				mlx;
-// 	t_list				*garbage;
-// }						t_data;
+typedef struct s_data
+{
+	t_mlx				mlx;
+	t_list				*garbage;
+}						t_data;
 
 // Global variable
 t_map	*get_data(void);
