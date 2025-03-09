@@ -6,7 +6,7 @@
 #    By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-#    Updated: 2025/03/09 23:46:34 by akhobba          ###   ########.fr        #
+#    Updated: 2025/03/09 23:47:04 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,10 @@ NC			=	\033[0m
 
 # Sources
 SRCDIR		=	src
+SRC			=	src/parsing/check_boundaries.c src/parsing/check_color.c src/parsing/check_textures_2.c \
+				src/parsing/cub3d.c src/parsing/check.c src/parsing/check_lines.c src/parsing/check_textures.c \
+				src/parsing/get_next_line.c src/parsing/check_character.c   src/parsing/check_player.c\
+				src/parsing/count.c src/parsing/get_next_line_utils.c
 SRC			=	src/parsing/check_boundaries.c src/parsing/check_color.c src/parsing/check_textures_2.c \
 				src/parsing/cub3d.c src/parsing/check.c src/parsing/check_lines.c src/parsing/check_textures.c \
 				src/parsing/get_next_line.c src/parsing/check_character.c   src/parsing/check_player.c\
