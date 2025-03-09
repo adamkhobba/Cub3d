@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:01:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/04 01:15:59 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	last_line(t_data *data)
+int	last_line(t_map *data)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ int	last_line(t_data *data)
 	return (1);
 }
 
-int	count_len(t_data *data)
+int	count_len(t_map *data)
 {
 	int	i;
 	int	count;
@@ -47,7 +47,7 @@ int	count_len(t_data *data)
 	return (count);
 }
 
-void	first_line_in_map(t_data *data)
+void	first_line_in_map(t_map *data)
 {
 	int	i;
 
@@ -66,7 +66,7 @@ void	first_line_in_map(t_data *data)
 	}
 }
 
-int	first_and_last_lines_check(t_data *data)
+int	first_and_last_lines_check(t_map *data)
 {
 	int	i;
 	int	j;

@@ -6,7 +6,7 @@
 #    By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-#    Updated: 2025/03/09 02:33:18 by akhobba          ###   ########.fr        #
+#    Updated: 2025/03/09 04:28:19 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror #-g3 -fsanitize=address
 MLXFLAGS	=	-lmlx -lX11 -lXext -lm
 HEADERS		=	headers/cub3d.h
-INCLUDES	=	-I./headers
+INCLUDES	=	-I./headers -I./libft/
 
 # Name
 NAME		=	cub3d
@@ -34,11 +34,14 @@ SRC			=	src/*.c  src/*/*.c
 OBJDIR		=	obj
 OBJ			=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o,$(SRC))
 
+# Libft
+LIBFT		=	libft/libft.a
+
 # Rules
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(MLXFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) $(MLXFLAGS) -o $(NAME)
 	@echo "\e[K$(GREEN)$(NAME) is ready to use.$(NC)"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEADERS)
@@ -48,10 +51,23 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEADERS)
 
 clean:
 	@rm -rf $(OBJDIR)
+	@echo -n "$(YELLOW)Do you want to clean $(LIBFTPATH)/obj?$(END) [$(RED)y$(END)/$(GREEN)N$(END)] " && read REPLY; \
+	echo -n "\e[1F\e[K"; \
+	if [ "$${REPLY}" = "Y" ] || [ "$${REPLY}" = "y" ]; then \
+		echo -n "$(RED)Cleaning $(LIBFTPATH)/obj...$(END)"; \
+		echo; \
+		make -C $(LIBFTPATH) fclean > /dev/null; \
+	fi
 	@echo "$(RED)Objects are removed.$(END)"
 
 fclean: clean
 	@rm -f $(NAME)
+	echo -n "\e[1F\e[K"; \
+	if [ "$${REPLY}" = "Y" ] || [ "$${REPLY}" = "y" ]; then \
+		echo -n "$(RED)Cleaning $(LIBFTPATH)/obj...$(END)"; \
+		echo; \
+		make -C $(LIBFTPATH) fclean > /dev/null; \
+	fi
 	@echo "$(RED)$(NAME) is removed.$(END)"
 
 re: fclean all

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:06:40 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/04 01:27:57 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_xpm(t_data *data)
+int	check_xpm(t_map *data)
 {
 	int	len;
 
@@ -46,7 +46,7 @@ int	check_whitespace(char *line)
 	return (i);
 }
 
-void	ft_check_file_path(t_data *data, int ac, char *av[])
+void	ft_check_file_path(t_map *data, int ac, char *av[])
 {
 	int	fd;
 	int	len;

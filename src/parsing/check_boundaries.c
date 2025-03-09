@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_boundaries.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:36:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/07 23:59:20 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	is_valide(char c)
 	return (0);
 }
 
-int	check_neighboring_cells(t_data *data, int i, int j)
+int	check_neighboring_cells(t_map *data, int i, int j)
 {
 	if (!check_empty(data->map[i + 1]) || !check_empty(data->map[i - 1])
 		|| !check_empty(data->map[i] + j + 1) || !check_empty(data->map[i] + j
@@ -54,7 +54,7 @@ int	check_neighboring_cells(t_data *data, int i, int j)
 	return (1);
 }
 
-void	check_cell_boundaries(t_data *data, int i, int j)
+void	check_cell_boundaries(t_map *data, int i, int j)
 {
 	if (data->map[i][j] == '0')
 	{
@@ -70,7 +70,7 @@ void	check_cell_boundaries(t_data *data, int i, int j)
 	}
 }
 
-void	check_boundaries(t_data *data)
+void	check_boundaries(t_map *data)
 {
 	int	i;
 	int	j;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/08 00:23:55 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_error(char *str)
 	exit(1);
 }
 
-char	**init_split_memory(t_data *data)
+char	**init_split_memory(t_map *data)
 {
 	char	**split;
 
@@ -31,7 +31,7 @@ char	**init_split_memory(t_data *data)
 	return (split);
 }
 
-void	cp_map_array(t_data *data, char *av[])
+void	cp_map_array(t_map *data, char *av[])
 {
 	char	*line;
 	int		i;
@@ -58,7 +58,7 @@ void	cp_map_array(t_data *data, char *av[])
 	close(fd);
 }
 
-int	free_memory(t_data *data)
+int	free_memory(t_map *data)
 {
 	int	k;
 
@@ -75,10 +75,10 @@ int	free_memory(t_data *data)
 
 int	main(int ac, char *av[])
 {
-	t_data	*data;
+	t_map	*data;
 
-	data = malloc(sizeof(t_data));
-	ft_memset(data, 0, sizeof(t_data));
+	data = malloc(sizeof(t_map));
+	ft_memset(data, 0, sizeof(t_map));
 	ft_check_file_path(data, ac, av);
 	last_line(data);
 	parse_textures(data);

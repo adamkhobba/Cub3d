@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:43:24 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/08 21:38:07 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	set_no_texture(t_data *data, char **split)
+int	set_no_texture(t_map *data, char **split)
 {
 	data->first_line_in_map++;
 	data->no = ft_strdup(split[1]);
@@ -22,7 +22,7 @@ int	set_no_texture(t_data *data, char **split)
 	return (1);
 }
 
-int	set_so_texture(t_data *data, char **split)
+int	set_so_texture(t_map *data, char **split)
 {
 	data->first_line_in_map++;
 	data->so = ft_strdup(split[1]);
@@ -32,7 +32,7 @@ int	set_so_texture(t_data *data, char **split)
 	return (1);
 }
 
-int	set_we_texture(t_data *data, char **split)
+int	set_we_texture(t_map *data, char **split)
 {
 	data->first_line_in_map++;
 	data->we = ft_strdup(split[1]);
@@ -42,7 +42,7 @@ int	set_we_texture(t_data *data, char **split)
 	return (1);
 }
 
-int	set_ea_texture(t_data *data, char **split)
+int	set_ea_texture(t_map *data, char **split)
 {
 	data->first_line_in_map++;
 	data->ea = ft_strdup(split[1]);
@@ -52,7 +52,7 @@ int	set_ea_texture(t_data *data, char **split)
 	return (1);
 }
 
-int	set_floor_and_ceiling_color(t_data *data, char **split, int i)
+int	set_floor_and_ceiling_color(t_map *data, char **split, int i)
 {
 	if (i == 1)
 	{
@@ -72,5 +72,5 @@ int	set_floor_and_ceiling_color(t_data *data, char **split, int i)
 		if (data->c == NULL || data->c_key == NULL)
 			return (0);
 	}
-	return (1);	
+	return (1);
 }
