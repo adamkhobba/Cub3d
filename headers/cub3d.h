@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/10 04:20:32 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:51:32 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 
-# define WIDTH 800
 # define CUB3D_SIZE 64
-# define HEIGHT 600
 # define FOV 120
 # define NAME "\e[1;34mCub3D\e[0m"
 # define ERROR "\e[1;31mError\e[0m"
@@ -116,6 +114,7 @@ typedef struct s_data
 {
 	t_mlx				mlx;
 	t_list				*garbage;
+	t_map				*map;
 }						t_data;
 
 // Global variable

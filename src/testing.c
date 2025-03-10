@@ -6,12 +6,26 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 04:21:29 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/10 04:26:07 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:48:13 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void setup(void)
+{
+	createCanvas(800, 600);
+}
+
+void update(void)
+{
+
+}
+
+void draw(void)
+{
+
+}
 
 void test_1(void)
 {
