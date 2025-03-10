@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/09 23:39:06 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/10 03:06:54 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ t_data	*g_data(void)
 // 		NULL);
 // 	mlx_mouse_hook(g_data()->mlx.win, mouse_hook, NULL);
 // }
+
+// TODO: create a fts that convert from deg to radian
 
 int main (int ac,__attribute((unused)) char **av)
 {

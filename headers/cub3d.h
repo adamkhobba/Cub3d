@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/09 23:49:45 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/10 03:30:12 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,10 @@
 # include <X11/Xutil.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <math.h>
-# include <string.h>
-# include <errno.h>
-# include <limits.h>
-# include <stdbool.h>
-# include <mlx.h>
-# include <X11/Xlib.h>
-# include <X11/Xutil.h>
-# include <X11/keysym.h>
-# include <X11/X.h>
 
 # define WIDTH 800
 # define HEIGHT 600
+# define FOV 120
 # define NAME "\e[1;34mCub3D\e[0m"
 # define ERROR "\e[1;31mError\e[0m"
 
