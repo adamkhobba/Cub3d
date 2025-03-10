@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:53:32 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/10 02:45:01 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int	handle_colors(char *line)
 	split = ft_split(line, ',');
 	if (count_split(split) != 3)
 		ft_error("Error\nInvalid color\n");
-	color = create_trgb(1, ft_atoi(split[0]), ft_atoi(split[1]),
-			ft_atoi(split[2]));
+	color = create_trgb(1, ft_atoi00(split[0]), ft_atoi00(split[1]),
+			ft_atoi00(split[2]));
 	if (color == -1)
 		ft_error("Error\nInvalid color\n");
 	free_gnawi(split);

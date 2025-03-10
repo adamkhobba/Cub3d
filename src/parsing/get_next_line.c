@@ -5,102 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 23:02:03 by csouita           #+#    #+#             */
-/*   Updated: 2025/02/19 19:25:06 by csouita          ###   ########.fr       */
+/*   Created: 2025/03/09 23:52:44 by csouita           #+#    #+#             */
+/*   Updated: 2025/03/09 23:52:50 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "get_next_line.h"
 
-char	*all_buffer(char *str, int fd)
+char    *get_next_line(int fd)
 {
-	char	*buffer;
-	ssize_t	count;
+    int        len;
+    char    *buff;
+    char    *str;
 
-	buffer = malloc((size_t)BUFFER_SIZE + 1);
-	if (buffer == NULL)
-		return (NULL);
-	while (!ft_strchr(str, '\n'))
-	{
-		count = read(fd, buffer, BUFFER_SIZE);
-		if (count == -1)
-			return (free(str), free(buffer), NULL);
-		if (count == 0)
-			break ;
-		buffer[count] = '\0';
-		str = ft_strjoin(str, buffer);
-	}
-	return (free(buffer), str);
-}
-
-char	*get_line(char *saved_s)
-{
-	char	*line;
-	size_t	i;
-
-	i = 0;
-	if (!*saved_s)
-	{
-		free(saved_s);
-		return (NULL);
-	}
-	while (saved_s[i] != '\n' && saved_s[i])
-		i++;
-	if (saved_s[i] == '\n')
-		i++;
-	line = malloc(i + 1);
-	if (!line)
-	{
-		free(saved_s);
-		return (NULL);
-	}
-	line[i] = '\0';
-	ft_memcpy(line, saved_s, i);
-	return (line);
-}
-
-char	*left_line(char *saved_s, char *line)
-{
-	size_t	i;
-	size_t	j;
-	char	*new_str;
-
-	i = 0;
-	j = 0;
-	while (saved_s[i] == line[i] && saved_s[i] && line[i])
-		i++;
-	if (!saved_s[i])
-	{
-		free(saved_s);
-		return (NULL);
-	}
-	new_str = malloc(ft_strlen(saved_s) - i + 1);
-	if (!new_str)
-	{
-		free(saved_s);
-		return (NULL);
-	}
-	while (saved_s[i])
-		new_str[j++] = saved_s[i++];
-	new_str[j] = '\0';
-	free(saved_s);
-	return (new_str);
-}
-
-char	*get_next_line(int fd)
-{
-	static char	*saved_s;
-	char		*line;
-
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	saved_s = all_buffer(saved_s, fd);
-	if (!saved_s)
-		return (NULL);
-	line = get_line(saved_s);
-	if (!line)
-		return (NULL);
-	saved_s = left_line(saved_s, line);
-	return (line);
+    len = 1;
+    buff = malloc(sizeof(char) * (len + 1));
+    if (!buff || read(fd, buff, 0) == -1)
+        return (free(buff), NULL);
+    while (read(fd, buff + len - 1, 1) && buff[len++ - 1] != '\n')
+    {
+        str = buff;
+        buff = malloc(sizeof(char) * (len + 1));
+        if (!buff)
+            return (free(str), NULL);
+        strncpy(buff, str, len - 1);
+        free(str);
+    }
+    if (len == 1)
+        return (free(buff), NULL);
+    buff[len - 1] = 0;
+    return (buff);
 }

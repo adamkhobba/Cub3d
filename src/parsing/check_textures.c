@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:40:39 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/10 00:05:26 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ void check_free(t_map *data , int flag)
 void	process_texture_line(t_map *data, char **split)
 {
 	validate_texture_format(split, data);
-	if (!ft_strcmp(split[0], "NO"))
+	if (!strcmp(split[0], "NO"))
 		set_no_texture(data, split);
-	else if (!ft_strcmp(split[0], "SO"))
+	else if (!strcmp(split[0], "SO"))
 		set_so_texture(data, split);
-	else if (!ft_strcmp(split[0], "WE"))
+	else if (!strcmp(split[0], "WE"))
 		set_we_texture(data, split);
-	else if (!ft_strcmp(split[0], "EA"))
+	else if (!strcmp(split[0], "EA"))
 		set_ea_texture(data, split);
-	else if (!ft_strcmp(split[0], "F"))
+	else if (!strcmp(split[0], "F"))
 		set_floor_and_ceiling_color(data, split, 1);
-	else if (!ft_strcmp(split[0], "C"))
+	else if (!strcmp(split[0], "C"))
 		set_floor_and_ceiling_color(data, split, 0);
 }
 
