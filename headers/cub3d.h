@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/09 23:49:45 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/10 02:44:41 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ t_map	*get_data(void);
 // @addindex
 int	create_trgb(int t, int r, int g, int b);
 char	**ft_split00(char *s);
+long	ft_atoi00(char *str);
 int	parse_textures(t_map *data);
 int	check_xpm(t_map *data);
 int	set_no_texture(t_map *data, char **split);
@@ -167,6 +168,7 @@ int	ft_is_void(char c);
 int	free_memory(t_map *data);
 void	validate_texture_format(char **split , t_map *data);
 void free_elements(t_map *data);
+char    *get_next_line(int fd);
 
 
 #endif
