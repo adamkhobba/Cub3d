@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:36:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/09 23:40:07 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/10 02:40:51 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	check_cell_boundaries(t_map *data, int i, int j)
 		if (!check_neighboring_cells(data, i, j))
 		{
 			ft_putstr_fd("Error\nMap is not closed\n", 2);
+			free_memory(data);
 			if (i != 0 && i != data->height - 1 && j != 0
 				&& j != (int)ft_strlen(data->map[i]) - 1)
 			{
