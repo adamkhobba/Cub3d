@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 04:21:29 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/11 01:44:23 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 02:31:44 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void fillrect(int x, int y, int width, int height, int color)
 	{
 		for(int j = x; j < x + width; j++)
 		{
-			mlx_put_pixel_to_image(j, i, color);
+			mlx_put_pixel_to_image(y, x, color);
 		}
 	}
 }

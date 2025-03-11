@@ -6,13 +6,13 @@
 #    By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-#    Updated: 2025/03/11 01:43:43 by akhobba          ###   ########.fr        #
+#    Updated: 2025/03/11 02:17:21 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # CFLAGS
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
 MLXFLAGS	=	-lmlx -lX11 -lXext -lm
 HEADERS		=	headers/cub3d.h
 INCLUDES	=	-I./headers -I./libft/headers
@@ -33,7 +33,7 @@ SRC			=	src/main.c src/parsing/check_boundaries.c src/parsing/check_color.c src/
 				src/parsing/cub3d.c src/parsing/check.c src/parsing/check_lines.c src/parsing/check_textures.c \
 				src/parsing/get_next_line.c src/parsing/check_character.c   src/parsing/check_player.c\
 				src/parsing/count.c src/parsing/ft_split00.c src/parsing/ft_atoi00.c\
-				src/utilities/math.c src/utilities/exit.c src/testing.c src/utilities/mlx_utils.c
+				src/utilities/math.c src/utilities/exit.c  src/utilities/mlx_utils.c
 
 OBJDIR		=	obj
 OBJ			=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o,$(SRC))

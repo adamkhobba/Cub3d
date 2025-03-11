@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/11 01:45:41 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 02:28:11 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 
 # define CUB3D_SIZE 64
 # define FOV 120
-# define WIDTH 800
-# define HEIGHT 600
+# define WIDTH 32 * 15
+# define HEIGHT 32 * 11
 # define NAME "\e[1;34mCub3D\e[0m"
 # define ERROR "\e[1;31mError\e[0m"
 
