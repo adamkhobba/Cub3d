@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:40:06 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/11 04:29:13 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 17:50:06 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	put_player(t_player *player)
 		player->radius * 2, player->radius * 2, 0x00FF00);
 }
 
-int update_player(int keycode)
+int	update_player(int keycode)
 {
 	t_player *player;
 
@@ -46,13 +46,34 @@ int update_player(int keycode)
 	if (keycode == 119)
 		player->walk_direction = 1;
 	if (keycode == 115)
-	player->walk_direction = -1;
+		player->walk_direction = -1;
 	if (keycode == 97)
 		player->turn_direction = -1;
 	if (keycode == 100)
 		player->turn_direction = 1;
+	// if (keycode == 65307)
+	// 	close_program();
+	mlx_clear_window(get_data()->mlx.instance, get_data()->mlx.win);
+	mlx_destroy_image(get_data()->mlx.instance, get_data()->mlx.image.img);
+	player->rotation_angle += player->turn_direction * player->turn_speed;
+	draw_map(player);
+	return (0);
+}
+
+int	update_player_release(int keycode)
+{
+	t_player *player;
+
+	player = &get_data()->player;
+	if (keycode == 119)
+		player->walk_direction = 0;
+	if (keycode == 115)
+	player->walk_direction = 0;
+	if (keycode == 97)
+		player->turn_direction = 0;
+	if (keycode == 100)
+		player->turn_direction = 0;
 	if (keycode == 65307)
 		close_program();
-	printf("keycode: %d\n", keycode);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/11 04:33:04 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 15:53:48by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,51 @@ void fillrect(int x, int y, int width, int height, int color)
 	{
 		for(int j = x; j < x + width; j++)
 		{
-			mlx_put_pixel_to_image(j, i, color);
+			my_put_pixel_to_image(j, i, color);
 		}
 	}
 }
 
-void	fillline(int x_form, int y_form, int x_to, int y_to , int color)
+void	fillline(int x_from, int y_from, int x_to, int y_to , int color)
 {
-	int dx = x_to - x_form;
-	int dy = y_to - y_form;
-	int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-	double x_inc = dx / (double)steps;
-	double y_inc = dy / (double)steps;
-	double x = x_form;
-	double y = y_form;
+	int		dx;
+	int		dy;
+	int		steps;
+	double	x_inc;
+	double	y_inc;
+
+	dx = x_to - x_from;
+	dy = y_to - y_from;
+	if (abs(dx) > abs(dy))
+		steps = abs(dx);
+	else
+		steps = abs(dy);
+	x_inc = dx / (double)steps;
+	y_inc = dy / (double)steps;
 	for(int i = 0; i <= steps; i++)
 	{
-		mlx_put_pixel_to_image(x, y, color);
-		x += x_inc;
-		y += y_inc;
+		my_put_pixel_to_image(x_from, y_from, color);
+		x_from += x_inc;
+		y_from += y_inc;
 	}
 }
-void draw_map(void)
+
+void draw_map(t_player	*player)
 {
+	t_data	*data;
+
+	data = get_data();
+	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH, HEIGHT);
+	if (!data->mlx.image.img)
+	{
+		ft_putstr_fd(ERROR"\nFailed to create image\n", 2);
+		close_program();
+	}
+	data->mlx.image.addr = mlx_get_data_addr(data->mlx.image.img,
+			&data->mlx.image.bpp, &data->mlx.image.line_len,
+			&data->mlx.image.endian);
 	_2dmap();
-	player_init(&get_data()->player);
-	put_player(&get_data()->player);
+	put_player(player);
+	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
+		get_data()->mlx.image.img, 0, 0);
 }

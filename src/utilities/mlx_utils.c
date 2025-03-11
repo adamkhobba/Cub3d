@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 01:12:23 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/11 03:02:50 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 17:46:32 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @param color: the color of the pixel
  * @return void
  */
-void	mlx_put_pixel_to_image(int x, int y, int color)
+void	my_put_pixel_to_image(int x, int y, int color)
 {
 	int	offset;
 
