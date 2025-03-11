@@ -6,7 +6,7 @@
 #    By: csouita <csouita@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-#    Updated: 2025/03/10 02:44:18 by csouita          ###   ########.fr        #
+#    Updated: 2025/03/10 22:18:56 by csouita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRCDIR		=	src
 SRC			=	src/parsing/check_boundaries.c src/parsing/check_color.c src/parsing/check_textures_2.c \
 				src/parsing/cub3d.c src/parsing/check.c src/parsing/check_lines.c src/parsing/check_textures.c \
 				src/parsing/get_next_line.c src/parsing/check_character.c   src/parsing/check_player.c\
-				src/parsing/count.c src/parsing/ft_split00.c src/parsing/ft_atoi00.c
+				src/parsing/count.c src/parsing/ft_split00.c src/parsing/ft_atoi00.c \
+				src/parsing/check_valid_textures.c  
 OBJDIR		=	obj
 OBJ			=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o,$(SRC))
 

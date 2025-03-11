@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:53:32 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/10 02:45:01 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/10 22:14:32 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,18 @@ int	create_trgb(int t, int r, int g, int b)
 
 void	free_elements(t_map *data)
 {
-	free(data->no);
-	free(data->so);
-	free(data->we);
-	free(data->ea);
-	free(data->c);
-	free(data->f);
+	if(data->no)
+		free(data->no);
+	if(data->so)
+		free(data->so);
+	if(data->we)
+		free(data->we);
+	if(data->ea)
+		free(data->ea);
+	if(data->c)
+		free(data->c);
+	if(data->f)
+		free(data->f);
 }
 
 void	free_gnawi(char **split)
@@ -39,7 +45,7 @@ void	free_gnawi(char **split)
 	free(split);
 }
 
-int	handle_colors(char *line)
+int	handle_colors(char *line , t_map *data)
 {
 	int		i;
 	int		count;
@@ -55,14 +61,14 @@ int	handle_colors(char *line)
 		i++;
 	}
 	if (count != 2)
-		ft_error("Error\nInvalid color\n");
+		ft_error("Error\nInvalid color\n", data);
 	split = ft_split(line, ',');
 	if (count_split(split) != 3)
-		ft_error("Error\nInvalid color\n");
+		ft_error("Error\nInvalid color\n" , data);
 	color = create_trgb(1, ft_atoi00(split[0]), ft_atoi00(split[1]),
 			ft_atoi00(split[2]));
 	if (color == -1)
-		ft_error("Error\nInvalid color\n");
+		ft_error("Error\nInvalid color\n", data);
 	free_gnawi(split);
 	return (color);
 }

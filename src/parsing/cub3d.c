@@ -6,15 +6,17 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/10 02:49:20 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/10 22:18:19 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_error(char *str)
+void	ft_error(char *str ,t_map*data)
 {
 	ft_putstr_fd(str, 2);
+	free_elements(data);
+	free_memory(data);
 	exit(1);
 }
 
@@ -89,9 +91,13 @@ int	main(int ac, char *av[])
 	}
 	first_line_in_map(data);
 	if (first_and_last_lines_check(data))
+	{
+		free_elements(data);
 		free_memory(data);
+	}
 	check_player_valid_pos(data);
+	check_valid_texture(data);
 	printf("playable\n");
-	// free_memory(data);
+	free_memory(data);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:43:24 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/10 22:05:07 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	set_floor_and_ceiling_color(t_map *data, char **split, int i)
 	if (i == 1)
 	{
 		data->first_line_in_map++;
-		data->color_f = handle_colors(split[1]);
+		data->color_f = handle_colors(split[1] , data);
 		data->f = ft_strdup(split[1]);
 		data->f_key = ft_strdup(split[0]);
 		if (data->f == NULL || data->f_key == NULL)
@@ -66,7 +66,7 @@ int	set_floor_and_ceiling_color(t_map *data, char **split, int i)
 	else
 	{
 		data->first_line_in_map++;
-		data->color_c = handle_colors(split[1]);
+		data->color_c = handle_colors(split[1] , data);
 		data->c = ft_strdup(split[1]);
 		data->c_key = ft_strdup(split[0]);
 		if (data->c == NULL || data->c_key == NULL)
