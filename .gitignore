@@ -43,6 +43,7 @@ cub3d
 *.idb
 *.pdb
 
+
 # Kernel Module Compile Results
 *.mod*
 *.cmd
