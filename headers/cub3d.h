@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/10 15:51:32 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 01:45:41 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 
 # define CUB3D_SIZE 64
 # define FOV 120
+# define WIDTH 800
+# define HEIGHT 600
 # define NAME "\e[1;34mCub3D\e[0m"
 # define ERROR "\e[1;31mError\e[0m"
 
@@ -117,8 +119,8 @@ typedef struct s_data
 	t_map				*map;
 }						t_data;
 
-// Global variable
-t_map	*get_data(void);
+// @addindex main.c
+t_data	*get_data(void);
 
 // @addindex
 int	create_trgb(int t, int r, int g, int b);
@@ -157,5 +159,12 @@ void	validate_texture_format(char **split , t_map *data);
 void free_elements(t_map *data);
 char    *get_next_line(int fd);
 
+// @addindex utilities/exit.c
+int		close_program(void);
 
+// @addindex utilities/mlx_utils.c
+void	mlx_put_pixel_to_image(int x, int y, int color);
+
+// testing.c
+void test_1(void);
 #endif

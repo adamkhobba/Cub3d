@@ -6,13 +6,13 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/10 04:19:33 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 01:45:47 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_data	*g_data(void)
+t_data	*get_data(void)
 {
 	static t_data	data;
 
@@ -24,32 +24,37 @@ t_data	*g_data(void)
  * Initialize the mlx instance
  * @return void
 */
-// void	mlx_setup_env(void)
-// {
-// 	t_data	*data;
+void	mlx_setup_env(void)
+{
+	t_data	*data;
 
-// 	data = g_data();
-// 	data->mlx.win = mlx_new_window(data->mlx.instance, WIDTH, HEIGHT, "miniRT");
-// 	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH, HEIGHT);
-// 	data->mlx.image.addr = mlx_get_data_addr(data->mlx.image.img,
-// 			&data->mlx.image.bpp, &data->mlx.image.line_len,
-// 			&data->mlx.image.endian);
-// 	mlx_hook(g_data()->mlx.win, DestroyNotify, StructureNotifyMask, ft_close,
-// 		NULL);
-// 	mlx_hook(g_data()->mlx.win, KeyPress, KeyPressMask, key_press_hook, NULL);
-// 	mlx_hook(g_data()->mlx.win, KeyRelease, KeyReleaseMask, key_release_hook,
-// 		NULL);
-// 	mlx_mouse_hook(g_data()->mlx.win, mouse_hook, NULL);
-// }
-
+	data = get_data();
+	data->mlx.instance = mlx_init();
+	data->mlx.win = mlx_new_window(data->mlx.instance, WIDTH, HEIGHT, "cub3d");
+	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH, HEIGHT);
+	data->mlx.image.addr = mlx_get_data_addr(data->mlx.image.img,
+			&data->mlx.image.bpp, &data->mlx.image.line_len,
+			&data->mlx.image.endian);
+	mlx_hook(data->mlx.win, DestroyNotify, StructureNotifyMask, &close_program,
+		NULL);
+	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, NULL, NULL);
+	mlx_hook(data->mlx.win, KeyRelease, KeyReleaseMask, NULL,
+		NULL);
+	mlx_mouse_hook(data->mlx.win, NULL, NULL);
+}
 // TODO: create a fts that convert from deg to radian
 
-int main (int ac,__attribute((unused)) char **av)
+int main (__attribute((unused)) int ac,__attribute((unused)) char **av)
 {
-	if (ac != 2)
-	{
-		ft_putstr_fd("Error\nInvalid number of arguments\n", 2);
-		return (1);
-	}
+	// if (ac != 2)
+	// {
+	// 	ft_putstr_fd(ERROR"\nInvalid number of arguments\n", 2);
+	// 	return (1);
+	// }
+	mlx_setup_env();
+	void test_1();
+	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
+		get_data()->mlx.image.img, 0, 0);
+	mlx_loop(get_data()->mlx.instance);
 	// reading the map
 }
