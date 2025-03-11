@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/11 04:33:04 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 04:40:02 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
  * @param height The height of the rectangle.
  * @param color The color to fill the rectangle with.
  */
-void fillrect(int x, int y, int width, int height, int color)
 {
 	for(int i = y; i < y + height; i++)
 	{
@@ -34,9 +33,22 @@ void fillrect(int x, int y, int width, int height, int color)
 		}
 	}
 }
-
+/**
+ * @brief Draws a line from (x_form, y_form) to (x_to, y_to) with the specified color.
+ *
+ * This function uses the DDA (Digital Differential Analyzer) algorithm to draw a line
+ * between two points on the screen. It calculates the necessary increments for the x and y
+ * coordinates and iteratively plots the points using the mlx_put_pixel_to_image function.
+ *
+ * @param x_form The starting x-coordinate of the line.
+ * @param y_form The starting y-coordinate of the line.
+ * @param x_to The ending x-coordinate of the line.
+ * @param y_to The ending y-coordinate of the line.
+ * @param color The color of the line to be drawn.
+ */
 void	fillline(int x_form, int y_form, int x_to, int y_to , int color)
 {
+	// TODO: understand this function
 	int dx = x_to - x_form;
 	int dy = y_to - y_form;
 	int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
@@ -51,6 +63,7 @@ void	fillline(int x_form, int y_form, int x_to, int y_to , int color)
 		y += y_inc;
 	}
 }
+
 void draw_map(void)
 {
 	_2dmap();
