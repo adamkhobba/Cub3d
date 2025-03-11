@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-<<<<<<< Updated upstream
-/*   Updated: 2025/03/10 15:51:32 by akhobba          ###   ########.fr       */
-=======
-/*   Updated: 2025/03/11 02:36:35 by csouita          ###   ########.fr       */
->>>>>>> Stashed changes
+/*   Updated: 2025/03/11 02:52:11 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,19 +131,18 @@ int	set_so_texture(t_map *data, char **split);
 int	set_we_texture(t_map *data, char **split);
 int	set_ea_texture(t_map *data, char **split);
 int	set_floor_and_ceiling_color(t_map *data, char **split , int i);
-void check_valid_texture(t_map *data);
-int	    handle_colors(char *line);
+int	    handle_colors(char *line , t_map *data);
 int	    count_split(char **split);
-void	ft_error(char *str);
+void	ft_error(char *str , t_map*data); ;
 void	process_texture_data(t_map *data, char *line, int *j);
 void	process_texture_line(t_map *data, char **split);
+void check_valid_texture(t_map *data);
 void	check_invalid_character(t_map *data);
 void	check_boundaries(t_map *data);
 int	check_empty(char *line);
 int	parse_element(t_map *data, int *i);
 int	count_len(t_map *data);
 int	check_player_valid_pos(t_map *data);
-int	handle_colors(char *line);
 void	ft_check_file_path(t_map *data, int ac, char *av[]);
 void	map_height(t_map *data, char *av[]);
 void	cp_map_array(t_map *data, char *av[]);

@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+         #
+#    By: csouita <csouita@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-<<<<<<< Updated upstream
-#    Updated: 2025/03/10 03:44:02 by akhobba          ###   ########.fr        #
-=======
-#    Updated: 2025/03/11 02:36:54 by csouita          ###   ########.fr        #
->>>>>>> Stashed changes
+#    Updated: 2025/03/11 02:52:06 by csouita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,14 +32,8 @@ SRCDIR		=	src
 SRC			=	src/parsing/check_boundaries.c src/parsing/check_color.c src/parsing/check_textures_2.c \
 				src/parsing/cub3d.c src/parsing/check.c src/parsing/check_lines.c src/parsing/check_textures.c \
 				src/parsing/get_next_line.c src/parsing/check_character.c   src/parsing/check_player.c\
-<<<<<<< Updated upstream
-				src/parsing/count.c src/parsing/ft_split00.c src/parsing/ft_atoi00.c\
-				src/utilities/math.c
-
-=======
 				src/parsing/count.c src/parsing/ft_split00.c src/parsing/ft_atoi00.c \
-				src/main.c src/parsing/check_valid_texture.c
->>>>>>> Stashed changes
+				src/parsing/check_valid_textures.c  
 OBJDIR		=	obj
 OBJ			=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o,$(SRC))
 

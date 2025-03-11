@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-<<<<<<< Updated upstream
-/*   Updated: 2025/03/10 04:19:33 by akhobba          ###   ########.fr       */
-=======
-/*   Updated: 2025/03/11 02:37:29 by csouita          ###   ########.fr       */
->>>>>>> Stashed changes
+/*   Updated: 2025/03/11 02:52:28 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +42,7 @@ t_data	*g_data(void)
 // 	mlx_mouse_hook(g_data()->mlx.win, mouse_hook, NULL);
 // }
 
-<<<<<<< Updated upstream
-// TODO: create a fts that convert from deg to radian
-
-int main (int ac,__attribute((unused)) char **av)
-=======
 int	main(int ac, char *av[])
->>>>>>> Stashed changes
 {
 	t_map	*data;
 
@@ -66,9 +56,6 @@ int	main(int ac, char *av[])
 		free_elements(data);
 		free_memory(data);
 	}
-<<<<<<< Updated upstream
-	// reading the map
-=======
 	first_line_in_map(data);
 	if (first_and_last_lines_check(data))
 		free_memory(data);
@@ -76,5 +63,4 @@ int	main(int ac, char *av[])
 	printf("playable\n");
 	free_memory(data);
 	return (0);
->>>>>>> Stashed changes
 }
