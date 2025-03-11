@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/11 03:38:28 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 04:33:28 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ typedef struct s_data
 	t_mlx				mlx;
 	t_list				*garbage;
 	t_map				*map;
+	t_player			player;
 }						t_data;
 
 // @addindex main.c
@@ -175,6 +176,19 @@ int		close_program(void);
 
 // @addindex utilities/mlx_utils.c
 void	mlx_put_pixel_to_image(int x, int y, int color);
+
+// @addindex raycasting/drawing.c
+void	fillrect(int x, int y, int width, int height, int color);
+void	fillline(int x_form, int y_form, int x_to, int y_to , int color);
+
+// @addindex raycasting/player.c
+void	player_init(t_player *player);
+void	put_player(t_player *player);
+int		update_player(int keycode);
+
+// @addindex utilities/math.c
+double	radtodeg(double rad);
+double	degtorad(double deg);
 
 // testing.c
 void _2dmap(void);

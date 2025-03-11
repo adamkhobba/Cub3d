@@ -6,22 +6,12 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 04:21:29 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/11 03:39:56 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 03:54:32 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void fillrect(int x, int y, int width, int height, int color)
-{
-	for(int i = y; i < y + height; i++)
-	{
-		for(int j = x; j < x + width; j++)
-		{
-			mlx_put_pixel_to_image(j, i, color);
-		}
-	}
-}
 
 void _2dmap(void)
 {

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/11 03:39:28 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 04:08:22 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_data	*get_data(void)
 
 	return (&data);
 }
-
 
 /**
  * Initialize the mlx instance
@@ -42,7 +41,7 @@ void	mlx_setup_env(void)
 			&data->mlx.image.endian);
 	mlx_hook(data->mlx.win, DestroyNotify, StructureNotifyMask, &close_program,
 		NULL);
-	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, NULL, NULL);
+	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, update_player, NULL);
 	mlx_hook(data->mlx.win, KeyRelease, KeyReleaseMask, NULL,
 		NULL);
 	mlx_mouse_hook(data->mlx.win, NULL, NULL);
@@ -59,6 +58,8 @@ int main (__attribute((unused)) int ac,__attribute((unused)) char **av)
 	// }
 	mlx_setup_env();
 	_2dmap();
+	player_init(&get_data()->player);
+	put_player(&get_data()->player);
 	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
 		get_data()->mlx.image.img, 0, 0);
 	mlx_loop(get_data()->mlx.instance);
