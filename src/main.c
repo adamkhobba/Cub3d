@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/11 02:27:11 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 03:39:28 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,6 @@ void	mlx_setup_env(void)
 }
 // TODO: create a fts that convert from deg to radian
 
-void fillrect(int x, int y, int width, int height, int color)
-{
-	printf("x: %d, y: %d, width: %d, height: %d, color: %d\n", x, y, width, height, color);
-	for(int i = y; i < y + height; i++)
-	{
-		for(int j = x; j < x + width; j++)
-		{
-			mlx_put_pixel_to_image(j, i, color);
-		}
-	}
-}
 
 int main (__attribute((unused)) int ac,__attribute((unused)) char **av)
 {
@@ -69,36 +58,7 @@ int main (__attribute((unused)) int ac,__attribute((unused)) char **av)
 	// 	return (1);
 	// }
 	mlx_setup_env();
-	get_data()->mlx.image.img = NULL;
-	double cub_size = 32;
-	// double fov = 120;
-	double map_rows = 11;
-	double map_coloms = 15;
-	// double wwidth = map_coloms * cub_size;
-	// double wheight = map_rows * cub_size;
-	int map[11][15] = {
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
-		{1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1},
-		{1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1},
-		{1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1},
-		{1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-	};
-	for(int i = 0; i < map_rows; i++)
-	{
-		for(int j = 0; j < map_coloms; j++)
-		{
-			if(map[i][j] == 1)
-				fillrect(j * cub_size, i * cub_size, cub_size, cub_size, 0x000000);
-			else
-				fillrect(j * cub_size, i * cub_size, cub_size, cub_size, 0xFFFFFF);
-		}
-	}
+	_2dmap();
 	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
 		get_data()->mlx.image.img, 0, 0);
 	mlx_loop(get_data()->mlx.instance);

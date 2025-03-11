@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/11 02:28:11 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 03:38:28 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,17 @@
  * @param first_line_in_map 	Index of the first line in the map array.
  * @param last_line_in_map 	Index of the last line in the map array.
  */
+
+ typedef struct s_player{
+	int x;
+	int y;
+	int radius;
+	int turn_direction; // -1 for left, +1 for right
+	int walk_direction; // -1 for back, +1 for front
+	double rotation_angle;
+	double walk_speed;
+	double turn_speed;
+ }				t_player;
 typedef struct s_map
 {
     int height;
@@ -166,5 +177,6 @@ int		close_program(void);
 void	mlx_put_pixel_to_image(int x, int y, int color);
 
 // testing.c
-void test_1(void);
+void _2dmap(void);
+
 #endif
