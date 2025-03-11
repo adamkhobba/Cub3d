@@ -6,7 +6,11 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2025/03/10 15:51:32 by akhobba          ###   ########.fr       */
+=======
+/*   Updated: 2025/03/11 02:36:35 by csouita          ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +135,7 @@ int	set_so_texture(t_map *data, char **split);
 int	set_we_texture(t_map *data, char **split);
 int	set_ea_texture(t_map *data, char **split);
 int	set_floor_and_ceiling_color(t_map *data, char **split , int i);
+void check_valid_texture(t_map *data);
 int	    handle_colors(char *line);
 int	    count_split(char **split);
 void	ft_error(char *str);

@@ -6,7 +6,11 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2025/03/10 04:19:33 by akhobba          ###   ########.fr       */
+=======
+/*   Updated: 2025/03/11 02:37:29 by csouita          ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +46,35 @@ t_data	*g_data(void)
 // 	mlx_mouse_hook(g_data()->mlx.win, mouse_hook, NULL);
 // }
 
+<<<<<<< Updated upstream
 // TODO: create a fts that convert from deg to radian
 
 int main (int ac,__attribute((unused)) char **av)
+=======
+int	main(int ac, char *av[])
+>>>>>>> Stashed changes
 {
-	if (ac != 2)
+	t_map	*data;
+
+	data = malloc(sizeof(t_map));
+	ft_memset(data, 0, sizeof(t_map));
+	ft_check_file_path(data, ac, av);
+	last_line(data);
+	parse_textures(data);
+	if (check_xpm(data))
 	{
-		ft_putstr_fd("Error\nInvalid number of arguments\n", 2);
-		return (1);
+		free_elements(data);
+		free_memory(data);
 	}
+<<<<<<< Updated upstream
 	// reading the map
+=======
+	first_line_in_map(data);
+	if (first_and_last_lines_check(data))
+		free_memory(data);
+	check_player_valid_pos(data);
+	printf("playable\n");
+	free_memory(data);
+	return (0);
+>>>>>>> Stashed changes
 }

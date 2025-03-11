@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:53:32 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/10 02:45:01 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/11 02:36:06 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,18 @@ int	create_trgb(int t, int r, int g, int b)
 
 void	free_elements(t_map *data)
 {
-	free(data->no);
-	free(data->so);
-	free(data->we);
-	free(data->ea);
-	free(data->c);
-	free(data->f);
+	if (data->no)
+		free(data->no);
+	if (data->so)
+		free(data->so);
+	if (data->we)
+		free(data->we);
+	if (data->ea)
+		free(data->ea);
+	if (data->f)
+		free(data->f);
+	if (data->c)
+		free(data->c);
 }
 
 void	free_gnawi(char **split)
