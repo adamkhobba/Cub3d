@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.c                                             :+:      :+:    :+:   */
+/*   check_fts.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 03:11:30 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/12 03:07:36 by akhobba          ###   ########.fr       */
+/*   Created: 2025/03/12 03:55:57 by akhobba           #+#    #+#             */
+/*   Updated: 2025/03/12 04:27:15 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-double	cal_distance(t_point point1, t_point point2)
+bool	is_wall(int x, int y)
 {
-    return sqrtf((point2.x - point1.x) * (point2.x - point1.x) +
-                 (point2.y - point1.y) * (point2.y - point1.y));
-}
+	t_map	*map;
 
-double	degtorad(double deg)
-{
-	return (deg * ((double)M_PI / (double)180));
-}
-
-double	radtodeg(double rad)
-{
-	return (rad * ((double)180 / (double)M_PI));
+	map = get_data()->map;
+	// if (x < 0 || y < 0 || x >= map->width || y >= map->height)
+	// 	return (true);
+	// if (map->map[y / 32][x / 32] == '1')
+	// 	return (true);
+	return (false);
 }

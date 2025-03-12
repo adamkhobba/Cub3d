@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/12 02:44:36 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/12 03:57:47 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,6 +215,8 @@ double		radtodeg(double rad);
 double		degtorad(double deg);
 double		cal_distance(t_point point1, t_point point2);
 
+// @addindex game_element/check_fts.c
+bool		is_wall(int x, int y);
 // testing.c
 void		_2dmap(void);
 

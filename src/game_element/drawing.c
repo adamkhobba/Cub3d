@@ -48,17 +48,20 @@ void	fillrect(int x, int y, int width, int height, int color)
 void	fillline(t_point from, t_point to, double angle, int color)
 {
 	double	distance;
-	int		x;
-	int		y;
+	double	x;
+	double	y;
+	double	step;
 
 	distance = cal_distance(from, to);
+	step = 1;
 	x = from.x;
 	y = from.y;
-	for (int i = 0; i < distance; i++)
+	while (step < distance)
 	{
-		x += cos(angle);
-		y += sin(angle);
+		x = from.x + cos(angle) * step;
+		y = from.y + sin(angle) * step;
 		my_put_pixel_to_image(x, y, color);
+		step++;
 	}
 	my_put_pixel_to_image(to.x, to.y, color);
 }
@@ -82,3 +85,4 @@ void draw_map(t_player	*player)
 	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
 		get_data()->mlx.image.img, 0, 0);
 }
+
