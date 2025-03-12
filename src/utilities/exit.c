@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 03:11:30 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/12 03:07:36 by akhobba          ###   ########.fr       */
+/*   Created: 2025/03/11 01:06:09 by akhobba           #+#    #+#             */
+/*   Updated: 2025/03/11 01:38:40 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-double	cal_distance(t_point point1, t_point point2)
+int	close_program(void)
 {
-    return sqrtf((point2.x - point1.x) * (point2.x - point1.x) +
-                 (point2.y - point1.y) * (point2.y - point1.y));
-}
-
-double	degtorad(double deg)
-{
-	return (deg * ((double)M_PI / (double)180));
-}
-
-double	radtodeg(double rad)
-{
-	return (rad * ((double)180 / (double)M_PI));
+	mlx_destroy_image(get_data()->mlx.instance, get_data()->mlx.image.img);
+	mlx_destroy_window(get_data()->mlx.instance, get_data()->mlx.win);
+	mlx_destroy_display(get_data()->mlx.instance);
+	free(get_data()->mlx.instance);
+	exit(0);
+	return (0);
 }

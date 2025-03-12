@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.c                                             :+:      :+:    :+:   */
+/*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 03:11:30 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/12 03:07:36 by akhobba          ###   ########.fr       */
+/*   Created: 2025/03/11 01:12:23 by akhobba           #+#    #+#             */
+/*   Updated: 2025/03/11 17:46:32 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-double	cal_distance(t_point point1, t_point point2)
+/**
+ * Put a pixel to the image
+ * @param x: the x coordinate of the pixel
+ * @param y: the y coordinate of the pixel
+ * @param color: the color of the pixel
+ * @return void
+ */
+void	my_put_pixel_to_image(int x, int y, int color)
 {
-    return sqrtf((point2.x - point1.x) * (point2.x - point1.x) +
-                 (point2.y - point1.y) * (point2.y - point1.y));
-}
+	int	offset;
 
-double	degtorad(double deg)
-{
-	return (deg * ((double)M_PI / (double)180));
-}
-
-double	radtodeg(double rad)
-{
-	return (rad * ((double)180 / (double)M_PI));
+	offset = (y * get_data()->mlx.image.line_len + x * (get_data()->mlx.image.bpp
+				/ 8));
+	*(unsigned int *)(get_data()->mlx.image.addr + offset) = color;
 }

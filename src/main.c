@@ -3,64 +3,70 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/11 02:52:28 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/12 04:30:56 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_data	*g_data(void)
+t_data	*get_data(void)
 {
 	static t_data	data;
 
 	return (&data);
 }
 
-
 /**
  * Initialize the mlx instance
  * @return void
 */
-// void	mlx_setup_env(void)
-// {
-// 	t_data	*data;
-
-// 	data = g_data();
-// 	data->mlx.win = mlx_new_window(data->mlx.instance, WIDTH, HEIGHT, "miniRT");
-// 	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH, HEIGHT);
-// 	data->mlx.image.addr = mlx_get_data_addr(data->mlx.image.img,
-// 			&data->mlx.image.bpp, &data->mlx.image.line_len,
-// 			&data->mlx.image.endian);
-// 	mlx_hook(g_data()->mlx.win, DestroyNotify, StructureNotifyMask, ft_close,
-// 		NULL);
-// 	mlx_hook(g_data()->mlx.win, KeyPress, KeyPressMask, key_press_hook, NULL);
-// 	mlx_hook(g_data()->mlx.win, KeyRelease, KeyReleaseMask, key_release_hook,
-// 		NULL);
-// 	mlx_mouse_hook(g_data()->mlx.win, mouse_hook, NULL);
-// }
-
-int	main(int ac, char *av[])
+void	mlx_setup_env(void)
 {
-	t_map	*data;
+	t_data	*data;
 
-	data = malloc(sizeof(t_map));
-	ft_memset(data, 0, sizeof(t_map));
-	ft_check_file_path(data, ac, av);
-	last_line(data);
-	parse_textures(data);
-	if (check_xpm(data))
+	data = get_data();
+	data->mlx.instance = mlx_init();
+	data->mlx.win = mlx_new_window(data->mlx.instance, WIDTH, HEIGHT, "cub3d");
+	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH, HEIGHT);
+	if (!data->mlx.image.img)
 	{
-		free_elements(data);
-		free_memory(data);
+		ft_putstr_fd(ERROR"\nFailed to create image\n", 2);
+		close_program();
 	}
-	first_line_in_map(data);
-	if (first_and_last_lines_check(data))
-		free_memory(data);
-	check_player_valid_pos(data);
-	printf("playable\n");
-	free_memory(data);
-	return (0);
+	data->mlx.image.addr = mlx_get_data_addr(data->mlx.image.img,
+			&data->mlx.image.bpp, &data->mlx.image.line_len,
+			&data->mlx.image.endian);
+	mlx_hook(data->mlx.win, DestroyNotify, StructureNotifyMask, &close_program,
+		NULL);
+	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, update_player, NULL);
+	mlx_hook(data->mlx.win, KeyRelease, KeyReleaseMask, update_player_release,
+		NULL);
+	mlx_mouse_hook(data->mlx.win, NULL, NULL);
+}
+// TODO: create a fts that convert from deg to radian
+
+int main (__attribute((unused)) int ac,__attribute((unused)) char **av)
+{
+	// if (ac != 2)
+	// {
+	// 	ft_putstr_fd(ERROR"\nInvalid number of arguments\n", 2);
+	// 	return (1);
+	// }
+	mlx_setup_env();
+	_2dmap();
+	get_data()->player = malloc(sizeof(t_player));
+	if (!get_data()->player)
+	{
+		ft_putstr_fd(ERROR"\nFailed to allocate memory\n", 2);
+		close_program();
+	}
+	player_init(get_data()->player);
+	put_player(get_data()->player);
+	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
+		get_data()->mlx.image.img, 0, 0);
+	mlx_loop(get_data()->mlx.instance);
+	// reading the map
 }

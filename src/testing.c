@@ -6,31 +6,21 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 04:21:29 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/10 15:48:13 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 03:54:32 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void setup(void)
+
+void _2dmap(void)
 {
-	createCanvas(800, 600);
-}
-
-void update(void)
-{
-
-}
-
-void draw(void)
-{
-
-}
-
-void test_1(void)
-{
-	double cub_size = 64;
-	double fov = 120;
+	double cub_size = 32;
+	// double fov = 120;
+	double map_rows = 11;
+	double map_coloms = 15;
+	// double wwidth = map_coloms * cub_size;
+	// double wheight = map_rows * cub_size;
 	int map[11][15] = {
 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 		{1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
@@ -41,8 +31,17 @@ void test_1(void)
 		{1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1},
 		{1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1},
 		{1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1},
-		{1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 	};
-
+	for(int i = 0; i < map_rows; i++)
+	{
+		for(int j = 0; j < map_coloms; j++)
+		{
+			if(map[i][j] == 1)
+				fillrect(j * cub_size, i * cub_size, cub_size - 1, cub_size - 1, 0x222222);
+			else
+				fillrect(j * cub_size, i * cub_size , cub_size - 1, cub_size - 1, 0xFFFFFF);
+		}
+	}
 }
