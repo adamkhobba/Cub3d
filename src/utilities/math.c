@@ -6,11 +6,17 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 03:11:30 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/10 03:30:22 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/12 02:44:27 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+double	cal_distance(t_point point1, t_point point2)
+{
+    return sqrtf((point2.x - point1.x) * (point2.x - point1.x) +
+                 (point2.y - point1.y) * (point2.y - point1.y));
+}
 
 double	degtorad(double deg)
 {

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/11 17:09:38 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/12 02:33:07 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	mlx_setup_env(void)
 }
 // TODO: create a fts that convert from deg to radian
 
-
 int main (__attribute((unused)) int ac,__attribute((unused)) char **av)
 {
 	// if (ac != 2)
@@ -58,8 +57,14 @@ int main (__attribute((unused)) int ac,__attribute((unused)) char **av)
 	// }
 	mlx_setup_env();
 	_2dmap();
-	player_init(&get_data()->player);
-	put_player(&get_data()->player);
+	get_data()->player = malloc(sizeof(t_player));
+	if (!get_data()->player)
+	{
+		ft_putstr_fd(ERROR"\nFailed to allocate memory\n", 2);
+		close_program();
+	}
+	player_init(get_data()->player);
+	put_player(get_data()->player);
 	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
 		get_data()->mlx.image.img, 0, 0);
 	mlx_loop(get_data()->mlx.instance);

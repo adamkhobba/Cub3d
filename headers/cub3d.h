@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/11 17:18:24 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/12 02:44:36 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,39 @@
 # define HEIGHT 32 * 11
 # define NAME "\e[1;34mCub3D\e[0m"
 # define ERROR "\e[1;31mError\e[0m"
+
+/**
+ * @struct s_point
+ * @brief A structure to represent a point in 2D space.
+ * @param x The x-coordinate of the point.
+ * @param y The y-coordinate of the point.
+ */
+typedef struct s_point
+{
+	int x;
+	int y;
+}			t_point;
+
+/**
+ * struct s_player - Structure to represent a player in the game.
+ * @param x: The x-coordinate of the player's position.
+ * @param y: The y-coordinate of the player's position.
+ * @param radius: The radius of the player.
+ * @param turn_direction: The direction the player is turning (-1 for left, +1 for right).
+ * @param walk_direction: The direction the player is walking (-1 for back, +1 for front).
+ * @param rotation_angle: The current rotation angle of the player.
+ * @param walk_speed: The speed at which the player walks.
+ * @param turn_speed: The speed at which the player turns.
+ */
+ typedef struct s_player{
+	t_point	position;
+	int		radius;
+	int		turn_direction; // -1 for left, +1 for right
+	int		walk_direction; // -1 for back, +1 for front
+	double	rotation_angle;
+	double	walk_speed;
+	double	turn_speed;
+ }				t_player;
 
 /**
  * @struct s_map
@@ -68,17 +101,6 @@
  * @param first_line_in_map 	Index of the first line in the map array.
  * @param last_line_in_map 	Index of the last line in the map array.
  */
-
- typedef struct s_player{
-	int x;
-	int y;
-	int radius;
-	int turn_direction; // -1 for left, +1 for right
-	int walk_direction; // -1 for back, +1 for front
-	double rotation_angle;
-	double walk_speed;
-	double turn_speed;
- }				t_player;
 typedef struct s_map
 {
     int height;
@@ -128,7 +150,7 @@ typedef struct s_data
 	t_mlx				mlx;
 	t_list				*garbage;
 	t_map				*map;
-	t_player			player;
+	t_player			*player;
 }						t_data;
 
 // @addindex main.c
@@ -172,27 +194,28 @@ void free_elements(t_map *data);
 char    *get_next_line(int fd);
 
 // @addindex utilities/exit.c
-int		close_program(void);
+int			close_program(void);
 
 // @addindex utilities/mlx_utils.c
-void	my_put_pixel_to_image(int x, int y, int color);
+void		my_put_pixel_to_image(int x, int y, int color);
 
-// @addindex raycasting/drawing.c
-void	fillrect(int x, int y, int width, int height, int color);
-void	fillline(int x_form, int y_form, int x_to, int y_to , int color);
-void	draw_map(t_player *player);
+// @addindex game_element/drawing.c
+void		fillrect(int x, int y, int width, int height, int color);
+void		draw_map(t_player *player);
+void		fillline(t_point from, t_point to, double angle, int color);
 
-// @addindex raycasting/player.c
-void	player_init(t_player *player);
-void	put_player(t_player *player);
-int		update_player(int keycode);
-int		update_player_release(int keycode);
+// @addindex game_element/player.c
+void		player_init(t_player *player);
+void		put_player(t_player *player);
+int			update_player(int keycode);
+int			update_player_release(int keycode);
 
 // @addindex utilities/math.c
-double	radtodeg(double rad);
-double	degtorad(double deg);
+double		radtodeg(double rad);
+double		degtorad(double deg);
+double		cal_distance(t_point point1, t_point point2);
 
 // testing.c
-void _2dmap(void);
+void		_2dmap(void);
 
 #endif

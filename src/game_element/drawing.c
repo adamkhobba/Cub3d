@@ -23,6 +23,7 @@
  * @param height The height of the rectangle.
  * @param color The color to fill the rectangle with.
  */
+void	fillrect(int x, int y, int width, int height, int color)
 {
 	for(int i = y; i < y + height; i++)
 	{
@@ -33,28 +34,33 @@
 	}
 }
 
-void	fillline(int x_from, int y_from, int x_to, int y_to , int color)
+/**
+ * fillline - Draws a line from one point to another with a specified angle and color.
+ * @param from The starting point of the line.
+ * @param to The ending point of the line.
+ * @param angle The angle at which the line is drawn.
+ * @param color The color of the line.
+ *
+ * This function calculates the distance between the starting and ending points,
+ * then iteratively plots points along the line using the specified angle and color.
+ * The final point is explicitly set to ensure the line reaches the end point.
+ */
+void	fillline(t_point from, t_point to, double angle, int color)
 {
-	int		dx;
-	int		dy;
-	int		steps;
-	double	x_inc;
-	double	y_inc;
+	double	distance;
+	int		x;
+	int		y;
 
-	dx = x_to - x_from;
-	dy = y_to - y_from;
-	if (abs(dx) > abs(dy))
-		steps = abs(dx);
-	else
-		steps = abs(dy);
-	x_inc = dx / (double)steps;
-	y_inc = dy / (double)steps;
-	for(int i = 0; i <= steps; i++)
+	distance = cal_distance(from, to);
+	x = from.x;
+	y = from.y;
+	for (int i = 0; i < distance; i++)
 	{
-		my_put_pixel_to_image(x_from, y_from, color);
-		x_from += x_inc;
-		y_from += y_inc;
+		x += cos(angle);
+		y += sin(angle);
+		my_put_pixel_to_image(x, y, color);
 	}
+	my_put_pixel_to_image(to.x, to.y, color);
 }
 
 void draw_map(t_player	*player)
