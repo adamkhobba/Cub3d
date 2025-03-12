@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/11 04:33:28 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 17:18:24 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,16 +175,18 @@ char    *get_next_line(int fd);
 int		close_program(void);
 
 // @addindex utilities/mlx_utils.c
-void	mlx_put_pixel_to_image(int x, int y, int color);
+void	my_put_pixel_to_image(int x, int y, int color);
 
 // @addindex raycasting/drawing.c
 void	fillrect(int x, int y, int width, int height, int color);
 void	fillline(int x_form, int y_form, int x_to, int y_to , int color);
+void	draw_map(t_player *player);
 
 // @addindex raycasting/player.c
 void	player_init(t_player *player);
 void	put_player(t_player *player);
 int		update_player(int keycode);
+int		update_player_release(int keycode);
 
 // @addindex utilities/math.c
 double	radtodeg(double rad);

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/11 04:08:22 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 17:09:38 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	mlx_setup_env(void)
 	mlx_hook(data->mlx.win, DestroyNotify, StructureNotifyMask, &close_program,
 		NULL);
 	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, update_player, NULL);
-	mlx_hook(data->mlx.win, KeyRelease, KeyReleaseMask, NULL,
+	mlx_hook(data->mlx.win, KeyRelease, KeyReleaseMask, update_player_release,
 		NULL);
 	mlx_mouse_hook(data->mlx.win, NULL, NULL);
 }

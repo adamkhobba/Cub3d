@@ -6,12 +6,11 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/11 04:40:02 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 15:53:48by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 /**
  * @brief Fills a rectangle on the screen with a specified color.
  *
@@ -29,44 +28,51 @@
 	{
 		for(int j = x; j < x + width; j++)
 		{
-			mlx_put_pixel_to_image(j, i, color);
+			my_put_pixel_to_image(j, i, color);
 		}
 	}
 }
-/**
- * @brief Draws a line from (x_form, y_form) to (x_to, y_to) with the specified color.
- *
- * This function uses the DDA (Digital Differential Analyzer) algorithm to draw a line
- * between two points on the screen. It calculates the necessary increments for the x and y
- * coordinates and iteratively plots the points using the mlx_put_pixel_to_image function.
- *
- * @param x_form The starting x-coordinate of the line.
- * @param y_form The starting y-coordinate of the line.
- * @param x_to The ending x-coordinate of the line.
- * @param y_to The ending y-coordinate of the line.
- * @param color The color of the line to be drawn.
- */
-void	fillline(int x_form, int y_form, int x_to, int y_to , int color)
+
+void	fillline(int x_from, int y_from, int x_to, int y_to , int color)
 {
-	// TODO: understand this function
-	int dx = x_to - x_form;
-	int dy = y_to - y_form;
-	int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-	double x_inc = dx / (double)steps;
-	double y_inc = dy / (double)steps;
-	double x = x_form;
-	double y = y_form;
+	int		dx;
+	int		dy;
+	int		steps;
+	double	x_inc;
+	double	y_inc;
+
+	dx = x_to - x_from;
+	dy = y_to - y_from;
+	if (abs(dx) > abs(dy))
+		steps = abs(dx);
+	else
+		steps = abs(dy);
+	x_inc = dx / (double)steps;
+	y_inc = dy / (double)steps;
 	for(int i = 0; i <= steps; i++)
 	{
-		mlx_put_pixel_to_image(x, y, color);
-		x += x_inc;
-		y += y_inc;
+		my_put_pixel_to_image(x_from, y_from, color);
+		x_from += x_inc;
+		y_from += y_inc;
 	}
 }
 
-void draw_map(void)
+void draw_map(t_player	*player)
 {
+	t_data	*data;
+
+	data = get_data();
+	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH, HEIGHT);
+	if (!data->mlx.image.img)
+	{
+		ft_putstr_fd(ERROR"\nFailed to create image\n", 2);
+		close_program();
+	}
+	data->mlx.image.addr = mlx_get_data_addr(data->mlx.image.img,
+			&data->mlx.image.bpp, &data->mlx.image.line_len,
+			&data->mlx.image.endian);
 	_2dmap();
-	player_init(&get_data()->player);
-	put_player(&get_data()->player);
+	put_player(player);
+	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
+		get_data()->mlx.image.img, 0, 0);
 }
