@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 /**
  * @brief Fills a rectangle on the screen with a specified color.
  *

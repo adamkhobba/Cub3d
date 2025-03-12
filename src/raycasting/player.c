@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:40:06 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/11 17:50:06 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/11 17:53:26 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	update_player(int keycode)
 		player->turn_direction = 1;
 	// if (keycode == 65307)
 	// 	close_program();
-	mlx_clear_window(get_data()->mlx.instance, get_data()->mlx.win);
 	mlx_destroy_image(get_data()->mlx.instance, get_data()->mlx.image.img);
 	player->rotation_angle += player->turn_direction * player->turn_speed;
 	draw_map(player);
