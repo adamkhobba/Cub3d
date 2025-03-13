@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/csouita/Desktop/cub3d/src/parsing",
-      "program": "/home/csouita/Desktop/cub3d/src/parsing/build/Debug/outDebug",
+      "cwd": "/home/csouita/Desktop/cub3d/src",
+      "program": "/home/csouita/Desktop/cub3d/src/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
