@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/13 00:32:24 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/13 02:25:49 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,6 @@ int					set_floor_and_ceiling_color(t_map *data, char **split,
 int					handle_colors(char *line, t_map *data);
 int					count_split(char **split);
 void				ft_error(char *str, t_map *data);
-;
 void				process_texture_data(t_map *data, char *line, int *j);
 void				process_texture_line(t_map *data, char **split);
 void				check_valid_texture(t_map *data);
