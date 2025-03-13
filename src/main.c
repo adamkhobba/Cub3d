@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/12 04:30:56 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/13 00:01:20 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_data	*get_data(void)
 /**
  * Initialize the mlx instance
  * @return void
-*/
+ */
 void	mlx_setup_env(void)
 {
 	t_data	*data;
@@ -33,7 +33,7 @@ void	mlx_setup_env(void)
 	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH, HEIGHT);
 	if (!data->mlx.image.img)
 	{
-		ft_putstr_fd(ERROR"\nFailed to create image\n", 2);
+		ft_putstr_fd(ERROR "\nFailed to create image\n", 2);
 		close_program();
 	}
 	data->mlx.image.addr = mlx_get_data_addr(data->mlx.image.img,
@@ -48,7 +48,7 @@ void	mlx_setup_env(void)
 }
 // TODO: create a fts that convert from deg to radian
 
-int main (__attribute((unused)) int ac,__attribute((unused)) char **av)
+int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 {
 	// if (ac != 2)
 	// {
@@ -56,17 +56,12 @@ int main (__attribute((unused)) int ac,__attribute((unused)) char **av)
 	// 	return (1);
 	// }
 	mlx_setup_env();
-	_2dmap();
 	get_data()->player = malloc(sizeof(t_player));
 	if (!get_data()->player)
 	{
-		ft_putstr_fd(ERROR"\nFailed to allocate memory\n", 2);
+		ft_putstr_fd(ERROR "\nFailed to allocate memory\n", 2);
 		close_program();
 	}
-	player_init(get_data()->player);
-	put_player(get_data()->player);
-	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
-		get_data()->mlx.image.img, 0, 0);
+	draw_2dmap(get_data());
 	mlx_loop(get_data()->mlx.instance);
-	// reading the map
 }

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:40:06 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/12 03:55:22 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/13 00:07:05 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,32 @@ void	player_init(t_player *player)
 
 inline static void	draw_player_direction(t_player *player)
 {
-	fillline(player->position, (t_point){player->position.x + cos(player->rotation_angle) * 20,
-		player->position.y + sin(player->rotation_angle) * 20}, player->rotation_angle, 0xFF0000);
+	fillline(player->position, (t_point){player->position.x
+		+ cos(player->rotation_angle) * 20, player->position.y
+		+ sin(player->rotation_angle) * 20}, player->rotation_angle, 0xFF0000);
 }
 
- void	put_player(t_player *player)
+void	put_player(t_player *player)
 {
 	draw_player_direction(player);
-	fillrect(player->position.x - player->radius, player->position.y - player->radius,
-		player->radius * 2, player->radius * 2, 0x00FF00);
+	fillrect((t_point){player->position.x - player->radius,
+		player->position.y - player->radius}, player->radius * 2,
+		player->radius * 2, 0x00FF00);
 }
 
 int	update_player(int keycode)
 {
-	t_player *player;
-	int		steps;
+	t_player	*player;
+	int			steps;
 
 	player = get_data()->player;
 	if (keycode == 119)
 		player->walk_direction = 1;
 	if (keycode == 115)
 		player->walk_direction = -1;
-	if (keycode == 97) // A
+	if (keycode == 97)
 		player->turn_direction = -1;
-	if (keycode == 100) // D
+	if (keycode == 100)
 		player->turn_direction = 1;
 	if (keycode == 65307)
 		close_program();
@@ -63,19 +65,19 @@ int	update_player(int keycode)
 		player->position.x -= cos(player->rotation_angle) * steps;
 		player->position.y -= sin(player->rotation_angle) * steps;
 	}
-	draw_map(player);
+	draw_2dmap(get_data());
 	return (0);
 }
 
 int	update_player_release(int keycode)
 {
-	t_player *player;
+	t_player	*player;
 
 	player = get_data()->player;
 	if (keycode == 119)
 		player->walk_direction = 0;
 	if (keycode == 115)
-	player->walk_direction = 0;
+		player->walk_direction = 0;
 	if (keycode == 97)
 		player->turn_direction = 0;
 	if (keycode == 100)

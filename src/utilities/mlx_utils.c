@@ -23,7 +23,7 @@ void	my_put_pixel_to_image(int x, int y, int color)
 {
 	int	offset;
 
-	offset = (y * get_data()->mlx.image.line_len + x * (get_data()->mlx.image.bpp
-				/ 8));
+	offset = (y * get_data()->mlx.image.line_len + x
+			* (get_data()->mlx.image.bpp / 8));
 	*(unsigned int *)(get_data()->mlx.image.addr + offset) = color;
 }

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/12 04:30:40 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/13 00:00:47 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 
-# define CUB3D_SIZE 64
+# define CUB_SIZE 32
 # define FOV 120
 # define WIDTH 32 * 15
 # define HEIGHT 32 * 11
@@ -200,8 +200,9 @@ int			close_program(void);
 void		my_put_pixel_to_image(int x, int y, int color);
 
 // @addindex game_element/drawing.c
-void		fillrect(int x, int y, int width, int height, int color);
-void		draw_map(t_player *player);
+void		fillrect(t_point point, int width, int height, int color);
+void		 _2dmap(t_map *map);
+void		draw_2dmap(t_data *data);
 void		fillline(t_point from, t_point to, double angle, int color);
 
 // @addindex game_element/player.c
@@ -217,7 +218,5 @@ double		cal_distance(t_point point1, t_point point2);
 
 // @addindex game_element/check_fts.c
 bool		is_wall(int x, int y);
-// testing.c
-void		_2dmap(void);
 
 #endif
