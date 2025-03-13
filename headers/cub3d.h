@@ -6,29 +6,28 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/13 00:00:47 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/13 00:32:24 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
 # include "libft.h"
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <math.h>
-# include <string.h>
-# include <errno.h>
-# include <limits.h>
-# include <stdbool.h>
-# include <mlx.h>
+# include <X11/X.h>
 # include <X11/Xlib.h>
 # include <X11/Xutil.h>
 # include <X11/keysym.h>
-# include <X11/X.h>
+# include <errno.h>
+# include <fcntl.h>
+# include <limits.h>
+# include <math.h>
+# include <mlx.h>
+# include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
 
 # define CUB_SIZE 32
 # define FOV 120
@@ -45,37 +44,43 @@
  */
 typedef struct s_point
 {
-	int x;
-	int y;
-}			t_point;
+	int				x;
+	int				y;
+}					t_point;
 
 /**
  * struct s_player - Structure to represent a player in the game.
  * @param x: The x-coordinate of the player's position.
  * @param y: The y-coordinate of the player's position.
  * @param radius: The radius of the player.
- * @param turn_direction: The direction the player is turning (-1 for left, +1 for right).
- * @param walk_direction: The direction the player is walking (-1 for back, +1 for front).
+ * @param turn_direction: The direction the player is turning (-1 for left,
+	+1 for right).
+ * @param walk_direction: The direction the player is walking (-1 for back,
+	+1 for front).
  * @param rotation_angle: The current rotation angle of the player.
  * @param walk_speed: The speed at which the player walks.
  * @param turn_speed: The speed at which the player turns.
  */
- typedef struct s_player{
-	t_point	position;
-	int		radius;
-	int		turn_direction; // -1 for left, +1 for right
-	int		walk_direction; // -1 for back, +1 for front
-	double	rotation_angle;
-	double	walk_speed;
-	double	turn_speed;
- }				t_player;
+typedef struct s_player
+{
+	t_point			position;
+	int				radius;
+	int				turn_direction;
+	int				walk_direction;
+	double			rotation_angle;
+	double			walk_speed;
+	double			turn_speed;
+}					t_player;
 
 /**
  * @struct s_map
- * @brief 	Structure to store the map data and related information for the game.
+
+* @brief 	Structure to store the map data and related information for the game.
  *
- * This structure holds various attributes related to the map, including its dimensions,
- * file path, texture paths, color information, and player position. It is used to manage
+ * This structure holds various attributes related to the map,
+	including its dimensions,
+ * file path, texture paths, color information,
+	and player position. It is used to manage
  * and access the map data efficiently throughout the game.
  *
  * @param height 	Height of the map in terms of number of rows.
@@ -103,120 +108,122 @@ typedef struct s_point
  */
 typedef struct s_map
 {
-    int height;
-    int width ;
-    char *file;
-    char **map;
-    char *no;
-    char *so;
-    char *we;
-    char *ea;
-    char *c;
-    char *f;
-    char *no_key;
-    char *so_key;
-    char *we_key;
-    char *ea_key;
-    char *c_key;
-    char *f_key;
-    int color_f;
-    int color_c;
-    int player_x;
-    int player_y;
-    int first_line_in_map;
-    int last_line_in_map;
-}   t_map;
+	int				height;
+	int				width;
+	char			*file;
+	char			**map;
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	char			*c;
+	char			*f;
+	char			*no_key;
+	char			*so_key;
+	char			*we_key;
+	char			*ea_key;
+	char			*c_key;
+	char			*f_key;
+	int				color_f;
+	int				color_c;
+	int				player_x;
+	int				player_y;
+	int				first_line_in_map;
+	int				last_line_in_map;
+}					t_map;
 
 typedef struct s_img
 {
-	void				*img;
-	char				*addr;
-	int					bpp;
-	int					line_len;
-	int					endian;
-	int					width;
-	int					height;
-}						t_img;
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				line_len;
+	int				endian;
+	int				width;
+	int				height;
+}					t_img;
 
 typedef struct s_mlx
 {
-	void				*instance;
-	void				*win;
-	struct s_img		image;
-}						t_mlx;
+	void			*instance;
+	void			*win;
+	struct s_img	image;
+}					t_mlx;
 
 typedef struct s_data
 {
-	t_mlx				mlx;
-	t_list				*garbage;
-	t_map				*map;
-	t_player			*player;
-}						t_data;
+	t_mlx			mlx;
+	t_list			*garbage;
+	t_map			*map;
+	t_player		*player;
+}					t_data;
 
 // @addindex main.c
-t_data	*get_data(void);
+t_data				*get_data(void);
 
 // @addindex
-int	create_trgb(int t, int r, int g, int b);
-char	**ft_split00(char *s);
-long	ft_atoi00(char *str);
-int	parse_textures(t_map *data);
-int	check_xpm(t_map *data);
-int	set_no_texture(t_map *data, char **split);
-int	set_so_texture(t_map *data, char **split);
-int	set_we_texture(t_map *data, char **split);
-int	set_ea_texture(t_map *data, char **split);
-int	set_floor_and_ceiling_color(t_map *data, char **split , int i);
-int	    handle_colors(char *line , t_map *data);
-int	    count_split(char **split);
-void	ft_error(char *str , t_map*data); ;
-void	process_texture_data(t_map *data, char *line, int *j);
-void	process_texture_line(t_map *data, char **split);
-void check_valid_texture(t_map *data);
-void	check_invalid_character(t_map *data);
-void	check_boundaries(t_map *data);
-int	check_empty(char *line);
-int	parse_element(t_map *data, int *i);
-int	count_len(t_map *data);
-int	check_player_valid_pos(t_map *data);
-void	ft_check_file_path(t_map *data, int ac, char *av[]);
-void	map_height(t_map *data, char *av[]);
-void	cp_map_array(t_map *data, char *av[]);
-int	    last_line(t_map *data);
-void	first_line_in_map(t_map *data);
-int	    first_and_last_lines_check(t_map *data);
-char	**freefun00(char **p, int j);
-int	handle_quotes3(char *str, int *i, char quote_char);
-int	ft_is_void(char c);
-int	free_memory(t_map *data);
-void	validate_texture_format(char **split , t_map *data);
-void free_elements(t_map *data);
-char    *get_next_line(int fd);
+int					create_trgb(int t, int r, int g, int b);
+char				**ft_split00(char *s);
+long				ft_atoi00(char *str);
+int					parse_textures(t_map *data);
+int					check_xpm(t_map *data);
+int					set_no_texture(t_map *data, char **split);
+int					set_so_texture(t_map *data, char **split);
+int					set_we_texture(t_map *data, char **split);
+int					set_ea_texture(t_map *data, char **split);
+int					set_floor_and_ceiling_color(t_map *data, char **split,
+						int i);
+int					handle_colors(char *line, t_map *data);
+int					count_split(char **split);
+void				ft_error(char *str, t_map *data);
+;
+void				process_texture_data(t_map *data, char *line, int *j);
+void				process_texture_line(t_map *data, char **split);
+void				check_valid_texture(t_map *data);
+void				check_invalid_character(t_map *data);
+void				check_boundaries(t_map *data);
+int					check_empty(char *line);
+int					parse_element(t_map *data, int *i);
+int					count_len(t_map *data);
+int					check_player_valid_pos(t_map *data);
+void				ft_check_file_path(t_map *data, int ac, char *av[]);
+void				map_height(t_map *data, char *av[]);
+void				cp_map_array(t_map *data, char *av[]);
+int					last_line(t_map *data);
+void				first_line_in_map(t_map *data);
+int					first_and_last_lines_check(t_map *data);
+char				**freefun00(char **p, int j);
+int					handle_quotes3(char *str, int *i, char quote_char);
+int					ft_is_void(char c);
+int					free_memory(t_map *data);
+void				validate_texture_format(char **split, t_map *data);
+void				free_elements(t_map *data);
+char				*get_next_line(int fd);
 
 // @addindex utilities/exit.c
-int			close_program(void);
+int					close_program(void);
 
 // @addindex utilities/mlx_utils.c
-void		my_put_pixel_to_image(int x, int y, int color);
+void				my_put_pixel_to_image(int x, int y, int color);
 
 // @addindex game_element/drawing.c
-void		fillrect(t_point point, int width, int height, int color);
-void		 _2dmap(t_map *map);
-void		draw_2dmap(t_data *data);
-void		fillline(t_point from, t_point to, double angle, int color);
+void				fillrect(t_point point, int width, int height, int color);
+void				_2dmap(t_map *map);
+void				draw_2dmap(t_data *data);
+void				fillline(t_point from, t_point to, double angle, int color);
 
 // @addindex game_element/player.c
-void		player_init(t_player *player);
-void		put_player(t_player *player);
-int			update_player(int keycode);
-int			update_player_release(int keycode);
+void				player_init(t_player *player);
+void				put_player(t_player *player);
+int					update_player(int keycode);
+int					update_player_release(int keycode);
 
 // @addindex utilities/math.c
-double		radtodeg(double rad);
-double		degtorad(double deg);
-double		cal_distance(t_point point1, t_point point2);
+double				radtodeg(double rad);
+double				degtorad(double deg);
+double				cal_distance(t_point point1, t_point point2);
 
 // @addindex game_element/check_fts.c
-bool		is_wall(int x, int y);
+bool				is_wall(int x, int y);
 
 #endif
