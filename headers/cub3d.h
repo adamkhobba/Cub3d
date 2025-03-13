@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/13 02:57:17 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/13 02:57:26 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,8 +224,6 @@ int					ft_is_void(char c);
 
 // @addindex parsing/ft_atoi00.c
 long				ft_atoi00(char *str);
-
-
 
 // @addindex utilities/exit.c
 int					close_program(void);
