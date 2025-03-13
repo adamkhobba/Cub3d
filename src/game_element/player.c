@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:40:06 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/13 00:07:05 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/13 02:43:59 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ inline static void	draw_player_direction(t_player *player)
 
 void	put_player(t_player *player)
 {
+	if (player == NULL)
+		return ;
 	draw_player_direction(player);
 	fillrect((t_point){player->position.x - player->radius,
 		player->position.y - player->radius}, player->radius * 2,
