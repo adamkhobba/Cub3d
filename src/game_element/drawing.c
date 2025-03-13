@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/13 02:43:21 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/13 03:29:07 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	draw_2dmap(t_data *data)
 			&data->mlx.image.bpp, &data->mlx.image.line_len,
 			&data->mlx.image.endian);
 	_2dmap(data->map);
+	player_init(data);
 	put_player(data->player);
 	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
 		get_data()->mlx.image.img, 0, 0);

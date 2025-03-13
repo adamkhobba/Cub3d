@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/13 02:57:26 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/13 03:26:54 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,8 @@ typedef struct s_mlx
 	void			*instance;
 	void			*win;
 	struct s_img	image;
+	int				win_width;
+	int				win_height;
 }					t_mlx;
 
 typedef struct s_data
@@ -208,7 +210,7 @@ void				map_height(t_map *data, char *av[]);
 int					count_split(char **split);
 
 // @addindex parsing/cub3d.c
-t_map		 		parsing(int ac, char *av[]);
+t_map		 		*parsing(int ac, char *av[]);
 int					free_memory(t_map *data);
 void				cp_map_array(t_map *data, char *av[]);
 void				ft_error(char *str, t_map *data);
@@ -238,7 +240,7 @@ void				draw_2dmap(t_data *data);
 void				fillline(t_point from, t_point to, double angle, int color);
 
 // @addindex game_element/player.c
-void				player_init(t_player *player);
+void				player_init(t_data *data);
 void				put_player(t_player *player);
 int					update_player(int keycode);
 int					update_player_release(int keycode);
@@ -247,6 +249,9 @@ int					update_player_release(int keycode);
 double				radtodeg(double rad);
 double				degtorad(double deg);
 double				cal_distance(t_point point1, t_point point2);
+
+// @addindex utilities/print_fts.c
+void				print_map(t_map *data);
 
 // @addindex game_element/check_fts.c
 bool				is_wall(int x, int y);

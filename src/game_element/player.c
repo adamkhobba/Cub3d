@@ -6,22 +6,23 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:40:06 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/13 02:43:59 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/13 03:26:37 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <math.h>
 
-void	player_init(t_player *player)
+void	player_init(t_data *data)
 {
-	player->position.x = WIDTH / 2;
-	player->position.y = WIDTH / 2;
-	player->radius = 3;
-	player->turn_direction = 0;
-	player->walk_direction = 0;
-	player->rotation_angle = degtorad(90);
-	player->walk_speed = 3;
-	player->turn_speed = 6 * (M_PI / 180);
+	data->player->position.x = data->map->player_x;
+	data->player->position.y = data->map->player_y;
+	data->player->radius = 3;
+	data->player->turn_direction = 0;
+	data->player->walk_direction = 0;
+	data->player->rotation_angle = degtorad(90);
+	data->player->walk_speed = 3;
+	data->player->turn_speed = 6 * (M_PI / 180);
 }
 
 inline static void	draw_player_direction(t_player *player)

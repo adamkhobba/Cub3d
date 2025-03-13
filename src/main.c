@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/13 02:56:59 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/13 03:16:50y akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,16 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	// 	ft_putstr_fd(ERROR"\nInvalid number of arguments\n", 2);
 	// 	return (1);
 	// }
-	// mlx_setup_env();
-	// get_data()->player = malloc(sizeof(t_player));
-	// if (!get_data()->player)
-	// {
-	// 	ft_putstr_fd(ERROR "\nFailed to allocate memory\n", 2);
-	// 	close_program();
-	// }
-	// draw_2dmap(get_data());
-	// mlx_loop(get_data()->mlx.instance);
-	parsing(ac, av);
+	get_data()->map = parsing(ac, av);
+	get_data()->mlx.win_width = 13 * CUB_SIZE;
+	get_data()->mlx.win_height = strlen("1111111111111111111111111") * CUB_SIZE;
+	mlx_setup_env();
+	get_data()->player = malloc(sizeof(t_player));
+	if (!get_data()->player)
+	{
+		ft_putstr_fd(ERROR "\nFailed to allocate memory\n", 2);
+		close_program();
+	}
+	draw_2dmap(get_data());
+	mlx_loop(get_data()->mlx.instance);
 }

@@ -1,6 +1,7 @@
 {
   "C_Cpp_Runner.msvcBatchPath": "",
   "files.associations": {
-    "cmath": "c"
-  }
+	"cmath": "c",
+	"cub3d.h": "c"
+}
 }

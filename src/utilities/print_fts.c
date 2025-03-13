@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wall_collision.c                                   :+:      :+:    :+:   */
+/*   print_fts.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 03:55:57 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/13 03:10:38 by akhobba          ###   ########.fr       */
+/*   Created: 2025/03/13 03:07:08 by akhobba           #+#    #+#             */
+/*   Updated: 2025/03/13 03:13:07 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	is_wall(int x, int y)
+void	print_map(t_map *data)
 {
-	// t_map	*map;
+	int	i;
 
-	// map = get_data()->map;
-	printf("x: %d, y: %d\n", x, y);
-	// if (x < 0 || y < 0 || x >= map->width || y >= map->height)
-	// 	return (true);
-	// if (map->map[y / 32][x / 32] == '1')
-	// 	return (true);
-	return (false);
+	i = 0;
+	printf("map height: %d\n", data->height);
+	printf("map width: %d\n", data->width);
+	while (i < data->height)
+	{
+		printf("%s", data->map[i]);
+		i++;
+	}
 }
