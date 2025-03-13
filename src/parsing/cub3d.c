@@ -3,18 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/12 04:31:14 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/13 02:31:28 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 void	ft_error(char *str ,t_map*data)
+void	ft_error(char *str ,t_map*data)
 {
 	ft_putstr_fd(str, 2);
+	free_elements(data);
+	free_memory(data);
 	free_elements(data);
 	free_memory(data);
 	exit(1);

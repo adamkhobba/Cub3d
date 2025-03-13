@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:53:32 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/11 02:52:33 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/13 02:30:55 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	free_gnawi(char **split)
 		free(split[i]);
 	free(split);
 }
+
 
 int	handle_colors(char *line , t_map *data)
 {
