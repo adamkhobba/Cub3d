@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/13 02:29:44 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/13 02:35:22 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,14 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	// 	ft_putstr_fd(ERROR"\nInvalid number of arguments\n", 2);
 	// 	return (1);
 	// }
-	mlx_setup_env();
-	get_data()->player = malloc(sizeof(t_player));
-	if (!get_data()->player)
-	{
-		ft_putstr_fd(ERROR "\nFailed to allocate memory\n", 2);
-		close_program();
-	}
-	draw_2dmap(get_data());
-	mlx_loop(get_data()->mlx.instance);
+	// mlx_setup_env();
+	// get_data()->player = malloc(sizeof(t_player));
+	// if (!get_data()->player)
+	// {
+	// 	ft_putstr_fd(ERROR "\nFailed to allocate memory\n", 2);
+	// 	close_program();
+	// }
+	// draw_2dmap(get_data());
+	// mlx_loop(get_data()->mlx.instance);
+	parsing(ac, av);
 }

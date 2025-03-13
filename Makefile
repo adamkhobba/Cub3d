@@ -6,7 +6,7 @@
 #    By: csouita <csouita@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-#    Updated: 2025/03/13 02:29:20 by csouita          ###   ########.fr        #
+#    Updated: 2025/03/13 02:36:22 by csouita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,8 @@ SRC			=	src/main.c src/parsing/check_boundaries.c src/parsing/check_color.c src/
 				src/parsing/get_next_line.c src/parsing/check_character.c   src/parsing/check_player.c\
 				src/parsing/count.c src/parsing/ft_split00.c src/parsing/ft_atoi00.c\
 				src/utilities/math.c src/utilities/exit.c  src/utilities/mlx_utils.c  \
-				src/game_element/player.c src/game_element/drawing.c src/game_element/check_fts.c  
-				src/parsing/check_valid_textures.c
+				src/game_element/player.c src/game_element/drawing.c   \
+				src/parsing/check_valid_texture.c
 
 OBJDIR		=	obj
 OBJ			=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o,$(SRC))
