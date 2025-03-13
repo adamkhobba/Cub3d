@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/13 02:46:12 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/13 02:57:17 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,26 +110,26 @@ typedef struct s_map
 {
 	int				height;
 	int				width;
-	char			*file;
+	char			*file; //
 	char			**map;
 	char			*no;
 	char			*so;
 	char			*we;
 	char			*ea;
-	char			*c;
-	char			*f;
-	char			*no_key;
-	char			*so_key;
-	char			*we_key;
-	char			*ea_key;
-	char			*c_key;
-	char			*f_key;
+	char			*c;//
+	char			*f;//
+	char			*no_key; //
+	char			*so_key;//
+	char			*we_key;//
+	char			*ea_key;//
+	char			*c_key;//
+	char			*f_key;//
 	int				color_f;
 	int				color_c;
 	int				player_x;
 	int				player_y;
-	int				first_line_in_map;
-	int				last_line_in_map;
+	int				first_line_in_map;//
+	int				last_line_in_map;//
 }					t_map;
 
 typedef struct s_img
@@ -161,44 +161,71 @@ typedef struct s_data
 // @addindex main.c
 t_data				*get_data(void);
 
-// @addindex
-int					create_trgb(int t, int r, int g, int b);
-char				**ft_split00(char *s);
-long				ft_atoi00(char *str);
-int					parse_textures(t_map *data);
-int					check_xpm(t_map *data);
-int					set_no_texture(t_map *data, char **split);
-int					set_so_texture(t_map *data, char **split);
-int					set_we_texture(t_map *data, char **split);
-int					set_ea_texture(t_map *data, char **split);
-int					set_floor_and_ceiling_color(t_map *data, char **split,
-						int i);
-int					handle_colors(char *line, t_map *data);
-int					count_split(char **split);
-void				ft_error(char *str, t_map *data);
-;
-void				process_texture_data(t_map *data, char *line, int *j);
-void				process_texture_line(t_map *data, char **split);
-void				check_valid_texture(t_map *data);
-void				check_invalid_character(t_map *data);
+// @addindex parsing/check_boundaries.c
 void				check_boundaries(t_map *data);
 int					check_empty(char *line);
+
+//@addindex parsing/check/character.c
+void				check_invalid_character(t_map *data);
 int					parse_element(t_map *data, int *i);
-int					count_len(t_map *data);
-int					check_player_valid_pos(t_map *data);
-void				ft_check_file_path(t_map *data, int ac, char *av[]);
-void				map_height(t_map *data, char *av[]);
-void				cp_map_array(t_map *data, char *av[]);
-int					last_line(t_map *data);
-void				first_line_in_map(t_map *data);
+
+// @addindex parsing/check_color.c
+int					handle_colors(char *line, t_map *data);
+void				free_elements(t_map *data);
+int					create_trgb(int t, int r, int g, int b);
+
+// @addindex parsing/check_lines.c
 int					first_and_last_lines_check(t_map *data);
+void				first_line_in_map(t_map *data);
+int					count_len(t_map *data);
+int					last_line(t_map *data);
+
+// @addindex parsing/check_player.c
+int					check_player_valid_pos(t_map *data);
+
+//@addindex parsing/check_textures_2.c
+int					set_floor_and_ceiling_color(t_map *data, char **split, int i);
+	int					set_no_texture(t_map *data, char **split);
+	int					set_ea_texture(t_map *data, char **split);
+	int					set_we_texture(t_map *data, char **split);
+	int					set_so_texture(t_map *data, char **split);
+
+// @addindex parsing/check_textures.c
+int					parse_textures(t_map *data);
+void				process_texture_data(t_map *data, char *line, int *j);
+void				process_texture_line(t_map *data, char **split);
+void				validate_texture_format(char **split, t_map *data);
+
+// @addindex parsing/check_valid_texture.c
+void				check_valid_texture(t_map *data);
+
+// @addindex parsing/check.c
+void				ft_check_file_path(t_map *data, int ac, char *av[]);
+int					check_xpm(t_map *data);
+
+// @addindex parsing/count.c
+void				map_height(t_map *data, char *av[]);
+int					count_split(char **split);
+
+// @addindex parsing/cub3d.c
+t_map		 		parsing(int ac, char *av[]);
+int					free_memory(t_map *data);
+void				cp_map_array(t_map *data, char *av[]);
+void				ft_error(char *str, t_map *data);
+
+//@addindex parsing/get_next_line.c
+char				*get_next_line(int fd);
+
+// @addindex parsing/ft_split00.c
+char				**ft_split00(char *s);
 char				**freefun00(char **p, int j);
 int					handle_quotes3(char *str, int *i, char quote_char);
 int					ft_is_void(char c);
-int					free_memory(t_map *data);
-void				validate_texture_format(char **split, t_map *data);
-void				free_elements(t_map *data);
-char				*get_next_line(int fd);
+
+// @addindex parsing/ft_atoi00.c
+long				ft_atoi00(char *str);
+
+
 
 // @addindex utilities/exit.c
 int					close_program(void);

@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:06:40 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/10 22:06:14 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/13 02:44:44 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,3 @@ void	ft_check_file_path(t_map *data, int ac, char *av[])
 	map_height(data, av);
 }
 
-void	cleanup_memory(char *line, char **split)
-{
-	int	k;
-
-	free(line);
-	k = 0;
-	while (split[k])
-	{
-		free(split[k]);
-		k++;
-	}
-	free(split);
-}
