@@ -46,31 +46,41 @@ int	update_player(int keycode)
 {
 	int			steps;
 	t_data		*data;
-	int			new_step_x;
-	int			new_step_y;
+	int			x;
+	int			y;
 
 	data = get_data();
 	if (keycode == 119)
 		data->player->walk_direction = 1;
-	if (keycode == 115)
+	else if (keycode == 115)
 		data->player->walk_direction = -1;
-	if (keycode == 97)
+	else if (keycode == 97)
 		data->player->turn_direction = -1;
-	if (keycode == 100)
+	else if (keycode == 100)
 		data->player->turn_direction = 1;
-	if (keycode == 65307)
+	else if (keycode == 65307)
 		close_program();
 	mlx_destroy_image(data->mlx.instance, data->mlx.image.img);
 	data->player->rotation_angle += data->player->turn_direction * data->player->turn_speed;
 	steps = data->player->walk_direction * data->player->walk_speed;
-	new_step_x = cos(data->player->rotation_angle) * steps;
-	new_step_y = sin(data->player->rotation_angle) * steps;
-	data->player->position.x += new_step_x;
-	data->player->position.y += new_step_y;
+	x = data->player->position.x;
+	y = data->player->position.y;
+	data->player->position.x += cos(data->player->rotation_angle) * steps;
+	data->player->position.y += sin(data->player->rotation_angle) * steps;
 	if (is_wall(data->player->position.x, data->player->position.y, data))
 	{
-		data->player->position.x -= new_step_x - (data->player->walk_speed / 2);
-		data->player->position.y -= new_step_y - (data->player->walk_speed / 2);
+		data->player->position.x = x;
+		data->player->position.y = y;
+		// if (data->player->walk_direction == 1)
+		// {
+		// 	data->player->position.x = x - 1;
+		// 	data->player->position.y = y - 1;
+		// }
+		// else
+		// {
+		// 	data->player->position.x = x + 1;
+		// 	data->player->position.y = y + 1;
+		// }
 	}
 	_2dmap_render(data);
 	return (0);

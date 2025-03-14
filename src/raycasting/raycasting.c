@@ -6,11 +6,12 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 07:00:19 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/14 08:02:33 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 09:06:24 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
 
 t_ray	*raycasting(t_data *data)
 {

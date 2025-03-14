@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 08:04:05 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 09:01:28 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <unistd.h>
 
 # define CUB_SIZE 32
-# define NUM_LARGE 6
+# define NUM_LARGE 20
 # define FOV 60
 # define WIDTH 32 * 14
 # define HEIGHT 32 * 7

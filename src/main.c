@@ -63,8 +63,6 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	}
 	player_init(data);
 	_2dmap_render(data);
-	// t_ray *rays = raycasting(data);
-	// rays_many_render(rays, data->mlx.win_width / NUM_LARGE);
 	mlx_loop(data->mlx.instance);
 	free_map(data->map); // tmp function
 }
