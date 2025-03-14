@@ -6,7 +6,7 @@
 #    By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-#    Updated: 2025/03/14 04:52:53 by akhobba          ###   ########.fr        #
+#    Updated: 2025/03/14 07:46:30 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SRC			=	src/main.c src/parsing/check_boundaries.c src/parsing/check_color.c src/
 				src/utilities/math.c src/utilities/exit.c  src/utilities/mlx_utils.c  \
 				src/game_element/player.c src/game_element/drawing.c src/game_element/wall_collision.c \
 				src/parsing/check_valid_texture.c src/utilities/print_fts.c \
-				src/utilities/no_need.c
+				src/utilities/no_need.c src/raycasting/raycasting.c src/raycasting/ray_functions.c
 
 OBJDIR		=	obj
 OBJ			=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o,$(SRC))

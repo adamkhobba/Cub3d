@@ -63,8 +63,9 @@ int	update_player(int keycode)
 	steps = data->player->walk_direction * data->player->walk_speed;
 	data->player->position.x += cos(data->player->rotation_angle) * steps;
 	data->player->position.y += sin(data->player->rotation_angle) * steps;
-	// if (is_wall(data->player->position.x, data->player->position.y))
+	// if (is_wall(data->player->position.x, data->player->position.y, data))
 	// {
+	// 	printf("wall\n");
 	// 	data->player->position.x -= cos(data->player->rotation_angle) * steps;
 	// 	data->player->position.y -= sin(data->player->rotation_angle) * steps;
 	// }

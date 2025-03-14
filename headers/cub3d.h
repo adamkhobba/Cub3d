@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 07:15:41 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 07:44:56 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <unistd.h>
 
 # define CUB_SIZE 32
-# define NUM_RAYS 100
+# define NUM_LARGE 6
 # define FOV 60
 # define WIDTH 32 * 14
 # define HEIGHT 32 * 7
@@ -75,7 +75,7 @@ typedef struct s_player
 
 typedef	struct s_ray
 {
-	double			ray_angle;
+	double			angle;
 	double			wall_hit_x;
 	double			wall_hit_y;
 	double			distance;
@@ -279,9 +279,16 @@ double				cal_distance(t_point point1, t_point point2);
 void				print_map(t_map *data);
 
 // @addindex game_element/check_fts.c
-bool				is_wall(int x, int y);
+bool				is_wall(int x, int y, t_data *data);
 
 // @addindex utilities/no_need.c
 t_map				*fake_map_init(void);
 void				free_map(t_map *map);
+
+// @addindex raycasting/raycasting.c
+void				raycasting(t_data *data);
+
+// @addindex raycasting/ray_functions.c
+t_ray				ray_create(double angle);
+
 #endif
