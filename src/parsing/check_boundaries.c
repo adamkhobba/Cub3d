@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:36:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 00:27:43 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/14 20:03:17 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,42 @@ void	check_cell_boundaries(t_map *data, int i, int j)
 	}
 }
 
+void cp_flkharita(t_map *data)
+{
+    int i = 0;
+    int j = 0;
+    char *line;
+    int fd;
+
+    fd = open(data->info->file, O_RDONLY);
+    data->kharita = malloc(sizeof(char *) * (data->info->height + 1));
+    line = get_next_line(fd);
+    while (line && i < data->info->first_line_in_map)
+    {
+        free(line);
+        line = get_next_line(fd);
+        i++;
+    }
+    while(!check_empty(line))
+    {
+        free(line);
+        line = get_next_line(fd);
+    }
+    i = 0;
+    while (line && i < data->info->last_line_in_map)
+    {
+        data->kharita[j] = ft_strdup(line);
+        j++;
+        free(line);
+        line = get_next_line(fd);
+        i++;
+    }
+    data->kharita[j] = NULL;
+    if (line)
+        free(line);
+    close(fd);
+}
+
 void check_boundaries(t_map *data)
 {
     int (i), (j) , (width) , (first_map_line) , (last_map_line) , (height) , (line_len);
@@ -118,6 +154,10 @@ void check_boundaries(t_map *data)
             j++;
         }
     }
+    i = 0;
+    j = 0;
+
     data->map_height = height;
     data->map_width = width;
+    
 }
