@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawing.c                                          :+:      :+:    :+:   */
+/*   _2dmap.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/14 00:37:28 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/14 08:59:39 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
  * @param height The height of the rectangle.
  * @param color The color to fill the rectangle with.
  */
-
 void	fillrect(t_point point, int width, int height, int color)
 {
 	int	j;
@@ -78,20 +77,34 @@ void	fillline(t_point from, t_point to, double angle, int color)
 	my_put_pixel_to_image(to.x, to.y, color);
 }
 
+/**
+ * _2dmap - Draws a 2D map representation.
+ * @param map: Pointer to the map structure containing the map data.
+ *
+ * This function iterates through the map grid and draws a rectangle
+ * for each cell. If the cell value is 1, it draws a filled rectangle
+ * with a color value of 0x222222. Otherwise, it draws a filled rectangle
+ * with a color value of 0xFFFFFF. The size of each rectangle is determined
+ * by the CUB_SIZE macro.
+ *
+ * Return: void
+ */
 void	_2dmap(t_map *map)
 {
 	t_point	point;
 	int		i;
 	int		j;
 
+	if (map->map == NULL)
+		return ;
 	i = 0;
-	while (i < map->info->height)
+	while (i < map->map_height)
 	{
 		j = 0;
 		while (j < map->map_width)
 		{
 			point = (t_point){j * CUB_SIZE, i * CUB_SIZE};
-			if (map->map[i][j] == 1)
+			if (map->map[i][j] == '1')
 				fillrect(point, CUB_SIZE - 1, CUB_SIZE - 1, 0x222222);
 			else
 				fillrect(point, CUB_SIZE - 1, CUB_SIZE - 1, 0xFFFFFF);
@@ -101,9 +114,20 @@ void	_2dmap(t_map *map)
 	}
 }
 
-void	draw_2dmap(t_data *data)
+/**
+ * @brief Draws the 2D map on the screen.
+ *
+ * This function creates a new image using the MiniLibX library, checks if the image
+ * creation was successful, and then retrieves the address of the image data. It then
+ * draws the 2D map, initializes the player, and places the player on the map. Finally,
+ * it puts the image to the window.
+ *
+ * @param data Pointer to the main data structure containing all necessary information
+ *             for drawing the 2D map, including the MiniLibX instance, image, map, and player.
+ */
+void	_2dmap_render(t_data *data)
 {
-	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH, HEIGHT);
+	data->mlx.image.img = mlx_new_image(data->mlx.instance, data->mlx.win_width, data->mlx.win_height);
 	if (!data->mlx.image.img)
 	{
 		ft_putstr_fd(ERROR "\nFailed to create image\n", 2);
@@ -113,7 +137,10 @@ void	draw_2dmap(t_data *data)
 			&data->mlx.image.bpp, &data->mlx.image.line_len,
 			&data->mlx.image.endian);
 	_2dmap(data->map);
+	t_ray *rays = raycasting(data);
+	rays_many_render(rays, data->mlx.win_width / NUM_LARGE);
 	put_player(data->player);
 	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
 		get_data()->mlx.image.img, 0, 0);
+	free(rays);// free rays array
 }

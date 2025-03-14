@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: csouita <csouita@student.42.fr>            +#+  +:+       +#+         #
+#    By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-#    Updated: 2025/03/13 19:31:36 by csouita          ###   ########.fr        #
+#    Updated: 2025/03/14 07:55:57 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,9 @@ SRC			=	src/main.c src/parsing/check_boundaries.c src/parsing/check_color.c src/
 				src/parsing/get_next_line.c src/parsing/check_character.c   src/parsing/check_player.c\
 				src/parsing/count.c src/parsing/ft_split00.c src/parsing/ft_atoi00.c\
 				src/utilities/math.c src/utilities/exit.c  src/utilities/mlx_utils.c  \
-				src/game_element/player.c src/game_element/drawing.c   \
-				src/parsing/check_valid_texture.c src/game_element/wall_collision.c \
+				src/game_element/player.c src/game_element/_2dmap.c src/game_element/wall_collision.c \
+				src/parsing/check_valid_texture.c src/utilities/print_fts.c \
+				src/utilities/no_need.c src/raycasting/raycasting.c src/raycasting/ray_functions.c
 
 OBJDIR		=	obj
 OBJ			=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o,$(SRC))

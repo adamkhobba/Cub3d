@@ -6,22 +6,23 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:40:06 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/13 00:07:05 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 00:47:55by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <math.h>
 
-void	player_init(t_player *player)
+void	player_init(t_data *data)
 {
-	player->position.x = WIDTH / 2;
-	player->position.y = WIDTH / 2;
-	player->radius = 3;
-	player->turn_direction = 0;
-	player->walk_direction = 0;
-	player->rotation_angle = degtorad(90);
-	player->walk_speed = 3;
-	player->turn_speed = 6 * (M_PI / 180);
+	data->player->position.x = data->map->player_x * CUB_SIZE + (CUB_SIZE / 2);
+	data->player->position.y = data->map->player_y * CUB_SIZE + (CUB_SIZE / 2);
+	data->player->radius = 3;
+	data->player->turn_direction = 0;
+	data->player->walk_direction = 0;
+	data->player->rotation_angle = degtorad(90);
+	data->player->walk_speed = 3;
+	data->player->turn_speed = 6 * (M_PI / 180);
 }
 
 inline static void	draw_player_direction(t_player *player)
@@ -33,6 +34,8 @@ inline static void	draw_player_direction(t_player *player)
 
 void	put_player(t_player *player)
 {
+	if (player == NULL)
+		return ;
 	draw_player_direction(player);
 	fillrect((t_point){player->position.x - player->radius,
 		player->position.y - player->radius}, player->radius * 2,
@@ -41,31 +44,45 @@ void	put_player(t_player *player)
 
 int	update_player(int keycode)
 {
-	t_player	*player;
 	int			steps;
+	t_data		*data;
+	int			x;
+	int			y;
 
-	player = get_data()->player;
+	data = get_data();
 	if (keycode == 119)
-		player->walk_direction = 1;
-	if (keycode == 115)
-		player->walk_direction = -1;
-	if (keycode == 97)
-		player->turn_direction = -1;
-	if (keycode == 100)
-		player->turn_direction = 1;
-	if (keycode == 65307)
+		data->player->walk_direction = 1;
+	else if (keycode == 115)
+		data->player->walk_direction = -1;
+	else if (keycode == 97)
+		data->player->turn_direction = -1;
+	else if (keycode == 100)
+		data->player->turn_direction = 1;
+	else if (keycode == 65307)
 		close_program();
-	mlx_destroy_image(get_data()->mlx.instance, get_data()->mlx.image.img);
-	player->rotation_angle += player->turn_direction * player->turn_speed;
-	steps = player->walk_direction * player->walk_speed;
-	player->position.x += cos(player->rotation_angle) * steps;
-	player->position.y += sin(player->rotation_angle) * steps;
-	if (is_wall(player->position.x, player->position.y))
+	mlx_destroy_image(data->mlx.instance, data->mlx.image.img);
+	data->player->rotation_angle += data->player->turn_direction * data->player->turn_speed;
+	steps = data->player->walk_direction * data->player->walk_speed;
+	x = data->player->position.x;
+	y = data->player->position.y;
+	data->player->position.x += cos(data->player->rotation_angle) * steps;
+	data->player->position.y += sin(data->player->rotation_angle) * steps;
+	if (is_wall(data->player->position.x, data->player->position.y, data))
 	{
-		player->position.x -= cos(player->rotation_angle) * steps;
-		player->position.y -= sin(player->rotation_angle) * steps;
+		data->player->position.x = x;
+		data->player->position.y = y;
+		// if (data->player->walk_direction == 1)
+		// {
+		// 	data->player->position.x = x - 1;
+		// 	data->player->position.y = y - 1;
+		// }
+		// else
+		// {
+		// 	data->player->position.x = x + 1;
+		// 	data->player->position.y = y + 1;
+		// }
 	}
-	draw_2dmap(get_data());
+	_2dmap_render(data);
 	return (0);
 }
 

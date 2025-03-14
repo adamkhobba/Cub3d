@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   print_fts.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 01:06:09 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/14 08:37:52 by akhobba          ###   ########.fr       */
+/*   Created: 2025/03/13 03:07:08 by akhobba           #+#    #+#             */
+/*   Updated: 2025/03/14 04:55:40 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	close_program(void)
+void	print_map(t_map *data)
 {
-	mlx_destroy_image(get_data()->mlx.instance, get_data()->mlx.image.img);
-	printf("Exiting the program\n");
-	mlx_destroy_window(get_data()->mlx.instance, get_data()->mlx.win);
-	mlx_destroy_display(get_data()->mlx.instance);
-	free(get_data()->player);
-	free(get_data()->mlx.instance);
-	// free_elements(get_data()->map);
-	// free_memory(get_data()->map);
-	free_map(get_data()->map);
-	exit(0);
-	return (0);
+	int	i;
+
+	i = 0;
+	printf("map height: %d\n", data->map_height);
+	printf("map width: %d\n", data->map_width);
+	while (i < data->map_height)
+	{
+		printf("%s", data->map[i]);
+		printf("\n");
+		i++;
+	}
+	printf("printing is done\n");
 }

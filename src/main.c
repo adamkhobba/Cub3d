@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/14 00:39:39 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/13 03:16:50y akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,7 @@ void	mlx_setup_env(void)
 
 	data = get_data();
 	data->mlx.instance = mlx_init();
-	data->mlx.win = mlx_new_window(data->mlx.instance, WIDTH, HEIGHT, "cub3d");
-	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH, HEIGHT);
-	if (!data->mlx.image.img)
-	{
-		ft_putstr_fd(ERROR "\nFailed to create image\n", 2);
-		close_program();
-	}
-	data->mlx.image.addr = mlx_get_data_addr(data->mlx.image.img,
-			&data->mlx.image.bpp, &data->mlx.image.line_len,
-			&data->mlx.image.endian);
+	data->mlx.win = mlx_new_window(data->mlx.instance, data->mlx.win_width, data->mlx.win_height, "cub3d");
 	mlx_hook(data->mlx.win, DestroyNotify, StructureNotifyMask, &close_program,
 		NULL);
 	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, update_player, NULL);
@@ -46,23 +37,32 @@ void	mlx_setup_env(void)
 		NULL);
 	mlx_mouse_hook(data->mlx.win, NULL, NULL);
 }
-// TODO: create a fts that convert from deg to radian
 
 int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 {
+	t_data *data;
+
 	// if (ac != 2)
 	// {
 	// 	ft_putstr_fd(ERROR"\nInvalid number of arguments\n", 2);
 	// 	return (1);
 	// }
-	// mlx_setup_env();
-	// get_data()->player = malloc(sizeof(t_player));
-	// if (!get_data()->player)
-	// {
-	// 	ft_putstr_fd(ERROR "\nFailed to allocate memory\n", 2);
-	// 	close_program();
-	// }
-	// draw_2dmap(get_data());
-	// mlx_loop(get_data()->mlx.instance);
-	parsing(ac, av);
+	data = get_data();
+	// get_data()->map = parsing(ac, av);
+	data->map = fake_map_init(); // tmp function
+	print_map(data->map);
+	data->mlx.win_height = data->map->map_height * CUB_SIZE;
+	data->mlx.win_width = data->map->map_width * CUB_SIZE;
+	mlx_setup_env();
+	// get_data()->map = parsing(ac, av);
+	data->player = malloc(sizeof(t_player));
+	if (!data->player)
+	{
+		ft_putstr_fd(ERROR "\nFailed to allocate memory\n", 2);
+		close_program();
+	}
+	player_init(data);
+	_2dmap_render(data);
+	mlx_loop(data->mlx.instance);
+	free_map(data->map); // tmp function
 }
