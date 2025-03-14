@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 00:45:34 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/14 00:52:43 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	free_memory(t_map *data)
 		k++;
 	}
 	free(data->map);
+	free(data->info);	
 	free(data);
 	exit(1);
 }
@@ -104,8 +105,6 @@ t_map parsing(int ac, char *av[])
 		free_memory(data);
 	check_player_valid_pos(data);
 	printf("playable\n");
-	printf("map_height == %d\n", data->map_height);
-	printf("map_width == %d\n", data->map_width);
 	free_memory(data);
 	return (*data);
 }
