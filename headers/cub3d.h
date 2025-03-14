@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 05:42:57 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 07:15:41 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <unistd.h>
 
 # define CUB_SIZE 32
+# define NUM_RAYS 100
 # define FOV 60
 # define WIDTH 32 * 14
 # define HEIGHT 32 * 7
@@ -71,6 +72,20 @@ typedef struct s_player
 	double			walk_speed;
 	double			turn_speed;
 }					t_player;
+
+typedef	struct s_ray
+{
+	double			ray_angle;
+	double			wall_hit_x;
+	double			wall_hit_y;
+	double			distance;
+	int				was_hit_vertical;
+	int				is_ray_facing_down;
+	int				is_ray_facing_up;
+	int				is_ray_facing_right;
+	int				is_ray_facing_left;
+	int				wall_hit_content;
+}					t_ray;
 
 /**
  * @struct s_map

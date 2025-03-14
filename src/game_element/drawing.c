@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/14 05:43:16 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 07:18:08 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	_2dmap(t_map *map)
  */
 void	draw_2dmap(t_data *data)
 {
-	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH, HEIGHT);
+	data->mlx.image.img = mlx_new_image(data->mlx.instance, data->mlx.win_width, data->mlx.win_height);
 	if (!data->mlx.image.img)
 	{
 		ft_putstr_fd(ERROR "\nFailed to create image\n", 2);
@@ -137,7 +137,6 @@ void	draw_2dmap(t_data *data)
 			&data->mlx.image.bpp, &data->mlx.image.line_len,
 			&data->mlx.image.endian);
 	_2dmap(data->map);
-	printf("player x: %d, player y: %d\n", data->player->position.x, data->player->position.y);
 	put_player(data->player);
 	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
 		get_data()->mlx.image.img, 0, 0);

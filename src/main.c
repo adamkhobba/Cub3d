@@ -29,7 +29,7 @@ void	mlx_setup_env(void)
 
 	data = get_data();
 	data->mlx.instance = mlx_init();
-	data->mlx.win = mlx_new_window(data->mlx.instance, WIDTH, HEIGHT, "cub3d");
+	data->mlx.win = mlx_new_window(data->mlx.instance, data->mlx.win_width, data->mlx.win_height, "cub3d");
 	mlx_hook(data->mlx.win, DestroyNotify, StructureNotifyMask, &close_program,
 		NULL);
 	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, update_player, NULL);
@@ -51,6 +51,8 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	// get_data()->map = parsing(ac, av);
 	data->map = fake_map_init(); // tmp function
 	print_map(data->map);
+	data->mlx.win_height = data->map->map_height * CUB_SIZE;
+	data->mlx.win_width = data->map->map_width * CUB_SIZE;
 	mlx_setup_env();
 	// get_data()->map = parsing(ac, av);
 	data->player = malloc(sizeof(t_player));
