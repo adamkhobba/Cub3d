@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/13 03:14:16 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 04:11:37 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**init_split_memory(t_map *data)
 {
 	char	**split;
 
-	split = malloc(sizeof(char *) * (data->height + 1));
+	split = malloc(sizeof(char *) * (data->info->height + 1));
 	if (!split)
 	{
 		ft_putstr_fd("Error\nMemory allocation failed\n", 2);
@@ -43,7 +43,7 @@ void	cp_map_array(t_map *data, char *av[])
 
 	i = 0;
 	fd = open(av[1], O_RDONLY);
-	data->map = malloc(sizeof(char *) * (data->height + 1));
+	data->map = malloc(sizeof(char *) * (data->info->height + 1));
 	if (!data->map)
 	{
 		ft_putstr_fd("Error\nMemory allocation failed\n", 2);
@@ -67,12 +67,13 @@ int	free_memory(t_map *data)
 	int	k;
 
 	k = 0;
-	while (k < data->height)
+	while (k < data->info->height)
 	{
 		free(data->map[k]);
 		k++;
 	}
 	free(data->map);
+	free(data->info);
 	free(data);
 	exit(1);
 }
@@ -83,6 +84,14 @@ t_map *parsing(int ac, char *av[])
 
 	data = malloc(sizeof(t_map));
 	ft_memset(data, 0, sizeof(t_map));
+	data->info = malloc(sizeof(t_info));
+    if (!data->info)
+    {
+        ft_putstr_fd("Error\nMemory allocation failed for info struct\n", 2);
+        free(data);
+        exit(1);
+    }
+    ft_memset(data->info, 0, sizeof(t_info));
 	ft_check_file_path(data, ac, av);
 	last_line(data);
 	parse_textures(data);
@@ -95,6 +104,7 @@ t_map *parsing(int ac, char *av[])
 	if (first_and_last_lines_check(data))
 		free_memory(data);
 	check_player_valid_pos(data);
-	// free_memory(data);
-	return (data);
+	printf("playable\n");
+	free_memory(data);
+	return (*data);
 }

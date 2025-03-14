@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:06:40 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/13 02:44:44 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/14 00:40:53 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_check_file_path(t_map *data, int ac, char *av[])
 		ft_error("Error\nMemory allocation failed\n", data);
 	if (ac != 2)
 		ft_error("Error\nInvalid number of arguments\n", data);
-	data->file = av[1];
+	data->info->file = av[1];
 	len = ft_strlen(av[1]);
 	if (len < 4 || av[1][len - 1] != 'b' || av[1][len - 2] != 'u' || av[1][len
 		- 3] != 'c' || av[1][len - 4] != '.')

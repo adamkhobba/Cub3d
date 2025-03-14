@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:04:43 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 00:36:54 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	count_textures(t_map *data)
 	char	*line;
 
 	count = 0;
-	fd = open(data->file, O_RDONLY);
+	fd = open(data->info->file, O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -66,6 +66,6 @@ void	map_height(t_map *data, char *av[])
 		free(line);
 		line = get_next_line(fd);
 	}
-	data->height = i;
+	data->info->height = i;
 	cp_map_array(data, av);
 }

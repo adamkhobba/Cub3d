@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/14 00:46:56 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 04:11:06 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,10 @@ void	_2dmap(t_map *map)
 	if (map->map == NULL)
 		return ;
 	i = 0;
-	while (i < map->height)
+	while (i < map->info->height)
 	{
 		j = 0;
-		while (j < map->width)
+		while (j < map->map_width)
 		{
 			point = (t_point){j * CUB_SIZE, i * CUB_SIZE};
 			if (map->map[i][j] == 1)

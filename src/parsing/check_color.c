@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:53:32 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/13 02:30:55 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/14 00:30:03 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	free_elements(t_map *data)
 		free(data->we);
 	if(data->ea)
 		free(data->ea);
-	if(data->c)
-		free(data->c);
-	if(data->f)
-		free(data->f);
+	if(data->info->c)
+		free(data->info->c);
+	if(data->info->f)
+		free(data->info->f);
 }
 
 void	free_gnawi(char **split)
