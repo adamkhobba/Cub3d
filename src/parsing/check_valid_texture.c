@@ -12,12 +12,13 @@
 
 #include "cub3d.h"
 
-void check_valid_texture(t_map *data)
+void	check_valid_texture(t_map *data)
 {
-    if (!data->no || !data->so || !data->we || !data->ea || !data->info->f || !data->info->c)
-    {
-        ft_putstr_fd("Error\nMissing texture\n", 2);
-        free_elements(data);
-        free_memory(data);
-    }
+	if (!data->no || !data->so || !data->we || !data->ea || !data->info->f
+		|| !data->info->c)
+	{
+		ft_putstr_fd("Error\nMissing texture\n", 2);
+		free_elements(data);
+		free_memory(data);
+	}
 }

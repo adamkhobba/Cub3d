@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:36:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 20:03:17 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/14 22:26:50 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,93 +71,95 @@ void	check_cell_boundaries(t_map *data, int i, int j)
 	}
 }
 
-void cp_flkharita(t_map *data)
+void	cp_flkharita(t_map *data)
 {
-    int i = 0;
-    int j = 0;
-    char *line;
-    int fd;
+	int		i;
+	int		j;
+	char	*line;
+	int		fd;
 
-    fd = open(data->info->file, O_RDONLY);
-    data->kharita = malloc(sizeof(char *) * (data->info->height + 1));
-    line = get_next_line(fd);
-    while (line && i < data->info->first_line_in_map)
-    {
-        free(line);
-        line = get_next_line(fd);
-        i++;
-    }
-    while(!check_empty(line))
-    {
-        free(line);
-        line = get_next_line(fd);
-    }
-    i = 0;
-    while (line && i < data->info->last_line_in_map)
-    {
-        data->kharita[j] = ft_strdup(line);
-        j++;
-        free(line);
-        line = get_next_line(fd);
-        i++;
-    }
-    data->kharita[j] = NULL;
-    if (line)
-        free(line);
-    close(fd);
+	i = 0;
+	j = 0;
+	fd = open(data->info->file, O_RDONLY);
+	data->kharita = malloc(sizeof(char *) * (data->info->height + 1));
+	line = get_next_line(fd);
+	while (line && i < data->info->first_line_in_map)
+	{
+		free(line);
+		line = get_next_line(fd);
+		i++;
+	}
+	while (!check_empty(line))
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+	i = 0;
+	while (line && i < data->info->last_line_in_map)
+	{
+		data->kharita[j] = ft_strdup(line);
+		j++;
+		free(line);
+		line = get_next_line(fd);
+		i++;
+	}
+	data->kharita[j] = NULL;
+	if (line)
+		free(line);
+	close(fd);
 }
 
-void check_boundaries(t_map *data)
+void	check_boundaries(t_map *data)
 {
-    int (i), (j) , (width) , (first_map_line) , (last_map_line) , (height) , (line_len);
-
-    first_map_line = -1;
-    last_map_line = -1;
-    width = 0;
-    i = 0;
-    while (i < data->info->height)
-    {
-        if (parse_element(data, &i))
-        {
-            i++;
-            continue;
-        }
-        j = 0;
-        while (data->map[i][j])
-        {
-            if (data->map[i][j] == '1' || data->map[i][j] == '0' || 
-                data->map[i][j] == 'N' || data->map[i][j] == 'S' || 
-                data->map[i][j] == 'E' || data->map[i][j] == 'W')
-            {
-                if (first_map_line == -1)
-                    first_map_line = i;
-                last_map_line = i;
-                line_len = ft_strlen(data->map[i]) ;
-                if (data->map[i][line_len - 1] == '\n')
-                    line_len--;
-                if (line_len > width)
-                    width = line_len;
-                break;
-            }
-            j++;
-        }
-        i++;
-    }
-    height = (last_map_line - first_map_line + 1);
-    for (i = first_map_line; i <= last_map_line; i++)
-    {
-        j = 0;
-        while (data->map[i][j])
-        {
-            if (data->map[i][j] == '0')  
-                check_cell_boundaries(data, i, j);
-            j++;
-        }
-    }
-    i = 0;
-    j = 0;
-
-    data->map_height = height;
-    data->map_width = width;
-    
+	int (i), (j), (width), (first_map_line), (last_map_line), (height),
+		(line_len);
+	first_map_line = -1;
+	last_map_line = -1;
+	width = 0;
+	i = 0;
+	while (i < data->info->height)
+	{
+		if (parse_element(data, &i))
+		{
+			i++;
+			continue ;
+		}
+		j = 0;
+		while (data->map[i][j])
+		{
+			if (data->map[i][j] == '1' || data->map[i][j] == '0'
+				|| data->map[i][j] == 'N' || data->map[i][j] == 'S'
+				|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
+			{
+				if (first_map_line == -1)
+					first_map_line = i;
+				last_map_line = i;
+				line_len = ft_strlen(data->map[i]);
+				if (data->map[i][line_len - 1] == '\n')
+					line_len--;
+				if (line_len > width)
+					width = line_len;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+	height = (last_map_line - first_map_line + 1);
+	i = first_map_line;
+	while (i <= last_map_line)
+	{
+		j = 0;
+		while (data->map[i][j])
+		{
+			if (data->map[i][j] == '0')
+				check_cell_boundaries(data, i, j);
+			j++;
+		}
+		i++;
+	}
+	i = 0;
+	j = 0;
+	data->map_height = height;
+	data->map_width = width;
 }

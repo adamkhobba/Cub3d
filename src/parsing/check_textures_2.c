@@ -57,20 +57,20 @@ int	set_floor_and_ceiling_color(t_map *data, char **split, int i)
 	if (i == 1)
 	{
 		data->info->first_line_in_map++;
-		data->color_f = handle_colors(split[1] , data);
+		data->color_f = handle_colors(split[1], data);
 		data->info->f = (split[1]);
 		data->info->f_key = (split[0]);
-		data->color_f = handle_colors(split[1] , data);
+		data->color_f = handle_colors(split[1], data);
 		data->info->f = (split[1]);
 		data->info->f_key = (split[0]);
 	}
 	else
 	{
 		data->info->first_line_in_map++;
-		data->color_c = handle_colors(split[1] , data);
+		data->color_c = handle_colors(split[1], data);
 		data->info->c = (split[1]);
 		data->info->c_key = (split[0]);
-		data->color_c = handle_colors(split[1] , data);
+		data->color_c = handle_colors(split[1], data);
 		data->info->c = (split[1]);
 		data->info->c_key = (split[0]);
 	}
