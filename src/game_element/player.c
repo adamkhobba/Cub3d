@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:40:06 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/14 00:47:55 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 00:47:55by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,26 +49,26 @@ int	update_player(int keycode)
 
 	data = get_data();
 	if (keycode == 119)
-		player->walk_direction = 1;
+		data->player->walk_direction = 1;
 	if (keycode == 115)
-		player->walk_direction = -1;
+		data->player->walk_direction = -1;
 	if (keycode == 97)
-		player->turn_direction = -1;
+		data->player->turn_direction = -1;
 	if (keycode == 100)
-		player->turn_direction = 1;
+		data->player->turn_direction = 1;
 	if (keycode == 65307)
 		close_program();
-	mlx_destroy_image(get_data()->mlx.instance, get_data()->mlx.image.img);
-	player->rotation_angle += player->turn_direction * player->turn_speed;
-	steps = player->walk_direction * player->walk_speed;
-	player->position.x += cos(player->rotation_angle) * steps;
-	player->position.y += sin(player->rotation_angle) * steps;
-	if (is_wall(player->position.x, player->position.y))
+	mlx_destroy_image(data->mlx.instance, data->mlx.image.img);
+	data->player->rotation_angle += data->player->turn_direction * data->player->turn_speed;
+	steps = data->player->walk_direction * data->player->walk_speed;
+	data->player->position.x += cos(data->player->rotation_angle) * steps;
+	data->player->position.y += sin(data->player->rotation_angle) * steps;
+	if (is_wall(data->player->position.x, data->player->position.y))
 	{
-		player->position.x -= cos(player->rotation_angle) * steps;
-		player->position.y -= sin(player->rotation_angle) * steps;
+		data->player->position.x -= cos(data->player->rotation_angle) * steps;
+		data->player->position.y -= sin(data->player->rotation_angle) * steps;
 	}
-	draw_2dmap();
+	draw_2dmap(data);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 04:10:39 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 04:20:59 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,19 +108,19 @@ typedef struct s_player
  */
 typedef struct 		s_info
 {
-	int				height;//
-	int				width;//
-	char			*file; //
-	char			*c;//
-	char			*f;//
-	char			*no_key; //
-	char			*so_key;//
-	char			*we_key;//
-	char			*ea_key;//
-	char			*c_key;//
-	char			*f_key;//
-	int				first_line_in_map;//
-	int				last_line_in_map;//
+	int				height;
+	int				width;
+	char			*file;
+	char			*c;
+	char			*f;
+	char			*no_key;
+	char			*so_key;
+	char			*we_key;
+	char			*ea_key;
+	char			*c_key;
+	char			*f_key;
+	int				first_line_in_map;
+	int				last_line_in_map;
 }					t_info;
 
 typedef struct s_map

@@ -49,6 +49,8 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	get_data()->mlx.win_width = 13 * CUB_SIZE;
 	get_data()->mlx.win_height = strlen("1111111111111111111111111") * CUB_SIZE;
 	mlx_setup_env();
+	get_data()->map = parsing(ac, av);
+	print_map(get_data()->map);
 	get_data()->player = malloc(sizeof(t_player));
 	if (!get_data()->player)
 	{

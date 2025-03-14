@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 04:11:37 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 04:19:30 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ t_map *parsing(int ac, char *av[])
 	if (first_and_last_lines_check(data))
 		free_memory(data);
 	check_player_valid_pos(data);
-	printf("playable\n");
-	free_memory(data);
-	return (*data);
+	// free_memory(data); // why ?? free before return
+	return (data);
 }
