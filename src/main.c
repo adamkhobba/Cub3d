@@ -40,23 +40,26 @@ void	mlx_setup_env(void)
 
 int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 {
+	t_data *data;
+
 	// if (ac != 2)
 	// {
 	// 	ft_putstr_fd(ERROR"\nInvalid number of arguments\n", 2);
 	// 	return (1);
 	// }
-	get_data()->map = parsing(ac, av);
-	get_data()->mlx.win_width = 13 * CUB_SIZE;
-	get_data()->mlx.win_height = strlen("1111111111111111111111111") * CUB_SIZE;
+	data = get_data();
+	// get_data()->map = parsing(ac, av);
+	data->map = fake_map_init(); // tmp function
+	print_map(data->map);
 	mlx_setup_env();
-	get_data()->map = parsing(ac, av);
-	print_map(get_data()->map);
-	get_data()->player = malloc(sizeof(t_player));
-	if (!get_data()->player)
+	// get_data()->map = parsing(ac, av);
+	data->player = malloc(sizeof(t_player));
+	if (!data->player)
 	{
 		ft_putstr_fd(ERROR "\nFailed to allocate memory\n", 2);
 		close_program();
 	}
-	draw_2dmap(get_data());
-	mlx_loop(get_data()->mlx.instance);
+	draw_2dmap(data);
+	mlx_loop(data->mlx.instance);
+	free_map(data->map); // tmp function
 }

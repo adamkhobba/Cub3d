@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 04:20:59 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 04:56:54 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 
 # define CUB_SIZE 32
 # define FOV 120
-# define WIDTH 32 * 15
-# define HEIGHT 32 * 11
+# define WIDTH 32 * 14
+# define HEIGHT 32 * 7
 # define NAME "\e[1;34mCub3D\e[0m"
 # define ERROR "\e[1;31mError\e[0m"
 
@@ -266,4 +266,7 @@ void				print_map(t_map *data);
 // @addindex game_element/check_fts.c
 bool				is_wall(int x, int y);
 
+// @addindex utilities/no_need.c
+t_map				*fake_map_init(void);
+void				free_map(t_map *map);
 #endif
