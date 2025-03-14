@@ -6,13 +6,13 @@
 #    By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-#    Updated: 2025/03/13 03:12:54 by akhobba          ###   ########.fr        #
+#    Updated: 2025/03/13 16:33:17 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # CFLAGS
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror -g3 #-fsanitize=address
 MLXFLAGS	=	-lmlx -lX11 -lXext -lm
 HEADERS		=	headers/cub3d.h
 INCLUDES	=	-I./headers -I./libft/headers

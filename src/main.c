@@ -30,15 +30,6 @@ void	mlx_setup_env(void)
 	data = get_data();
 	data->mlx.instance = mlx_init();
 	data->mlx.win = mlx_new_window(data->mlx.instance, WIDTH, HEIGHT, "cub3d");
-	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH, HEIGHT);
-	if (!data->mlx.image.img)
-	{
-		ft_putstr_fd(ERROR "\nFailed to create image\n", 2);
-		close_program();
-	}
-	data->mlx.image.addr = mlx_get_data_addr(data->mlx.image.img,
-			&data->mlx.image.bpp, &data->mlx.image.line_len,
-			&data->mlx.image.endian);
 	mlx_hook(data->mlx.win, DestroyNotify, StructureNotifyMask, &close_program,
 		NULL);
 	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, update_player, NULL);

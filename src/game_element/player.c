@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:40:06 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/13 03:26:37 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 00:47:55 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void	put_player(t_player *player)
 
 int	update_player(int keycode)
 {
-	t_player	*player;
 	int			steps;
+	t_data		*data;
 
-	player = get_data()->player;
+	data = get_data();
 	if (keycode == 119)
 		player->walk_direction = 1;
 	if (keycode == 115)
@@ -68,7 +68,7 @@ int	update_player(int keycode)
 		player->position.x -= cos(player->rotation_angle) * steps;
 		player->position.y -= sin(player->rotation_angle) * steps;
 	}
-	draw_2dmap(get_data());
+	draw_2dmap();
 	return (0);
 }
 
