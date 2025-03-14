@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 04:49:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/14 04:51:20 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 05:21:54 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ t_map	*fake_map_init(void)
 		close_program();
 	}
 	map->map[0] = ft_strdup("11111111111111");
-	map->map[1] = ft_strdup("10000000000001");
-	map->map[2] = ft_strdup("10000000000001");
-	map->map[3] = ft_strdup("10000000000001");
-	map->map[4] = ft_strdup("10000000000001");
-	map->map[5] = ft_strdup("10000000000001");
+	map->map[1] = ft_strdup("10010000000001");
+	map->map[2] = ft_strdup("10010000000111");
+	map->map[3] = ft_strdup("10000001000001");
+	map->map[4] = ft_strdup("10000100000001");
+	map->map[5] = ft_strdup("10000100000001");
 	map->map[6] = ft_strdup("11111111111111");
 	map->map[7] = NULL;
-	map->player_x = 2;
-	map->player_y = 1;
+	map->player_x = 6;
+	map->player_y = 2;
 	return (map);
 }
 

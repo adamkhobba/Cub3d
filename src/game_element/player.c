@@ -15,8 +15,8 @@
 
 void	player_init(t_data *data)
 {
-	data->player->position.x = data->map->player_x;
-	data->player->position.y = data->map->player_y;
+	data->player->position.x = data->map->player_x * CUB_SIZE + (CUB_SIZE / 2);
+	data->player->position.y = data->map->player_y * CUB_SIZE + (CUB_SIZE / 2);
 	data->player->radius = 3;
 	data->player->turn_direction = 0;
 	data->player->walk_direction = 0;
@@ -63,11 +63,11 @@ int	update_player(int keycode)
 	steps = data->player->walk_direction * data->player->walk_speed;
 	data->player->position.x += cos(data->player->rotation_angle) * steps;
 	data->player->position.y += sin(data->player->rotation_angle) * steps;
-	if (is_wall(data->player->position.x, data->player->position.y))
-	{
-		data->player->position.x -= cos(data->player->rotation_angle) * steps;
-		data->player->position.y -= sin(data->player->rotation_angle) * steps;
-	}
+	// if (is_wall(data->player->position.x, data->player->position.y))
+	// {
+	// 	data->player->position.x -= cos(data->player->rotation_angle) * steps;
+	// 	data->player->position.y -= sin(data->player->rotation_angle) * steps;
+	// }
 	draw_2dmap(data);
 	return (0);
 }

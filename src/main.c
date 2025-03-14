@@ -59,6 +59,7 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 		ft_putstr_fd(ERROR "\nFailed to allocate memory\n", 2);
 		close_program();
 	}
+	player_init(data);
 	draw_2dmap(data);
 	mlx_loop(data->mlx.instance);
 	free_map(data->map); // tmp function
