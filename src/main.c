@@ -62,7 +62,7 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 		close_program();
 	}
 	player_init(data);
-	draw_2dmap(data);
+	_2dmap_render(data);
 	mlx_loop(data->mlx.instance);
 	free_map(data->map); // tmp function
 }

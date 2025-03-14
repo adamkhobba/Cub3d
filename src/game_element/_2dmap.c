@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawing.c                                          :+:      :+:    :+:   */
+/*   _2dmap.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/14 07:18:08 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 07:55:03 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	_2dmap(t_map *map)
  * @param data Pointer to the main data structure containing all necessary information
  *             for drawing the 2D map, including the MiniLibX instance, image, map, and player.
  */
-void	draw_2dmap(t_data *data)
+void	_2dmap_render(t_data *data)
 {
 	data->mlx.image.img = mlx_new_image(data->mlx.instance, data->mlx.win_width, data->mlx.win_height);
 	if (!data->mlx.image.img)

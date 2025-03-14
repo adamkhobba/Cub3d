@@ -69,7 +69,7 @@ int	update_player(int keycode)
 	// 	data->player->position.x -= cos(data->player->rotation_angle) * steps;
 	// 	data->player->position.y -= sin(data->player->rotation_angle) * steps;
 	// }
-	draw_2dmap(data);
+	_2dmap_render(data);
 	return (0);
 }
 

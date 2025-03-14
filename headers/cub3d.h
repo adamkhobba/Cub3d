@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 07:44:56 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 07:56:14 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,10 +258,10 @@ int					close_program(void);
 // @addindex utilities/mlx_utils.c
 void				my_put_pixel_to_image(int x, int y, int color);
 
-// @addindex game_element/drawing.c
+// @addindex game_element/_2dmap.c
 void				fillrect(t_point point, int width, int height, int color);
 void				_2dmap(t_map *map);
-void				draw_2dmap(t_data *data);
+void				_2dmap_render(t_data *data);
 void				fillline(t_point from, t_point to, double angle, int color);
 
 // @addindex game_element/player.c
@@ -287,6 +287,7 @@ void				free_map(t_map *map);
 
 // @addindex raycasting/raycasting.c
 void				raycasting(t_data *data);
+void				ray_render(t_ray *ray, t_data *data);
 
 // @addindex raycasting/ray_functions.c
 t_ray				ray_create(double angle);
