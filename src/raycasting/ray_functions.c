@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 07:43:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/14 07:52:53 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 08:02:42 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,21 @@ void	ray_render(t_ray *ray, t_data *data)
 	fillline((t_point){data->player->position.x, data->player->position.y},
 		(t_point){data->player->position.x + cos(ray->angle) * 20,
 		data->player->position.y + sin(ray->angle) * 20}
-		, ray->angle, 0xFF0000);
+		, ray->angle, 0x0000FF);
+}
+
+void	rays_many_render(t_ray *rays, int num_rays)
+{
+	int	i;
+	t_data	*data;
+
+	i = 0;
+	data = get_data();
+	while (i < num_rays)
+	{
+		ray_render(&rays[i], data);
+		i++;
+	}
 }
 
 t_ray	ray_create(double angle)

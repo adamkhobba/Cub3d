@@ -46,6 +46,8 @@ int	update_player(int keycode)
 {
 	int			steps;
 	t_data		*data;
+	int			new_step_x;
+	int			new_step_y;
 
 	data = get_data();
 	if (keycode == 119)
@@ -61,14 +63,15 @@ int	update_player(int keycode)
 	mlx_destroy_image(data->mlx.instance, data->mlx.image.img);
 	data->player->rotation_angle += data->player->turn_direction * data->player->turn_speed;
 	steps = data->player->walk_direction * data->player->walk_speed;
-	data->player->position.x += cos(data->player->rotation_angle) * steps;
-	data->player->position.y += sin(data->player->rotation_angle) * steps;
-	// if (is_wall(data->player->position.x, data->player->position.y, data))
-	// {
-	// 	printf("wall\n");
-	// 	data->player->position.x -= cos(data->player->rotation_angle) * steps;
-	// 	data->player->position.y -= sin(data->player->rotation_angle) * steps;
-	// }
+	new_step_x = cos(data->player->rotation_angle) * steps;
+	new_step_y = sin(data->player->rotation_angle) * steps;
+	data->player->position.x += new_step_x;
+	data->player->position.y += new_step_y;
+	if (is_wall(data->player->position.x, data->player->position.y, data))
+	{
+		data->player->position.x -= new_step_x - (data->player->walk_speed / 2);
+		data->player->position.y -= new_step_y - (data->player->walk_speed / 2);
+	}
 	_2dmap_render(data);
 	return (0);
 }

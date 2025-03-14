@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 07:56:14 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 08:04:05 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,8 +286,9 @@ t_map				*fake_map_init(void);
 void				free_map(t_map *map);
 
 // @addindex raycasting/raycasting.c
-void				raycasting(t_data *data);
+t_ray				*raycasting(t_data *data);
 void				ray_render(t_ray *ray, t_data *data);
+void				rays_many_render(t_ray *rays, int num_rays);
 
 // @addindex raycasting/ray_functions.c
 t_ray				ray_create(double angle);
