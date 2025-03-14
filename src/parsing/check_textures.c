@@ -32,7 +32,7 @@ void	validate_texture_format(char **split, t_map *data)
 	}
 }
 
-void check_free(t_map *data , int flag)
+void	check_free(t_map *data, int flag)
 {
 	if (flag)
 	{

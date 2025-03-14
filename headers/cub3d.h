@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 09:01:28 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 23:36:24 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ typedef struct s_map
 	int 			map_width;
 	int 			map_height;
 	char			**map;
+	char 			**kharita;
 	char			*no;
 	char			*so;
 	char			*we;
@@ -241,7 +242,7 @@ void				ft_error(char *str, t_map *data);
 
 //@addindex parsing/get_next_line.c
 char				*get_next_line(int fd);
-void get_first_line_index(t_map *data);
+void 				cp_flkharita(t_map *data);
 
 // @addindex parsing/ft_split00.c
 char				**ft_split00(char *s);

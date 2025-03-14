@@ -21,17 +21,17 @@ int	create_trgb(int t, int r, int g, int b)
 
 void	free_elements(t_map *data)
 {
-	if(data->no)
+	if (data->no)
 		free(data->no);
-	if(data->so)
+	if (data->so)
 		free(data->so);
-	if(data->we)
+	if (data->we)
 		free(data->we);
-	if(data->ea)
+	if (data->ea)
 		free(data->ea);
-	if(data->info->c)
+	if (data->info->c)
 		free(data->info->c);
-	if(data->info->f)
+	if (data->info->f)
 		free(data->info->f);
 }
 
@@ -45,8 +45,7 @@ void	free_gnawi(char **split)
 	free(split);
 }
 
-
-int	handle_colors(char *line , t_map *data)
+int	handle_colors(char *line, t_map *data)
 {
 	int		i;
 	int		count;
@@ -65,7 +64,7 @@ int	handle_colors(char *line , t_map *data)
 		ft_error("Error\nInvalid color\n", data);
 	split = ft_split(line, ',');
 	if (count_split(split) != 3)
-		ft_error("Error\nInvalid color\n" , data);
+		ft_error("Error\nInvalid color\n", data);
 	color = create_trgb(1, ft_atoi00(split[0]), ft_atoi00(split[1]),
 			ft_atoi00(split[2]));
 	if (color == -1)
