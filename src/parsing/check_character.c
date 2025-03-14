@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_character.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:37:56 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 00:35:59 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	check_invalid_character(t_map *data)
 
 	i = 0;
 	j = 0;
-	while (i < data->height && data->map[i])
+	while (i < data->info->height && data->map[i])
 	{
 		if (parse_element(data, &i))
 		{

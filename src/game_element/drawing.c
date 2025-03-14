@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/13 00:07:30 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 00:37:28 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ void	_2dmap(t_map *map)
 	int		j;
 
 	i = 0;
-	while (i < map->height)
+	while (i < map->info->height)
 	{
 		j = 0;
-		while (j < map->width)
+		while (j < map->map_width)
 		{
 			point = (t_point){j * CUB_SIZE, i * CUB_SIZE};
 			if (map->map[i][j] == 1)

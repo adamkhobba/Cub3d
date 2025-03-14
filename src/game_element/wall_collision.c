@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_fts.c                                        :+:      :+:    :+:   */
+/*   wall_collision.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 03:55:57 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/12 23:31:21 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/13 19:32:18 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 bool	is_wall(int x, int y)
 {
 	t_map	*map;
+	(void)x;
+	(void)y;
+	(void)map;
 
 	map = get_data()->map;
 	// if (x < 0 || y < 0 || x >= map->width || y >= map->height)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:01:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/09 04:30:59 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/14 00:35:24 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int	last_line(t_map *data)
 {
 	int	i;
 
-	i = data->height - 1;
+	i = data->info->height - 1;
 	while (i >= 0)
 	{
 		if (check_empty(data->map[i]))
 		{
-			data->last_line_in_map = i;
+			data->info->last_line_in_map = i;
 			break ;
 		}
 		i--;
@@ -51,14 +51,14 @@ void	first_line_in_map(t_map *data)
 {
 	int	i;
 
-	i = data->first_line_in_map;
+	i = data->info->first_line_in_map;
 	while (data->map[i])
 	{
 		if (data->map[i])
 			return ;
 		if (!check_empty(data->map[i]))
 		{
-			data->first_line_in_map++;
+			data->info->first_line_in_map++;
 			i++;
 		}
 		else
@@ -71,7 +71,7 @@ int	first_and_last_lines_check(t_map *data)
 	int	i;
 	int	j;
 
-	i = data->first_line_in_map;
+	i = data->info->first_line_in_map;
 	j = 0;
 	while (data->map[i][j])
 	{
@@ -84,7 +84,7 @@ int	first_and_last_lines_check(t_map *data)
 		}
 		j++;
 	}
-	i = data->height - 1;
+	i = data->info->height - 1;
 	j = 0;
 	return (0);
 }

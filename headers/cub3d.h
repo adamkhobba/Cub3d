@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/13 02:52:05 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/14 00:25:59 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,16 +106,11 @@ typedef struct s_player
  * @param first_line_in_map 	Index of the first line in the map array.
  * @param last_line_in_map 	Index of the last line in the map array.
  */
-typedef struct s_map
+typedef struct 		s_info
 {
-	int				height;
-	int				width;
+	int				height;//
+	int				width;//
 	char			*file; //
-	char			**map;
-	char			*no;
-	char			*so;
-	char			*we;
-	char			*ea;
 	char			*c;//
 	char			*f;//
 	char			*no_key; //
@@ -124,13 +119,27 @@ typedef struct s_map
 	char			*ea_key;//
 	char			*c_key;//
 	char			*f_key;//
+	int				first_line_in_map;//
+	int				last_line_in_map;//
+}					t_info;
+
+typedef struct s_map
+{
+	t_info			*info;
+	int 			map_width;
+	int 			map_height;
+	char			**map;
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
 	int				color_f;
 	int				color_c;
 	int				player_x;
 	int				player_y;
-	int				first_line_in_map;//
-	int				last_line_in_map;//
 }					t_map;
+
+
 
 typedef struct s_img
 {
@@ -215,6 +224,7 @@ void				ft_error(char *str, t_map *data);
 
 //@addindex parsing/get_next_line.c
 char				*get_next_line(int fd);
+void get_first_line_index(t_map *data);
 
 // @addindex parsing/ft_split00.c
 char				**ft_split00(char *s);

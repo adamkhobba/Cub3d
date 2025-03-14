@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:40:39 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/13 02:31:17 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/14 00:35:49 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_valid_file(char *line, t_map *data)
 {
-	if ((!line && data->height == 0) || count_len(data) == 0)
+	if ((!line && data->info->height == 0) || count_len(data) == 0)
 	{
 		ft_putstr_fd("Error\nInvalid file\n", 2);
 		free_elements(data);
@@ -61,22 +61,15 @@ void	process_texture_line(t_map *data, char **split)
 void	process_texture_data(t_map *data, char *line, int *j)
 {
 	char	**split;
-	int		k;
 
-	k = 0;
 	split = ft_split00(line);
 	if (!check_empty(line))
 	{
 		free(line);
-		data->first_line_in_map++;
+		data->info->first_line_in_map++;
 		return ;
 	}
 	process_texture_line(data, split);
-	while (split[k])
-	{
-		free(split[k]);
-		k++;
-	}
 	free(split);
 	free(line);
 	(*j)++;
@@ -89,7 +82,7 @@ int	parse_textures(t_map *data)
 	int		j;
 
 	j = 0;
-	fd = open(data->file, O_RDONLY);
+	fd = open(data->info->file, O_RDONLY);
 	line = get_next_line(fd);
 	check_valid_file(line, data);
 	while (line && j < 6)

@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:36:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/10 02:40:51 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/14 00:27:43 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	check_neighboring_cells(t_map *data, int i, int j)
 	{
 		return (0);
 	}
-	if (i == 0 || i == data->height - 1 || j == 0
+	if (i == 0 || i == data->info->height - 1 || j == 0
 		|| j == (int)ft_strlen(data->map[i]) - 1 || !is_valide(data->map[i][j
 			+ 1]) || !is_valide(data->map[i][j - 1]) || !is_valide(data->map[i
 			+ 1][j]) || !is_valide(data->map[i - 1][j]))
@@ -62,7 +62,7 @@ void	check_cell_boundaries(t_map *data, int i, int j)
 		{
 			ft_putstr_fd("Error\nMap is not closed\n", 2);
 			free_memory(data);
-			if (i != 0 && i != data->height - 1 && j != 0
+			if (i != 0 && i != data->info->height - 1 && j != 0
 				&& j != (int)ft_strlen(data->map[i]) - 1)
 			{
 				free_memory(data);
@@ -71,26 +71,53 @@ void	check_cell_boundaries(t_map *data, int i, int j)
 	}
 }
 
-void	check_boundaries(t_map *data)
+void check_boundaries(t_map *data)
 {
-	int	i;
-	int	j;
+    int (i), (j) , (width) , (first_map_line) , (last_map_line) , (height) , (line_len);
 
-	i = 0;
-	j = 0;
-	while (i < data->height)
-	{
-		if (parse_element(data, &i))
-		{
-			i++;
-			continue ;
-		}
-		j = 0;
-		while (data->map[i][j])
-		{
-			check_cell_boundaries(data, i, j);
-			j++;
-		}
-		i++;
-	}
+    first_map_line = -1;
+    last_map_line = -1;
+    width = 0;
+    i = 0;
+    while (i < data->info->height)
+    {
+        if (parse_element(data, &i))
+        {
+            i++;
+            continue;
+        }
+        j = 0;
+        while (data->map[i][j])
+        {
+            if (data->map[i][j] == '1' || data->map[i][j] == '0' || 
+                data->map[i][j] == 'N' || data->map[i][j] == 'S' || 
+                data->map[i][j] == 'E' || data->map[i][j] == 'W')
+            {
+                if (first_map_line == -1)
+                    first_map_line = i;
+                last_map_line = i;
+                line_len = ft_strlen(data->map[i]) ;
+                if (data->map[i][line_len - 1] == '\n')
+                    line_len--;
+                if (line_len > width)
+                    width = line_len;
+                break;
+            }
+            j++;
+        }
+        i++;
+    }
+    height = (last_map_line - first_map_line + 1);
+    for (i = first_map_line; i <= last_map_line; i++)
+    {
+        j = 0;
+        while (data->map[i][j])
+        {
+            if (data->map[i][j] == '0')  
+                check_cell_boundaries(data, i, j);
+            j++;
+        }
+    }
+    data->map_height = height;
+    data->map_width = width;
 }
