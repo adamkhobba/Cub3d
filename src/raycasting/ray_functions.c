@@ -6,11 +6,28 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 07:43:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/14 08:02:42 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/15 09:11:06 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+/**
+ * @brief Normalize an angle to the range [0, 2*PI).
+ *
+ * This function takes an angle in radians and normalizes it to be within the range
+ * [0, 2*PI). If the angle is negative, it adds 2*PI to ensure the result is positive.
+ *
+ * @param angle The angle in radians to be normalized.
+ * @return The normalized angle in the range [0, 2*PI).
+ */
+double	normalize_angle(double angle)
+{
+	angle = fmod(angle, 2 * M_PI);
+	if (angle < 0)
+		angle += (2 * M_PI);
+	return (angle);
+}
 
 void	ray_render(t_ray *ray, t_data *data)
 {
@@ -27,18 +44,29 @@ void	rays_many_render(t_ray *rays, int num_rays)
 
 	i = 0;
 	data = get_data();
-	while (i < num_rays)
+	(void)num_rays;
+	while (i < 1)//num_rays)
 	{
 		ray_render(&rays[i], data);
 		i++;
 	}
 }
 
+/**
+ * @brief Creates a ray with the specified angle and initializes its properties.
+ *
+ * This function initializes a ray structure with the given angle. It normalizes
+ * the angle and sets the initial values for the ray's properties, such as the
+ * wall hit coordinates, distance, and direction flags.
+ *
+ * @param angle The angle of the ray in radians.
+ * @return A t_ray structure with the initialized properties.
+ */
 t_ray	ray_create(double angle)
 {
 	t_ray	ray;
 
-	ray.angle = angle;
+	ray.angle = normalize_angle(angle);
 	ray.wall_hit_x = 0;
 	ray.wall_hit_y = 0;
 	ray.distance = 0;

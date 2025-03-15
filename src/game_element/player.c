@@ -67,20 +67,11 @@ int	update_player(int keycode)
 	y = data->player->position.y;
 	data->player->position.x += cos(data->player->rotation_angle) * steps;
 	data->player->position.y += sin(data->player->rotation_angle) * steps;
+	// TODO: improving the code to let the player move next to the wall
 	if (is_wall(data->player->position.x, data->player->position.y, data))
 	{
 		data->player->position.x = x;
 		data->player->position.y = y;
-		// if (data->player->walk_direction == 1)
-		// {
-		// 	data->player->position.x = x - 1;
-		// 	data->player->position.y = y - 1;
-		// }
-		// else
-		// {
-		// 	data->player->position.x = x + 1;
-		// 	data->player->position.y = y + 1;
-		// }
 	}
 	_2dmap_render(data);
 	return (0);
