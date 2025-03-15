@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:40:39 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 00:35:49 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/15 23:00:31 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,6 @@ void	validate_texture_format(char **split, t_map *data)
 	if (count_split(split) != 2)
 	{
 		ft_putstr_fd("Error\nInvalid texture\n", 2);
-		free_elements(data);
-		free_memory(data);
-	}
-}
-
-void	check_free(t_map *data, int flag)
-{
-	if (flag)
-	{
 		free_elements(data);
 		free_memory(data);
 	}
