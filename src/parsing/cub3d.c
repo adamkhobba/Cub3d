@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/16 02:07:44 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/16 23:27:46 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,9 @@ t_map	*parsing(int ac, char *av[])
 		free_memory(data);
 	check_player_valid_pos(data);
 	cp_flkharita(data);
-	// free_memory(data);
+	player_possitions(data);
+	printf("player in x == %d\n", data->info->player_in_x);
+	printf("player in y == %d\n", data->info->player_in_y);
+	free_memory(data);
 	return (data);
 }

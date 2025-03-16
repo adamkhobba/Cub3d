@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:39:51 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/16 01:51:49 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/16 23:27:40 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,26 @@ int	cp_in_kharita(char *line, t_map *data, int fd)
 		i++;
 	}
 	return (j);
+}
+
+void player_possitions(t_map *data)
+{
+	int i = 0;
+	int j = 0;
+	while (i <= data->info->last_line_in_map && data->kharita[i])
+	{
+		j = 0;
+		while (data->kharita[i][j] && data->kharita[i][j] != '\n')
+		{
+			if (data->kharita[i][j] == 'W' || data->kharita[i][j] == 'E' || data->kharita[i][j] == 'N' || data->kharita[i][j] == 'S')
+			{
+				data->info->player_in_x = j;
+				data->info->player_in_y = i;
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 void	cp_flkharita(t_map *data)
