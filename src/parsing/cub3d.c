@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/15 22:57:36 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/16 01:41:56 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	free_memory(t_map *data)
 }
 
 t_map	*parsing(int ac, char *av[])
+t_map	*parsing(int ac, char *av[])
 {
 	t_map	*data;
 
@@ -101,11 +102,11 @@ t_map	*parsing(int ac, char *av[])
 	ft_check_file_path(data, ac, av);
 	last_line(data);
 	parse_textures(data);
-	if (check_xpm(data))
-	{
-		free_elements(data);
-		free_memory(data);
-	}
+	// if (check_xpm(data))
+	// {
+	// 	free_elements(data);
+	// 	free_memory(data);
+	// }
 	first_line_in_map(data);
 	if (first_and_last_lines_check(data))
 		free_memory(data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/15 23:13:30 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/16 01:40:59 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 # include <unistd.h>
 
 # define CUB_SIZE 32
+# define NUM_LARGE 20
+# define FOV 60
+# define WIDTH 32 * 14
+# define HEIGHT 32 * 7
 # define NUM_LARGE 20
 # define FOV 60
 # define WIDTH 32 * 14
@@ -72,6 +76,20 @@ typedef struct s_player
 	double			walk_speed;
 	double			turn_speed;
 }					t_player;
+
+typedef	struct s_ray
+{
+	double			angle;
+	double			wall_hit_x;
+	double			wall_hit_y;
+	double			distance;
+	int				was_hit_vertical;
+	int				is_ray_facing_down;
+	int				is_ray_facing_up;
+	int				is_ray_facing_right;
+	int				is_ray_facing_left;
+	int				wall_hit_content;
+}					t_ray;
 
 typedef	struct s_ray
 {
@@ -176,6 +194,8 @@ typedef struct s_mlx
 	struct s_img	image;
 	int				win_width;
 	int				win_height;
+	int				win_width;
+	int				win_height;
 }					t_mlx;
 
 typedef struct s_data
@@ -213,6 +233,7 @@ int					create_trgb(int t, int r, int g, int b);
 int					first_and_last_lines_check(t_map *data);
 void				first_line_in_map(t_map *data);
 int					count_len(t_map *data);
+int					count_len(t_map *data);
 int					last_line(t_map *data);
 
 // @addindex parsing/check_player.c
@@ -244,6 +265,7 @@ int					count_split(char **split);
 
 // @addindex parsing/cub3d.c
 t_map		 		*parsing(int ac, char *av[]);
+t_map		 		*parsing(int ac, char *av[]);
 int					free_memory(t_map *data);
 void				cp_map_array(t_map *data, char *av[]);
 void				ft_error(char *str, t_map *data);
@@ -270,12 +292,15 @@ int					close_program(void);
 void				my_put_pixel_to_image(int x, int y, int color);
 
 // @addindex game_element/_2dmap.c
+// @addindex game_element/_2dmap.c
 void				fillrect(t_point point, int width, int height, int color);
 void				_2dmap(t_map *map);
+void				_2dmap_render(t_data *data);
 void				_2dmap_render(t_data *data);
 void				fillline(t_point from, t_point to, double angle, int color);
 
 // @addindex game_element/player.c
+void				player_init(t_data *data);
 void				player_init(t_data *data);
 void				put_player(t_player *player);
 int					update_player(int keycode);
@@ -289,7 +314,23 @@ double				cal_distance(t_point point1, t_point point2);
 // @addindex utilities/print_fts.c
 void				print_map(t_map *data);
 
+// @addindex utilities/print_fts.c
+void				print_map(t_map *data);
+
 // @addindex game_element/check_fts.c
+bool				is_wall(int x, int y, t_data *data);
+
+// @addindex utilities/no_need.c
+t_map				*fake_map_init(void);
+void				free_map(t_map *map);
+
+// @addindex raycasting/raycasting.c
+t_ray				*raycasting(t_data *data);
+void				ray_render(t_ray *ray, t_data *data);
+void				rays_many_render(t_ray *rays, int num_rays);
+
+// @addindex raycasting/ray_functions.c
+t_ray				ray_create(double angle);
 bool				is_wall(int x, int y, t_data *data);
 
 // @addindex utilities/no_need.c
