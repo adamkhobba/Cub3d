@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/16 01:45:14 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/16 01:50:41 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	free_memory(t_map *data)
 	k = 0;
 	while (k < data->map_height)
 	{
-		free(data->kharita[k]);
+		free(data->map[k]);
 		k++;
 	}
 	free(data->map);
@@ -84,7 +84,6 @@ int	free_memory(t_map *data)
 	exit(1);
 }
 
-t_map	*parsing(int ac, char *av[])
 t_map	*parsing(int ac, char *av[])
 {
 	t_map	*data;
@@ -112,10 +111,6 @@ t_map	*parsing(int ac, char *av[])
 		free_memory(data);
 	check_player_valid_pos(data);
 	cp_flkharita(data);
-	printf("last_line_in_map: %d\n", data->info->last_line_in_map);
-	printf("first_line_in_map: %d\n", data->info->first_line_in_map);
-	printf("map_height: %d\n", data->map_height);
-	printf("map_width: %d\n", data->map_width);
-	free_memory(data);
+	// free_memory(data);
 	return (data);
 }

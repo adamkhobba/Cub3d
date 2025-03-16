@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/16 01:44:53 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/16 01:50:54 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,20 +91,6 @@ typedef	struct s_ray
 	int				wall_hit_content;
 }					t_ray;
 
-typedef	struct s_ray
-{
-	double			angle;
-	double			wall_hit_x;
-	double			wall_hit_y;
-	double			distance;
-	int				was_hit_vertical;
-	int				is_ray_facing_down;
-	int				is_ray_facing_up;
-	int				is_ray_facing_right;
-	int				is_ray_facing_left;
-	int				wall_hit_content;
-}					t_ray;
-
 /**
  * @struct s_map
 
@@ -155,7 +141,6 @@ typedef struct 		s_info
 	int				first_line_in_map;
 	int				last_line_in_map;
 	int 			boudaries_width;
-	int 			boudaries_width;
 }					t_info;
 
 typedef struct s_map
@@ -163,8 +148,8 @@ typedef struct s_map
 	t_info			*info;
 	int 			map_width;
 	int 			map_height;
-	char			**map;
-	char 			**kharita;
+	char			**file;
+	char 			**map;
 	char			*no;
 	char			*so;
 	char			*we;
@@ -193,8 +178,6 @@ typedef struct s_mlx
 	void			*instance;
 	void			*win;
 	struct s_img	image;
-	int				win_width;
-	int				win_height;
 	int				win_width;
 	int				win_height;
 }					t_mlx;
