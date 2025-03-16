@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 07:00:19 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/16 04:26:19 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/16 23:38:35 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,18 @@ void	cast_ray(t_ray ray, int colum_id, t_data *data)
 	ystep *= ray.is_ray_facing_up * -2 + 1; // -->
 	// if is_ray_facing_up == 1 then 1 * -2 + 1 ==> -1
 	// else 0 * -2 + 1 ==> 1
-
-	xstep = CUB_SIZE / tan(ray.angle);
+	if (tan(ray.angle) != 0)
+		xstep = CUB_SIZE / tan(ray.angle);
+	else
+		xstep = 0;
 	xstep *= (ray.is_ray_facing_left && xstep > 0) * -2 + 1;
 	xstep *= (ray.is_ray_facing_right && xstep < 0) * -2 + 1;
 	horz_hit_x = xintercept;
 	horz_hit_y = yintercept;
 	if (ray.is_ray_facing_up)
 		horz_hit_y--;
-
-	while ((horz_hit_x >= 0 && horz_hit_x <= data->mlx.win_height)
-		&& (horz_hit_x >= 0 && horz_hit_x <= data->mlx.win_width))
+	while ((horz_hit_x >= 0 && horz_hit_x <= data->mlx.win_width)
+		&& (horz_hit_y >= 0 && horz_hit_y <= data->mlx.win_height))
 	{
 		if (is_wall(horz_hit_x, horz_hit_y, data))
 		{
