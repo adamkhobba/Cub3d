@@ -42,11 +42,11 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 {
 	t_data *data;
 
-	// if (ac != 2)
-	// {
-	// 	ft_putstr_fd(ERROR"\nInvalid number of arguments\n", 2);
-	// 	return (1);
-	// }
+	if (ac != 2)
+	{
+		ft_putstr_fd(ERROR"\nInvalid number of arguments\n", 2);
+		return (1);
+	}
 	data = get_data();
 	// TODO: use parsing of fill out the t_map struct
 	// data->map = parsing(ac, av);
@@ -66,4 +66,5 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	mlx_loop(data->mlx.instance);
 	// free_memory(data->map);
 	free_map(data->map); // tmp function
+	parsing(ac, av);
 }
