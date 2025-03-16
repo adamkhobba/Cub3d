@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/16 01:40:59 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/16 01:43:09 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ typedef struct 		s_info
 	int				first_line_in_map;
 	int				last_line_in_map;
 	int 			boudaries_width;
+	int 			boudaries_width;
 }					t_info;
 
 typedef struct s_map
@@ -212,14 +213,22 @@ t_data				*get_data(void);
 // @addindex parsing/check_boundaries_utils.c
 void				cp_flkharita(t_map *data);
 
+// @addindex parsing/check_boundaries_utils.c
+void				cp_flkharita(t_map *data);
+
 // @addindex parsing/check_boundaries.c
 void				check_boundaries(t_map *data);
 
 
 // @addindex parsing/check_cell_boundaries.c
 void				check_cell_boundaries(t_map *data, int i, int j);
+
+
+// @addindex parsing/check_cell_boundaries.c
+void				check_cell_boundaries(t_map *data, int i, int j);
 int					check_empty(char *line);
 
+//@addindex parsing/check_character.c
 //@addindex parsing/check_character.c
 void				check_invalid_character(t_map *data);
 int					parse_element(t_map *data, int *i);
@@ -245,7 +254,12 @@ int					set_floor_and_ceiling_color(t_map *data, char **split, int i);
 	int				set_ea_texture(t_map *data, char **split);
 	int				set_we_texture(t_map *data, char **split);
 	int				set_so_texture(t_map *data, char **split);
+	int				set_no_texture(t_map *data, char **split);
+	int				set_ea_texture(t_map *data, char **split);
+	int				set_we_texture(t_map *data, char **split);
+	int				set_so_texture(t_map *data, char **split);
 
+	// @addindex parsing/check_textures.c
 	// @addindex parsing/check_textures.c
 int					parse_textures(t_map *data);
 void				process_texture_data(t_map *data, char *line, int *j);
@@ -273,12 +287,21 @@ void				ft_error(char *str, t_map *data);
 // @addindex parsing/ft_atoi00.c
 long				ft_atoi00(char *str);
 
+// @addindex parsing/ft_atoi00.c
+long				ft_atoi00(char *str);
 
+
+// @addindex parsing/ft_split_utils.c
 // @addindex parsing/ft_split_utils.c
 char				**freefun00(char **p, int j);
 int					handle_quotes3(char *str, int *i, char quote_char);
 int					ft_is_void(char c);
 
+// @addindex parsing/ft_split00.c
+char				**ft_split00(char *s);
+
+//@addindex parsing/get_next_line.c
+char				*get_next_line(int fd);
 // @addindex parsing/ft_split00.c
 char				**ft_split00(char *s);
 
