@@ -64,7 +64,6 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	player_init(data);
 	_2dmap_render(data);
 	mlx_loop(data->mlx.instance);
-	free_memory(data->map);
+	// free_memory(data->map);
 	// free_map(data->map); // tmp function
-	parsing(ac, av);
 }

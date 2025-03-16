@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/16 01:50:54 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/16 02:06:12 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,7 +263,7 @@ int					count_split(char **split);
 // @addindex parsing/cub3d.c
 t_map		 		*parsing(int ac, char *av[]);
 t_map		 		*parsing(int ac, char *av[]);
-int					free_memory(t_map *data);
+void				free_memory(t_map *data);
 void				cp_map_array(t_map *data, char *av[]);
 void				ft_error(char *str, t_map *data);
 
@@ -297,7 +297,6 @@ int					close_program(void);
 // @addindex utilities/mlx_utils.c
 void				my_put_pixel_to_image(int x, int y, int color);
 
-// @addindex game_element/_2dmap.c
 // @addindex game_element/_2dmap.c
 void				fillrect(t_point point, int width, int height, int color);
 void				_2dmap(t_map *map);
