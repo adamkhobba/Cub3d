@@ -60,8 +60,11 @@ int	update_player(int keycode)
 		data->player->turn_direction = 1;
 	else if (keycode == 65307)
 		close_program();
+	data->player->rotation_angle = normalize_angle(data->player->rotation_angle);
+	printf("rotation_angle: %f\n", data->player->rotation_angle);
 	mlx_destroy_image(data->mlx.instance, data->mlx.image.img);
-	data->player->rotation_angle += data->player->turn_direction * data->player->turn_speed;
+	data->player->rotation_angle += data->player->turn_direction
+		* data->player->turn_speed;
 	steps = data->player->walk_direction * data->player->walk_speed;
 	x = data->player->position.x;
 	y = data->player->position.y;
