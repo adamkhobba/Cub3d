@@ -40,30 +40,30 @@ void	mlx_setup_env(void)
 
 int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 {
-	t_data *data;
+	// t_data *data;
 
-	if (ac != 2)
-	{
-		ft_putstr_fd(ERROR"\nInvalid number of arguments\n", 2);
-		return (1);
-	}
-	data = get_data();
-	// get_data()->map = parsing(ac, av);
-	data->map = fake_map_init(); // tmp function
-	print_map(data->map);
-	data->mlx.win_height = data->map->map_height * CUB_SIZE;
-	data->mlx.win_width = data->map->map_width * CUB_SIZE;
-	mlx_setup_env();
-	// get_data()->map = parsing(ac, av);
-	data->player = malloc(sizeof(t_player));
-	if (!data->player)
-	{
-		ft_putstr_fd(ERROR "\nFailed to allocate memory\n", 2);
-		close_program();
-	}
-	player_init(data);
-	_2dmap_render(data);
-	mlx_loop(data->mlx.instance);
-	free_map(data->map); // tmp function
+	// if (ac != 2)
+	// {
+	// 	ft_putstr_fd(ERROR"\nInvalid number of arguments\n", 2);
+	// 	return (1);
+	// }
+	// data = get_data();
+	// // get_data()->map = parsing(ac, av);
+	// data->map = fake_map_init(); // tmp function
+	// print_map(data->map);
+	// data->mlx.win_height = data->map->map_height * CUB_SIZE;
+	// data->mlx.win_width = data->map->map_width * CUB_SIZE;
+	// mlx_setup_env();
+	// // get_data()->map = parsing(ac, av);
+	// data->player = malloc(sizeof(t_player));
+	// if (!data->player)
+	// {
+	// 	ft_putstr_fd(ERROR "\nFailed to allocate memory\n", 2);
+	// 	close_program();
+	// }
+	// player_init(data);
+	// _2dmap_render(data);
+	// mlx_loop(data->mlx.instance);
+	// free_map(data->map); // tmp function
 	parsing(ac, av);
 }

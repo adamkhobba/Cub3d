@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/15 23:13:30 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/16 02:59:51 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,8 @@ typedef struct 		s_info
 	int				first_line_in_map;
 	int				last_line_in_map;
 	int 			boudaries_width;
+	int 			player_in_y;
+	int 			player_in_x;
 }					t_info;
 
 typedef struct s_map
@@ -154,6 +156,7 @@ typedef struct s_map
 	int				color_c;
 	int				player_x;
 	int				player_y;
+
 }					t_map;
 
 
@@ -194,6 +197,7 @@ void				cp_flkharita(t_map *data);
 
 // @addindex parsing/check_boundaries.c
 void				check_boundaries(t_map *data);
+void 				player_possitions(t_map *data);
 
 
 // @addindex parsing/check_cell_boundaries.c
