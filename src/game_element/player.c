@@ -68,8 +68,8 @@ int	update_player(int keycode)
 	steps = data->player->walk_direction * data->player->walk_speed;
 	x = data->player->position.x;
 	y = data->player->position.y;
-	data->player->position.x += cos(data->player->rotation_angle) * steps;
-	data->player->position.y += sin(data->player->rotation_angle) * steps;
+	data->player->position.x += (int)(cos(data->player->rotation_angle) * steps);
+	data->player->position.y += (int)(sin(data->player->rotation_angle) * steps);
 	// TODO: improving the code to let the player move next to the wall
 	if (is_wall(data->player->position.x, data->player->position.y, data))
 	{

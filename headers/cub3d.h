@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/16 02:06:12 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/16 02:40:52 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,8 +159,6 @@ typedef struct s_map
 	int				player_x;
 	int				player_y;
 }					t_map;
-
-
 
 typedef struct s_img
 {
