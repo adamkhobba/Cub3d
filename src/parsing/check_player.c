@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:57:19 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 22:16:04 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/17 00:37:27 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	validate_player_position(t_map *data, int i, int j, int *count)
 	}
 	data->player_x = i;
 	data->player_y = j;
-	if (one_or_zero(data->map[i + 1][j]) || one_or_zero(data->map[i - 1][j])
-		|| one_or_zero(data->map[i][j + 1]) || one_or_zero(data->map[i][j - 1]))
+	if (one_or_zero(data->kharita[i + 1][j]) || one_or_zero(data->kharita[i - 1][j])
+		|| one_or_zero(data->kharita[i][j + 1]) || one_or_zero(data->kharita[i][j - 1]))
 	{
 		ft_putstr_fd("Error\nInvalid player position\n", 2);
 		free_elements(data);
@@ -47,10 +47,10 @@ int	check_player_valid_pos(t_map *data)
 	while (i < data->info->height)
 	{
 		j = 0;
-		while (data->map[i][j])
+		while (data->kharita[i][j])
 		{
-			if (data->map[i][j] == 'N' || data->map[i][j] == 'S'
-				|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
+			if (data->kharita[i][j] == 'N' || data->kharita[i][j] == 'S'
+				|| data->kharita[i][j] == 'E' || data->kharita[i][j] == 'W')
 			{
 				validate_player_position(data, i, j, &count);
 			}

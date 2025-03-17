@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_boundaries_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:39:51 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/16 23:27:40 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/17 00:35:53 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ void player_possitions(t_map *data)
 {
 	int i = 0;
 	int j = 0;
-	while (i <= data->info->last_line_in_map && data->kharita[i])
+	
+	while (data->map[i] && i <= data->info->last_line_in_map)
 	{
 		j = 0;
-		while (data->kharita[i][j] && data->kharita[i][j] != '\n')
+		while (data->map[i][j] && data->map[i][j] != '\n')
 		{
-			if (data->kharita[i][j] == 'W' || data->kharita[i][j] == 'E' || data->kharita[i][j] == 'N' || data->kharita[i][j] == 'S')
+			if (data->map[i][j] == 'W' || data->map[i][j] == 'E' || data->map[i][j] == 'N' || data->map[i][j] == 'S')
 			{
 				data->info->player_in_x = j;
 				data->info->player_in_y = i;

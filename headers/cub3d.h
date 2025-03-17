@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/16 23:27:15 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/17 00:36:16 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ typedef struct s_map
 	t_info			*info;
 	int 			map_width;
 	int 			map_height;
-	char			**file;
+	char			**kharita;
 	char 			**map;
 	char			*no;
 	char			*so;
