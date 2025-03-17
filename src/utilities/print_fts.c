@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_fts.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 03:07:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/17 00:37:27 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/17 23:25:51 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ void	print_map(t_map *data)
 	printf("map->player_y: %d\n", data->player_y);
 	while (i < data->map_height)
 	{
-		printf("%s", data->kharita[i]);
+		printf("%s", data->map[i]);
+		printf("\n");
 		i++;
 	}
-	printf("printing is done\n");
+	printf("printing is done !\n");
 }

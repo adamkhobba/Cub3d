@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/17 23:09:12 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/17 23:26:19 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	_2dmap(t_map *map)
 		while (j < map->map_width)
 		{
 			point = (t_point){j * CUB_SIZE, i * CUB_SIZE};
-			if (map->kharita[i][j] == '1')
+			if (map->map[i][j] == '1')
 				fillrect(point, CUB_SIZE - 1, CUB_SIZE - 1, 0x222222);
 			else
 				fillrect(point, CUB_SIZE - 1, CUB_SIZE - 1, 0xFFFFFF);
