@@ -110,10 +110,6 @@ void	cast_ray(t_ray ray, int colum_id, t_data *data)
 			(t_point){wall_hit_x, wall_hit_y});
 	else
 		vert_hit_distance = INT_MAX;
-	printf("----------\n");
-	printf("horz_hit_distance: %f\n", horz_hit_distance);
-	printf("vert_hit_distance: %f\n", vert_hit_distance);
-	printf("----------\n");
 	if (horz_hit_distance < vert_hit_distance)
 	{
 		ray.wall_hit_x = horz_wall_hit_x;
