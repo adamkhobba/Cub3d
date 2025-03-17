@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 04:49:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/17 23:25:15 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/17 23:28:19 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	free_map(t_map *map)
 	i = 0;
 	while (i < map->map_height)
 	{
-		free(map->kharita[i]);
+		free(map->map[i]);
 		i++;
 	}
-	free(map->kharita);
+	free(map->map);
 	free(map);
 }
