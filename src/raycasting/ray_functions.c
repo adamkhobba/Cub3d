@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 07:43:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/15 09:15:07 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/17 01:10:51 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	rays_many_render(t_ray *rays, int num_rays)
 	i = 0;
 	data = get_data();
 	(void)num_rays;
-	while (i < 0)//num_rays)
+	while (i < num_rays)
 	{
 		ray_render(&rays[i], data);
 		i++;

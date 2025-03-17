@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/16 01:44:15 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/17 01:11:38 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,6 @@ void	_2dmap_render(t_data *data)
 			&data->mlx.image.endian);
 	_2dmap(data->map);
 	t_ray *rays = raycasting(data);
-	rays_many_render(rays, data->mlx.win_width / NUM_LARGE);
 	put_player(data->player);
 	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
 		get_data()->mlx.image.img, 0, 0);

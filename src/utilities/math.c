@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 03:11:30 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/13 00:25:16 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/17 00:52:56 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 double	cal_distance(t_point point1, t_point point2)
 {
-	return (sqrtf((point2.x - point1.x) * (point2.x - point1.x) + (point2.y
-				- point1.y) * (point2.y - point1.y)));
+	return (sqrtf(pow(point2.x - point1.x, 2) + pow(point2.y
+				- point1.y, 2)));
 }
 
 double	degtorad(double deg)

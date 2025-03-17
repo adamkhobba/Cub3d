@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/16 23:27:15 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/17 15:01:45 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,11 @@
 # include <string.h>
 # include <unistd.h>
 
-# define CUB_SIZE 32
-# define NUM_LARGE 20
+# define CUB_SIZE 64
+# define NUM_LARGE 1
 # define FOV 60
-# define WIDTH 32 * 14
-# define HEIGHT 32 * 7
-# define NUM_LARGE 20
-# define FOV 60
-# define WIDTH 32 * 14
-# define HEIGHT 32 * 7
+# define WIDTH CUB_SIZE * 14
+# define HEIGHT CUB_SIZE * 7
 # define NAME "\e[1;34mCub3D\e[0m"
 # define ERROR "\e[1;31mError\e[0m"
 
@@ -83,7 +79,7 @@ typedef	struct s_ray
 	double			wall_hit_x;
 	double			wall_hit_y;
 	double			distance;
-	int				was_hit_vertical;
+	bool			was_hit_vertical;
 	int				is_ray_facing_down;
 	int				is_ray_facing_up;
 	int				is_ray_facing_right;

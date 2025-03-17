@@ -26,18 +26,10 @@ void	player_init(t_data *data)
 	data->player->turn_speed = 6 * (M_PI / 180);
 }
 
-inline static void	draw_player_direction(t_player *player)
-{
-	fillline(player->position, (t_point){player->position.x
-		+ cos(player->rotation_angle) * 20, player->position.y
-		+ sin(player->rotation_angle) * 20}, player->rotation_angle, 0xFF0000);
-}
-
 void	put_player(t_player *player)
 {
 	if (player == NULL)
 		return ;
-	draw_player_direction(player);
 	fillrect((t_point){player->position.x - player->radius,
 		player->position.y - player->radius}, player->radius * 2,
 		player->radius * 2, 0x00FF00);
