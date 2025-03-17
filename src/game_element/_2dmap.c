@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/17 01:11:38 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/17 23:26:19 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	_2dmap(t_map *map)
 	int		i;
 	int		j;
 
-	if (map->map == NULL)
+	if (map->kharita == NULL)
 		return ;
 	i = 0;
 	while (i < map->map_height)

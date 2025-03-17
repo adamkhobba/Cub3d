@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 03:07:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/17 23:14:00 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/17 23:29:26 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	print_map(t_map *data)
 		printf("\n");
 		i++;
 	}
-	printf("printing is done\n");
+	printf("printing is done !\n");
 }

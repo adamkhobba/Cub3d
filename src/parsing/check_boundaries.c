@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:36:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/15 23:00:12 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/17 00:37:27 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	validate_map_cells(t_map *data, int first_line, int last_line)
 	while (i <= last_line)
 	{
 		j = 0;
-		while (data->map[i][j])
+		while (data->kharita[i][j])
 		{
-			if (data->map[i][j] == '0')
+			if (data->kharita[i][j] == '0')
 				check_cell_boundaries(data, i, j);
 			j++;
 		}
@@ -38,8 +38,8 @@ void	update_map_bounds(t_map *data, int i, int *first_line, int *last_line)
 	if (*first_line == -1)
 		*first_line = i;
 	*last_line = i;
-	line_len = ft_strlen(data->map[i]);
-	if (data->map[i][line_len - 1] == '\n')
+	line_len = ft_strlen(data->kharita[i]);
+	if (data->kharita[i][line_len - 1] == '\n')
 		line_len--;
 	if (line_len > data->info->boudaries_width)
 		data->info->boudaries_width = line_len;
@@ -51,9 +51,9 @@ void	process_map_line(t_map *data, int i, int *first_line, int *last_line)
 	char	c;
 
 	j = 0;
-	while (data->map[i][j])
+	while (data->kharita[i][j])
 	{
-		c = data->map[i][j];
+		c = data->kharita[i][j];
 		if (c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'E'
 			|| c == 'W')
 		{

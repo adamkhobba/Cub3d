@@ -51,7 +51,6 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	// TODO: use parsing of fill out the t_map struct
 	// data->map = parsing(ac, av);
 	data->map = fake_map_init(); // tmp function
-	print_map(data->map);
 	data->mlx.win_height = data->map->map_height * CUB_SIZE;
 	data->mlx.win_width = data->map->map_width * CUB_SIZE;
 	mlx_setup_env();
@@ -62,6 +61,7 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 		close_program();
 	}
 	player_init(data);
+	print_map(data->map);
 	_2dmap_render(data);
 	mlx_loop(data->mlx.instance);
 	// free_memory(data->map);

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/17 15:01:45 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/17 23:09:07 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ typedef struct s_map
 	t_info			*info;
 	int 			map_width;
 	int 			map_height;
-	char			**file;
+	char			**kharita;
 	char 			**map;
 	char			*no;
 	char			*so;

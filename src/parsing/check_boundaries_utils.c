@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:39:51 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/16 23:31:29 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/17 23:10:43 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void player_possitions(t_map *data)
 {
 	int i = 0;
 	int j = 0;
-	while (i <= data->info->last_line_in_map && data->map[i])
+
+	while (data->map[i] && i <= data->info->last_line_in_map)
 	{
 		j = 0;
 		while (data->map[i][j] && data->map[i][j] != '\n')

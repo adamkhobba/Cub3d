@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/16 23:27:46 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/17 00:40:47 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	cp_map_array(t_map *data, char *av[])
 
 	i = 0;
 	fd = open(av[1], O_RDONLY);
-	data->map = malloc(sizeof(char *) * (data->info->height + 1));
-	if (!data->map)
+	data->kharita = malloc(sizeof(char *) * (data->info->height + 1));
+	if (!data->kharita)
 	{
 		ft_putstr_fd("Error\nMemory allocation failed\n", 2);
 		free_memory(data);
@@ -52,12 +52,12 @@ void	cp_map_array(t_map *data, char *av[])
 	line = get_next_line(fd);
 	while (line)
 	{
-		data->map[i] = ft_strdup(line);
+		data->kharita[i] = ft_strdup(line);
 		i++;
 		free(line);
 		line = get_next_line(fd);
 	}
-	data->map[i] = NULL;
+	data->kharita[i] = NULL;
 	check_invalid_character(data);
 	close(fd);
 }
@@ -67,9 +67,9 @@ void	free_memory(t_map *data)
 	int	k;
 
 	k = 0;
-	while (data->map[k])
+	while (data->kharita[k])
 	{
-		free(data->map[k]);
+		free(data->kharita[k]);
 		k++;
 	}
 	free(data->info);
@@ -105,8 +105,6 @@ t_map	*parsing(int ac, char *av[])
 	check_player_valid_pos(data);
 	cp_flkharita(data);
 	player_possitions(data);
-	printf("player in x == %d\n", data->info->player_in_x);
-	printf("player in y == %d\n", data->info->player_in_y);
 	free_memory(data);
 	return (data);
 }
