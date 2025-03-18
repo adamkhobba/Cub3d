@@ -30,9 +30,9 @@ void	put_player(t_player *player)
 {
 	if (player == NULL)
 		return ;
-	fillrect((t_point){player->position.x - player->radius,
-		player->position.y - player->radius}, player->radius * 2,
-		player->radius * 2, 0x00FF00);
+	fillrect((t_point){(player->position.x - player->radius) * MINI_MAP,
+		(player->position.y - player->radius) * MINI_MAP}, player->radius * 2 * MINI_MAP,
+		player->radius * 2 * MINI_MAP, 0x00FF00);
 }
 
 int	update_player(int keycode)
