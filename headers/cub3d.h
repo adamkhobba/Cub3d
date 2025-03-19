@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/18 23:35:39 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/19 04:55:57 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define CUB_SIZE 100
 # define WALL_STRIP_WIDTH 1
 # define FOV 60
-# define MINI_MAP 0.2
+# define MINI_MAP 1
 # define WIDTH CUB_SIZE * 14
 # define HEIGHT CUB_SIZE * 7
 # define NAME "\e[1;34mCub3D\e[0m"
@@ -46,8 +46,8 @@
  */
 typedef struct s_point
 {
-	int				x;
-	int				y;
+	double				x;
+	double				y;
 }					t_point;
 
 /**

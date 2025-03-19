@@ -37,36 +37,56 @@ void	put_player(t_player *player)
 
 int	update_player(int keycode)
 {
-	int			steps;
 	t_data		*data;
-	int			x;
-	int			y;
+	t_point		move;
+	t_point		steps;
 
 	data = get_data();
+	data->player->rotation_angle = normalize_angle(data->player->rotation_angle);
+	printf("----\n");
 	if (keycode == 119)
+	{
 		data->player->walk_direction = 1;
+		move.x = cos(data->player->rotation_angle);
+		move.y = sin(data->player->rotation_angle);
+	}
 	else if (keycode == 115)
+	{
 		data->player->walk_direction = -1;
+		move.x = cos(data->player->rotation_angle);
+		move.y = sin(data->player->rotation_angle);
+	}
 	else if (keycode == 97)
-		data->player->turn_direction = -1;
+	{
+		data->player->walk_direction = 1;
+		move.x = -sin(data->player->rotation_angle);
+		move.y = cos(data->player->rotation_angle);
+	}
 	else if (keycode == 100)
+	{
+		data->player->walk_direction = 1;
+		move.x = sin(data->player->rotation_angle);
+		move.y = -cos(data->player->rotation_angle);
+	}
+	else if (keycode == 65363)
 		data->player->turn_direction = 1;
+	else if (keycode == 65361)
+		data->player->turn_direction = -1;
 	else if (keycode == 65307)
 		close_program();
-	data->player->rotation_angle = normalize_angle(data->player->rotation_angle);
 	mlx_destroy_image(data->mlx.instance, data->mlx.image.img);
 	data->player->rotation_angle += data->player->turn_direction
 		* data->player->turn_speed;
-	steps = data->player->walk_direction * data->player->walk_speed;
-	x = data->player->position.x;
-	y = data->player->position.y;
-	data->player->position.x += (int)(cos(data->player->rotation_angle) * steps);
-	data->player->position.y += (int)(sin(data->player->rotation_angle) * steps);
-	// TODO: improving the code to let the player move next to the wall
-	if (is_wall(data->player->position.x, data->player->position.y, data))
+	steps.x = data->player->walk_direction * data->player->walk_speed * move.x;
+	steps.y = data->player->walk_direction * data->player->walk_speed * move.y;
+	printf("walk_direction: %d\n", data->player->walk_direction);
+	printf("move x: %f, y: %f\n", move.x, move.y);
+	printf("steps x: %f, y: %f", steps.x, steps.y);
+	if (!is_wall(data->player->position.x + steps.x, data->player->position.y + steps.y,
+		data))
 	{
-		data->player->position.x = x;
-		data->player->position.y = y;
+		data->player->position.x += steps.x;
+		data->player->position.y += steps.y;
 	}
 	_2dmap_render(data);
 	return (0);
@@ -79,11 +99,15 @@ int	update_player_release(int keycode)
 	player = get_data()->player;
 	if (keycode == 119)
 		player->walk_direction = 0;
-	if (keycode == 115)
+	else if (keycode == 115)
 		player->walk_direction = 0;
-	if (keycode == 97)
+	else if (keycode == 97)
+		player->walk_direction = 0;
+	else if (keycode == 100)
+		player->walk_direction = 0;
+	else if (keycode == 65363)
 		player->turn_direction = 0;
-	if (keycode == 100)
+	else if (keycode == 65361)
 		player->turn_direction = 0;
 	if (keycode == 65307)
 		close_program();

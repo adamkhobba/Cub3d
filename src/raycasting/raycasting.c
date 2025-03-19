@@ -24,7 +24,8 @@ void	cast_ray(t_ray *ray, int colum_id, t_data *data)
 	int		horz_wall_hit_x;
 	int		horz_wall_hit_y;
 
-	printf("colum_id %d\n", colum_id);
+	(void)colum_id;
+	// printf("colum_id %d\n", colum_id);
 	// Horizontal Ray-Grid Intersection
 	found_horz_wall_hit = false;
 	horz_wall_hit_x = 0;
@@ -150,6 +151,7 @@ t_ray	*raycasting(t_data *data, int num_rays)
 	colum_id = 0;
 	rays = malloc(sizeof(t_ray) * num_rays);
 	fov_rad = degtorad(FOV);
+	printf ("rotation_angle %f\n", radtodeg(data->player->rotation_angle));
 	ray_angle = data->player->rotation_angle - (fov_rad / 2);
 	while (colum_id < num_rays)
 	{
