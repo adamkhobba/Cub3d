@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 07:43:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/17 01:10:51 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/18 04:02:26 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ double	normalize_angle(double angle)
 
 void	ray_render(t_ray *ray, t_data *data)
 {
-	fillline((t_point){data->player->position.x, data->player->position.y},
-		(t_point){data->player->position.x + cos(ray->angle) * 20,
-		data->player->position.y + sin(ray->angle) * 20}
+	fillline((t_point){data->player->position.x * MINI_MAP,
+		data->player->position.y * MINI_MAP},
+		(t_point){ray->wall_hit_x * MINI_MAP,
+		ray->wall_hit_y * MINI_MAP}
 		, ray->angle, 0x0000FF);
 }
 
-void	rays_many_render(t_ray *rays, int num_rays)
+void	ray_render_many(t_ray *rays, int num_rays)
 {
 	int	i;
 	t_data	*data;

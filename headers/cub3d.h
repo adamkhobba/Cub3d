@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/17 23:09:07 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/18 23:35:39 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@
 # include <string.h>
 # include <unistd.h>
 
-# define CUB_SIZE 64
-# define NUM_LARGE 1
+# define CUB_SIZE 100
+# define WALL_STRIP_WIDTH 1
 # define FOV 60
+# define MINI_MAP 0.2
 # define WIDTH CUB_SIZE * 14
 # define HEIGHT CUB_SIZE * 7
 # define NAME "\e[1;34mCub3D\e[0m"
@@ -328,12 +329,14 @@ t_map				*fake_map_init(void);
 void				free_map(t_map *map);
 
 // @addindex raycasting/raycasting.c
-t_ray				*raycasting(t_data *data);
+t_ray				*raycasting(t_data *data, int num_rays);
 
 // @addindex raycasting/ray_functions.c
 t_ray				ray_create(double angle);
 double				normalize_angle(double angle);
 void				ray_render(t_ray *ray, t_data *data);
-void				rays_many_render(t_ray *rays, int num_rays);
+void				ray_render_many(t_ray *rays, int num_rays);
 
+// @addindex raycasting/projection_wall.c
+void				render_projection_walls(t_ray *rays, int num_rays);
 #endif

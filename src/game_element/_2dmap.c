@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/17 23:26:19 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/18 04:14:23 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	fillrect(t_point point, int width, int height, int color)
 	int	i;
 
 	i = point.y;
-	while (i < point.y + height)
+	while (i <= point.y + height)
 	{
 		j = point.x;
-		while (j < point.x + width)
+		while (j <= point.x + width)
 		{
 			my_put_pixel_to_image(j, i, color);
 			j++;
@@ -95,7 +95,7 @@ void	_2dmap(t_map *map)
 	int		i;
 	int		j;
 
-	if (map->kharita == NULL)
+	if (map->map == NULL)
 		return ;
 	i = 0;
 	while (i < map->map_height)
@@ -103,11 +103,14 @@ void	_2dmap(t_map *map)
 		j = 0;
 		while (j < map->map_width)
 		{
-			point = (t_point){j * CUB_SIZE, i * CUB_SIZE};
+			point = (t_point){j * CUB_SIZE * MINI_MAP,
+				i * CUB_SIZE * MINI_MAP};
 			if (map->map[i][j] == '1')
-				fillrect(point, CUB_SIZE - 1, CUB_SIZE - 1, 0x222222);
+				fillrect(point, CUB_SIZE  * MINI_MAP,
+					CUB_SIZE * MINI_MAP, 0x222222);
 			else
-				fillrect(point, CUB_SIZE - 1, CUB_SIZE - 1, 0xFFFFFF);
+				fillrect(point, CUB_SIZE * MINI_MAP,
+					CUB_SIZE * MINI_MAP, 0xFFFFFF);
 			j++;
 		}
 		i++;
@@ -127,6 +130,8 @@ void	_2dmap(t_map *map)
  */
 void	_2dmap_render(t_data *data)
 {
+	int		num_rays;
+
 	data->mlx.image.img = mlx_new_image(data->mlx.instance, data->mlx.win_width, data->mlx.win_height);
 	if (!data->mlx.image.img)
 	{
@@ -136,8 +141,11 @@ void	_2dmap_render(t_data *data)
 	data->mlx.image.addr = mlx_get_data_addr(data->mlx.image.img,
 			&data->mlx.image.bpp, &data->mlx.image.line_len,
 			&data->mlx.image.endian);
+	num_rays = data->mlx.win_width / WALL_STRIP_WIDTH;
+	t_ray *rays = raycasting(data, num_rays);
+	render_projection_walls(rays, num_rays);
 	_2dmap(data->map);
-	t_ray *rays = raycasting(data);
+	ray_render_many(rays, num_rays);
 	put_player(data->player);
 	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
 		get_data()->mlx.image.img, 0, 0);
