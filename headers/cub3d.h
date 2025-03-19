@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/18 04:13:10 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/18 23:35:39 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # include <string.h>
 # include <unistd.h>
 
-# define CUB_SIZE 64
+# define CUB_SIZE 100
 # define WALL_STRIP_WIDTH 1
 # define FOV 60
 # define MINI_MAP 0.2
