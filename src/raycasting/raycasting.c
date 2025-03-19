@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	cast_ray(t_ray *ray, int colum_id, t_data *data)
+void	cast_ray(t_ray *ray, t_data *data)
 {
 	double	xintercept;
 	double	yintercept;
@@ -24,8 +24,6 @@ void	cast_ray(t_ray *ray, int colum_id, t_data *data)
 	int		horz_wall_hit_x;
 	int		horz_wall_hit_y;
 
-	(void)colum_id;
-	// printf("colum_id %d\n", colum_id);
 	// Horizontal Ray-Grid Intersection
 	found_horz_wall_hit = false;
 	horz_wall_hit_x = 0;
@@ -42,9 +40,9 @@ void	cast_ray(t_ray *ray, int colum_id, t_data *data)
 	horz_hit_x = xintercept;
 	horz_hit_y = yintercept;
 	if (ray->is_ray_facing_up)
-		horz_hit_y--;
-	if (ray->is_ray_facing_right)
-		horz_hit_x += 3;
+		horz_hit_y -= 0.1;
+	if (ray->is_ray_facing_left)
+		horz_hit_x -= 0.1;
 	while ((horz_hit_x >= 0 && horz_hit_x < data->mlx.win_width)
 		&& (horz_hit_y >= 0 && horz_hit_y < data->mlx.win_height))
 	{
@@ -82,9 +80,9 @@ void	cast_ray(t_ray *ray, int colum_id, t_data *data)
 	vert_hit_x = xintercept;
 	vert_hit_y = yintercept;
 	if (ray->is_ray_facing_left)
-		vert_hit_x--;
+		vert_hit_x -= 0.1;
 	if (ray->is_ray_facing_down)
-		vert_hit_y += 3;
+		vert_hit_y -= 0.1;
 	while((vert_hit_x >= 0 && vert_hit_x < data->mlx.win_width)
 		&& (vert_hit_y >= 0 && vert_hit_y < data->mlx.win_height))
 	{
@@ -115,7 +113,7 @@ void	cast_ray(t_ray *ray, int colum_id, t_data *data)
 			(t_point){vert_wall_hit_x, vert_wall_hit_y});
 	else
 		vert_hit_distance = INT_MAX;
-	if (horz_hit_distance < vert_hit_distance)
+	if (horz_hit_distance < vert_hit_distance - 0.01)
 	{
 		ray->wall_hit_x = horz_wall_hit_x;
 		ray->wall_hit_y = horz_wall_hit_y;
@@ -129,37 +127,25 @@ void	cast_ray(t_ray *ray, int colum_id, t_data *data)
 		ray->distance = vert_hit_distance;
 		ray->was_hit_vertical = true;
 	}
-	// printf("--------------------\n");
-	// printf("colum_id %d\n", colum_id);
-	// printf("x %f\n", ray.wall_hit_x / CUB_SIZE);
-	// printf("y %f\n", ray.wall_hit_y / CUB_SIZE);
-	// printf("map->map %c\n", data->map->map[(int)ray.wall_hit_y / CUB_SIZE]
-	// 	[(int)ray.wall_hit_x / CUB_SIZE]);
-	// fillline((t_point){data->player->position.x * MINI_MAP,
-	// 	data->player->position.y * MINI_MAP},
-	// 	(t_point){ray.wall_hit_x * MINI_MAP,
-	// 	ray.wall_hit_y * MINI_MAP}, ray.angle, 0xFF0000);
 }
 
 t_ray	*raycasting(t_data *data, int num_rays)
 {
-	int		colum_id;
-	double	ray_angle;
 	t_ray	*rays;
+	double	ray_angle;
 	double	fov_rad;
+	int		colum_id;
 
 	colum_id = 0;
 	rays = malloc(sizeof(t_ray) * num_rays);
+	if (!rays)
+		return (NULL);
 	fov_rad = degtorad(FOV);
-	printf ("rotation_angle %f\n", radtodeg(data->player->rotation_angle));
-	ray_angle = data->player->rotation_angle - (fov_rad / 2);
+	ray_angle = data->player->rotation_angle - (fov_rad / (double)2);
 	while (colum_id < num_rays)
 	{
-		// create an ray
 		rays[colum_id] = ray_create(ray_angle);
-		cast_ray(&rays[colum_id], colum_id, data);
-		// add the ray of rays array
-		// rays[colum_id] = ray;
+		cast_ray(&rays[colum_id], data);
 		ray_angle += fov_rad / num_rays;
 		colum_id++;
 	}

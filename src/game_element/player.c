@@ -43,7 +43,6 @@ int	update_player(int keycode)
 
 	data = get_data();
 	data->player->rotation_angle = normalize_angle(data->player->rotation_angle);
-	printf("----\n");
 	if (keycode == 119)
 	{
 		data->player->walk_direction = 1;
@@ -79,9 +78,6 @@ int	update_player(int keycode)
 		* data->player->turn_speed;
 	steps.x = data->player->walk_direction * data->player->walk_speed * move.x;
 	steps.y = data->player->walk_direction * data->player->walk_speed * move.y;
-	printf("walk_direction: %d\n", data->player->walk_direction);
-	printf("move x: %f, y: %f\n", move.x, move.y);
-	printf("steps x: %f, y: %f", steps.x, steps.y);
 	if (!is_wall(data->player->position.x + steps.x, data->player->position.y + steps.y,
 		data))
 	{
