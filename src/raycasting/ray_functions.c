@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 07:43:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/19 23:22:49 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/20 01:47:52 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ void	ray_render(t_ray *ray, t_data *data)
 		(t_point){ray->wall_hit_x * MINI_MAP,
 		ray->wall_hit_y * MINI_MAP}
 		, ray->angle, 0xFF0000);
-	// (void)data;
-	// my_put_pixel_to_image(ray->wall_hit_x, ray->wall_hit_y, 0xFF0000);
 }
 
 void	ray_render_many(t_ray *rays, int num_rays)
