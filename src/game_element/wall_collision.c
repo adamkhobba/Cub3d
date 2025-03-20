@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/03/19 23:36:01 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/20 04:05:29 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ bool	is_wall(int x, int y, t_data *data)
 	y_cub = floor(y / CUB_SIZE);
 	if (x < 0 || y < 0 || x >= data->mlx.win_width || y >= data->mlx.win_height)
 		return (true);
-	// printf("data->map->map[y / CUB_SIZE][x / CUB_SIZE]: %p\n", data->map->map[y / CUB_SIZE]);
 	if (data->map->map[y_cub][x_cub] == '1')
 		return (true);
 	return (false);

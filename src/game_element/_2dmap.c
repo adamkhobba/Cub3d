@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/20 01:13:01 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/20 04:09:43 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,5 +149,5 @@ void	_2dmap_render(t_data *data)
 	put_player(data->player);
 	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
 		get_data()->mlx.image.img, 0, 0);
-	free(rays);// free rays array
+	free(rays);
 }

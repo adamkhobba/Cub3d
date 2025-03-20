@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/20 01:49:16 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/20 04:30:27 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 # define WALL_STRIP_WIDTH 1
 # define FOV 60
 # define MINI_MAP 0.2
-# define WIDTH CUB_SIZE * 14
-# define HEIGHT CUB_SIZE * 7
+# define WIDTH  1500
+# define HEIGHT 800
 # define NAME "\e[1;34mCub3D\e[0m"
 # define ERROR "\e[1;31mError\e[0m"
 
@@ -316,10 +316,10 @@ double				degtorad(double deg);
 double				cal_distance(t_point point1, t_point point2);
 
 // @addindex utilities/print_fts.c
-void				print_map(t_map *data);
+void				map_print(t_map *data);
 
 // @addindex utilities/print_fts.c
-void				print_map(t_map *data);
+void				map_print(t_map *data);
 
 // @addindex game_element/check_fts.c
 bool				is_wall(int x, int y, t_data *data);
@@ -339,4 +339,9 @@ void				ray_render_many(t_ray *rays, int num_rays);
 
 // @addindex raycasting/projection_wall.c
 void				render_projection_walls(t_ray *rays, int num_rays);
+
+// @addindex raycasting/intersection.c
+t_point				horz_intersection(t_data *data , t_ray *ray);
+t_point				vert_intersection(t_data *data , t_ray *ray);
+
 #endif

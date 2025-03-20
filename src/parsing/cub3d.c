@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/17 00:40:47 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/20 03:16:35 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,6 @@ t_map	*parsing(int ac, char *av[])
 	check_player_valid_pos(data);
 	cp_flkharita(data);
 	player_possitions(data);
-	free_memory(data);
+	// free_memory(data);
 	return (data);
 }
