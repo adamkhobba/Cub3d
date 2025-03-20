@@ -18,45 +18,45 @@ void	cast_ray(t_ray *ray, t_data *data)
 	double	yintercept;
 	double		xstep;
 	double		ystep;
-	// double	horz_hit_x;
-	// double	horz_hit_y;
-	// bool	found_horz_wall_hit;
-	// double	horz_wall_hit_x;
-	// double	horz_wall_hit_y;
+	double	horz_hit_x;
+	double	horz_hit_y;
+	bool	found_horz_wall_hit;
+	double	horz_wall_hit_x;
+	double	horz_wall_hit_y;
 
-	// // Horizontal Ray-Grid Intersection
-	// found_horz_wall_hit = false;
-	// horz_wall_hit_x = 0;
-	// horz_wall_hit_y = 0;
-	// yintercept = floor(data->player->position.y / CUB_SIZE) * CUB_SIZE;
-	// yintercept += ray->is_ray_facing_down * CUB_SIZE;
-	// xintercept = data->player->position.x
-	// 	+ (yintercept - data->player->position.y) / tan(ray->angle);
-	// ystep = CUB_SIZE;
-	// ystep *= ray->is_ray_facing_up * -2 + 1;
-	// xstep = CUB_SIZE / tan(ray->angle);
-	// xstep *= (ray->is_ray_facing_left && xstep > 0) * -2 + 1;
-	// xstep *= (ray->is_ray_facing_right && xstep < 0) * -2 + 1;
-	// horz_hit_x = xintercept;
-	// horz_hit_y = yintercept;
-	// if (ray->is_ray_facing_up)
-	// 	horz_hit_y -= 0.00001;
-	// while ((horz_hit_x >= 0 && horz_hit_x < data->map->map_width * CUB_SIZE)
-	// 	&& (horz_hit_y >= 0 && horz_hit_y < data->map->map_height * CUB_SIZE))
-	// {
-	// 	if (is_wall(horz_hit_x, horz_hit_y, data))
-	// 	{
-	// 		found_horz_wall_hit = true;
-	// 		horz_wall_hit_x = horz_hit_x;
-	// 		horz_wall_hit_y = horz_hit_y;
-	// 		break ;
-	// 	}
-	// 	else
-	// 	{
-	// 		horz_hit_x += xstep;
-	// 		horz_hit_y += ystep;
-	// 	}
-	// }
+	// Horizontal Ray-Grid Intersection
+	found_horz_wall_hit = false;
+	horz_wall_hit_x = 0;
+	horz_wall_hit_y = 0;
+	yintercept = floor(data->player->position.y / CUB_SIZE) * CUB_SIZE;
+	yintercept += ray->is_ray_facing_down * CUB_SIZE;
+	xintercept = data->player->position.x
+		+ (yintercept - data->player->position.y) / tan(ray->angle);
+	ystep = CUB_SIZE;
+	ystep *= ray->is_ray_facing_up * -2 + 1;
+	xstep = CUB_SIZE / tan(ray->angle);
+	xstep *= (ray->is_ray_facing_left && xstep > 0) * -2 + 1;
+	xstep *= (ray->is_ray_facing_right && xstep < 0) * -2 + 1;
+	horz_hit_x = xintercept;
+	horz_hit_y = yintercept;
+	if (ray->is_ray_facing_up)
+		horz_hit_y -= 0.00001;
+	while ((horz_hit_x >= 0 && horz_hit_x < data->map->map_width * CUB_SIZE)
+		&& (horz_hit_y >= 0 && horz_hit_y < data->map->map_height * CUB_SIZE))
+	{
+		if (is_wall(horz_hit_x, horz_hit_y, data))
+		{
+			found_horz_wall_hit = true;
+			horz_wall_hit_x = horz_hit_x;
+			horz_wall_hit_y = horz_hit_y;
+			break ;
+		}
+		else
+		{
+			horz_hit_x += xstep;
+			horz_hit_y += ystep;
+		}
+	}
 	// Vertical Ray-Grid Intersection
 	double	vert_hit_x;
 	double	vert_hit_y;
@@ -102,7 +102,7 @@ void	cast_ray(t_ray *ray, t_data *data)
 
 	if(found_horz_wall_hit)
 		horz_hit_distance = cal_distance((t_point){data->player->position.x, data->player->position.y},
-			(t_point){horz_wall_hit.x, horz_wall_hit.y});
+			(t_point){horz_wall_hit_x, horz_wall_hit_y});
 	else
 		horz_hit_distance = INT_MAX;
 	if(found_vert_wall_hit)

@@ -6,7 +6,7 @@
 #    By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-#    Updated: 2025/03/18 02:16:22 by akhobba          ###   ########.fr        #
+#    Updated: 2025/03/20 12:28:50 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC			=	src/main.c src/parsing/check_boundaries.c src/parsing/check_color.c src/
 				src/game_element/player.c src/game_element/_2dmap.c src/game_element/wall_collision.c \
 				src/parsing/check_valid_texture.c src/utilities/print_fts.c \
 				src/utilities/no_need.c src/raycasting/raycasting.c src/raycasting/projection_wall.c src/raycasting/ray_functions.c \
+				src/raycasting/intersection_wall.c\
 				src/parsing/check_boundaries_utils.c src/parsing/check_cell_boundaries.c \
 				src/parsing/ft_split_utils.c
 

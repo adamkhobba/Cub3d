@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 01:46:40 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/20 03:14:00 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/20 12:32:54 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,14 @@ void	render_projection_walls(t_ray *rays, int num_rays)
 		wall_strip_height = (CUB_SIZE / rays[i].distance) * proj_plane_distance;
 		if (wall_strip_height > data->mlx.win_height)
 			wall_strip_height = data->mlx.win_height;
-		fillrect((t_point){i * WALL_STRIP_WIDTH, (data->mlx.win_height / 2)
-			- (wall_strip_height / 2)},
-			WALL_STRIP_WIDTH, wall_strip_height, 0x00FF00);
+		if (rays[i].was_hit_vertical)
+			fillrect((t_point){i * WALL_STRIP_WIDTH, (data->mlx.win_height / 2)
+				- (wall_strip_height / 2)},
+				WALL_STRIP_WIDTH, wall_strip_height, 0x0000FF);
+		else
+			fillrect((t_point){i * WALL_STRIP_WIDTH, (data->mlx.win_height / 2)
+				- (wall_strip_height / 2)},
+				WALL_STRIP_WIDTH, wall_strip_height, 0x00FF00);
 		i++;
 	}
 }
