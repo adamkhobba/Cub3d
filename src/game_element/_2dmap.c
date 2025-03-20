@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/19 07:09:56 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/20 01:13:01 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,11 @@ void	_2dmap(t_map *map)
 			point = (t_point){j * CUB_SIZE * MINI_MAP,
 				i * CUB_SIZE * MINI_MAP};
 			if (map->map[i][j] == '1')
-				fillrect(point, CUB_SIZE  * MINI_MAP,
-					CUB_SIZE * MINI_MAP, 0x222222);
+				fillrect(point, (CUB_SIZE - 2) * MINI_MAP,
+					(CUB_SIZE - 2) * MINI_MAP, 0x222222);
 			else
-				fillrect(point, CUB_SIZE * MINI_MAP,
-					CUB_SIZE * MINI_MAP, 0xFFFFFF);
+				fillrect(point, (CUB_SIZE - 2) * MINI_MAP,
+					(CUB_SIZE - 2) * MINI_MAP, 0xFFFFFF);
 			j++;
 		}
 		i++;
@@ -145,7 +145,7 @@ void	_2dmap_render(t_data *data)
 	t_ray *rays = raycasting(data, num_rays);
 	render_projection_walls(rays, num_rays);
 	_2dmap(data->map);
-	ray_render_many(rays, 1);
+	ray_render_many(rays, num_rays);
 	put_player(data->player);
 	mlx_put_image_to_window(get_data()->mlx.instance, get_data()->mlx.win,
 		get_data()->mlx.image.img, 0, 0);
