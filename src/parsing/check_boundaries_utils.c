@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_boundaries_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:39:51 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/17 23:10:43 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/20 23:42:24 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void player_possitions(t_map *data)
 		{
 			if (data->map[i][j] == 'W' || data->map[i][j] == 'E' || data->map[i][j] == 'N' || data->map[i][j] == 'S')
 			{
-				data->info->player_in_x = j;
-				data->info->player_in_y = i;
+				data->player_x = j;
+				data->player_y= i;
 			}
 			j++;
 		}
