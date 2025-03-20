@@ -21,7 +21,13 @@ void	player_init(t_data *data)
 	data->player->radius = 3;
 	data->player->turn_direction = 0;
 	data->player->walk_direction = 0;
-	data->player->rotation_angle = degtorad(90);
+	if (data->map->map[data->map->player_y][data->map->player_x] == 'N')
+		data->player->rotation_angle = degtorad(270);
+	else if (data->map->map[data->map->player_y][data->map->player_x] == 'S')
+		data->player->rotation_angle = degtorad(90);
+	else if (data->map->map[data->map->player_y][data->map->player_x] == 'W')
+		data->player->rotation_angle = degtorad(180);
+	else if (data->map->map[data->map->player_y][data->map->player_x] == 'E')
 	data->player->walk_speed = 3;
 	data->player->turn_speed = 6 * (M_PI / 180);
 }
@@ -35,6 +41,36 @@ void	put_player(t_player *player)
 		player->radius * 2 * MINI_MAP, 0x00FF00);
 }
 
+t_point	cal_move_player(double angle, int direction)
+{
+	t_point	move;
+
+	move = (t_point){0};
+	if (direction == UP)
+	{
+		move.x = cos(angle);
+		move.y = sin(angle);
+	}
+	else if (direction == DOWN)
+	{
+		move.x = cos(angle);
+		move.y = sin(angle);
+	}
+	else if (direction == RIGHT)
+	{
+		move.x = -sin(angle);
+		move.y = cos(angle);
+	}
+	else if (direction == LEFT)
+	{
+		move.x = sin(angle);
+		move.y = -cos(angle);
+	}
+	printf("move.x = %f\n", move.x);
+	printf("move.y = %f\n", move.y);
+	return (move);
+}
+
 int	update_player(int keycode)
 {
 	t_data		*data;
@@ -43,36 +79,29 @@ int	update_player(int keycode)
 
 	data = get_data();
 	data->player->rotation_angle = normalize_angle(data->player->rotation_angle);
-	if (keycode == 119)
+	if (keycode == UP)
 	{
 		data->player->walk_direction = 1;
-		move.x = cos(data->player->rotation_angle);
-		move.y = sin(data->player->rotation_angle);
+		move = cal_move_player(data->player->rotation_angle, UP);
 	}
-	else if (keycode == 115)
+	else if (keycode == DOWN)
 	{
 		data->player->walk_direction = -1;
-		move.x = cos(data->player->rotation_angle);
-		move.y = sin(data->player->rotation_angle);
+		move = cal_move_player(data->player->rotation_angle, DOWN);
 	}
-	else if (keycode == 100)
+	else if (keycode == RIGHT)
 	{
 		data->player->walk_direction = 1;
-		move.x = -sin(data->player->rotation_angle);
-		move.y = cos(data->player->rotation_angle);
+		move = cal_move_player(data->player->rotation_angle, RIGHT);
 	}
-	else if (keycode == 97)
+	else if (keycode == LEFT)
 	{
+		move = cal_move_player(data->player->rotation_angle, LEFT);
 		data->player->walk_direction = 1;
-		move.x = sin(data->player->rotation_angle);
-		move.y = -cos(data->player->rotation_angle);
 	}
-	else if (keycode == 65363)
-		data->player->turn_direction = 1;
-	else if (keycode == 65361)
-		data->player->turn_direction = -1;
-	else if (keycode == 65307)
-		close_program();
+	(keycode == RIGHT_ARROW) && (data->player->turn_direction = 1);
+	(keycode == LIFGHT_ARROW) && (data->player->turn_direction = -1);
+	(keycode == 65307) && close_program();
 	mlx_destroy_image(data->mlx.instance, data->mlx.image.img);
 	data->player->rotation_angle += data->player->turn_direction
 		* data->player->turn_speed;

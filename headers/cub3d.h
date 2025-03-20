@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/20 04:30:27 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/20 13:59:30 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@
 # define HEIGHT 800
 # define NAME "\e[1;34mCub3D\e[0m"
 # define ERROR "\e[1;31mError\e[0m"
+
+typedef enum s_keys
+{
+	UP = 119,
+	DOWN = 115,
+	LEFT = 97,
+	RIGHT = 100,
+	LIFGHT_ARROW = XK_Left,
+	RIGHT_ARROW = XK_Right,
+	EXIT = 65307
+}					t_keys;
 
 /**
  * @struct s_point
@@ -77,8 +88,7 @@ typedef struct s_player
 typedef	struct s_ray
 {
 	double			angle;
-	double			wall_hit_x;
-	double			wall_hit_y;
+	t_point			wall_hit;
 	double			distance;
 	bool			was_hit_vertical;
 	int				is_ray_facing_down;
@@ -157,7 +167,6 @@ typedef struct s_map
 	int				color_c;
 	int				player_x;
 	int				player_y;
-
 }					t_map;
 
 typedef struct s_img
