@@ -55,13 +55,13 @@ int	update_player(int keycode)
 		move.x = cos(data->player->rotation_angle);
 		move.y = sin(data->player->rotation_angle);
 	}
-	else if (keycode == 97)
+	else if (keycode == 100)
 	{
 		data->player->walk_direction = 1;
 		move.x = -sin(data->player->rotation_angle);
 		move.y = cos(data->player->rotation_angle);
 	}
-	else if (keycode == 100)
+	else if (keycode == 97)
 	{
 		data->player->walk_direction = 1;
 		move.x = sin(data->player->rotation_angle);
