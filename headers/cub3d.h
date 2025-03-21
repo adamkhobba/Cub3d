@@ -33,7 +33,7 @@
 # define WALL_STRIP_W 1
 # define FOV 60
 # define MINI_MAP 0.2
-# define WIDTH  1500
+# define WIDTH 1500
 # define HEIGHT 800
 # define NAME "\e[1;34mCub3D\e[0m"
 # define ERROR "\e[1;31mError\e[0m"
@@ -57,8 +57,8 @@ typedef enum s_keys
  */
 typedef struct s_point
 {
-	double				x;
-	double				y;
+	double			x;
+	double			y;
 }					t_point;
 
 /**
@@ -85,7 +85,7 @@ typedef struct s_player
 	double			turn_speed;
 }					t_player;
 
-typedef	struct s_ray
+typedef struct s_ray
 {
 	double			angle;
 	t_point			wall_hit;
@@ -132,7 +132,7 @@ typedef	struct s_ray
  * @param first_line_in_map 	Index of the first line in the map array.
  * @param last_line_in_map 	Index of the last line in the map array.
  */
-typedef struct 		s_info
+typedef struct s_info
 {
 	int				height;
 	int				width;
@@ -147,18 +147,18 @@ typedef struct 		s_info
 	char			*f_key;
 	int				first_line_in_map;
 	int				last_line_in_map;
-	int 			boudaries_width;
-	int 			player_in_x;
-	int 			player_in_y;
+	int				boudaries_width;
+	int				player_in_x;
+	int				player_in_y;
 }					t_info;
 
 typedef struct s_map
 {
 	t_info			*info;
-	int 			map_width;
-	int 			map_height;
+	int				map_width;
+	int				map_height;
 	char			**kharita;
-	char 			**map;
+	char			**map;
 	char			*no;
 	char			*so;
 	char			*we;
@@ -205,7 +205,7 @@ void				cp_flkharita(t_map *data);
 
 // @addindex parsing/check_boundaries.c
 void				check_boundaries(t_map *data);
-void 				player_possitions(t_map *data);
+void				player_possitions(t_map *data);
 
 // @addindex parsing/check_cell_boundaries.c
 void				check_cell_boundaries(t_map *data, int i, int j);
@@ -230,11 +230,12 @@ int					last_line(t_map *data);
 int					check_player_valid_pos(t_map *data);
 
 //@addindex parsing/check_textures_2.c
-int					set_floor_and_ceiling_color(t_map *data, char **split, int i);
-	int				set_no_texture(t_map *data, char **split);
-	int				set_ea_texture(t_map *data, char **split);
-	int				set_we_texture(t_map *data, char **split);
-	int				set_so_texture(t_map *data, char **split);
+int					set_floor_and_ceiling_color(t_map *data, char **split,
+						int i);
+int					set_no_texture(t_map *data, char **split);
+int					set_ea_texture(t_map *data, char **split);
+int					set_we_texture(t_map *data, char **split);
+int					set_so_texture(t_map *data, char **split);
 
 // @addindex parsing/check_textures.c
 int					parse_textures(t_map *data);
@@ -254,7 +255,7 @@ void				map_height(t_map *data, char *av[]);
 int					count_split(char **split);
 
 // @addindex parsing/cub3d.c
-t_map		 		*parsing(int ac, char *av[]);
+t_map				*parsing(int ac, char *av[]);
 void				free_memory(t_map *data);
 void				cp_map_array(t_map *data, char *av[]);
 void				ft_error(char *str, t_map *data);
@@ -319,7 +320,7 @@ void				ray_render_many(t_ray *rays, int num_rays);
 void				render_projection_walls(t_ray *rays, int num_rays);
 
 // @addindex raycasting/intersection.c
-t_point				horz_intersection(t_data *data , t_ray *ray);
-t_point				vert_intersection(t_data *data , t_ray *ray);
+t_point				horz_intersection(t_data *data, t_ray *ray);
+t_point				vert_intersection(t_data *data, t_ray *ray);
 
 #endif
