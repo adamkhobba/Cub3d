@@ -81,6 +81,8 @@ int	update_player(int keycode)
 	{
 		data->player->walk_direction = 1;
 		// move = cal_move_player(data->player->rotation_angle, UP);
+		move.x = cos(data->player->rotation_angle);
+		move.y = sin(data->player->rotation_angle);
 		printf("move.y = %f move.x = %f\n", move.y, move.x);
 	}
 	else if (keycode == DOWN)
