@@ -48,8 +48,8 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 		return (1);
 	}
 	data = get_data();
-	// TODO: use parsing of fill out the t_map struct
 	// data->map = parsing(ac, av);
+	// TODO: use parsing of fill out the t_map struct
 	data->map = fake_map_init(); // tmp function
 	map_print(data->map);
 	data->mlx.win_height = HEIGHT;
