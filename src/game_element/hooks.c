@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 01:42:15 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/21 01:43:42 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/21 01:53:50 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,7 @@ int	update_player(int keycode, t_data *data)
 	(keycode == EXIT) && (close_program());
 	change_input_destroy_img(&steps, move, data);
 	if (!is_wall(data->player->pos.x + steps.x, data->player->pos.y + steps.y))
-	{
-		data->player->pos.x += steps.x;
-		data->player->pos.y += steps.y;
-	}
+		(data->player->pos.x += steps.x) && (data->player->pos.y += steps.y);
 	_2dmap_render(data);
 	return (0);
 }
