@@ -6,13 +6,13 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 02:36:19 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/21 01:22:28 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/21 01:28:00 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_point	horz_intersection(t_data *data , t_ray *ray)
+t_point	horz_intersection(t_data *data, t_ray *ray)
 {
 	t_point	intercept;
 	t_point	step;
@@ -55,7 +55,7 @@ t_point	vert_intersection(t_data *data, t_ray *ray)
 	step.y *= (ray->is_ray_facing_up && step.y > 0) * -2 + 1;
 	step.y *= (ray->is_ray_facing_down && step.y < 0) * -2 + 1;
 	(ray->is_ray_facing_left) && (intercept.x -= 0.00001);
-	while((intercept.x >= 0 && intercept.x < data->map->map_width * CUB_SIZE)
+	while ((intercept.x >= 0 && intercept.x < data->map->map_width * CUB_SIZE)
 		&& (intercept.y >= 0 && intercept.y < data->map->map_height * CUB_SIZE))
 	{
 		if (is_wall(intercept.x, intercept.y))

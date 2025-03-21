@@ -29,7 +29,8 @@ void	mlx_setup_env(void)
 
 	data = get_data();
 	data->mlx.instance = mlx_init();
-	data->mlx.win = mlx_new_window(data->mlx.instance, data->mlx.win_width, data->mlx.win_height, "cub3d");
+	data->mlx.win = mlx_new_window(data->mlx.instance, data->mlx.win_width,
+			data->mlx.win_height, "cub3d");
 	mlx_hook(data->mlx.win, DestroyNotify, StructureNotifyMask, &close_program,
 		NULL);
 	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, update_player, data);
@@ -40,11 +41,11 @@ void	mlx_setup_env(void)
 
 int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 {
-	t_data *data;
+	t_data	*data;
 
 	if (ac != 2)
 	{
-		ft_putstr_fd(ERROR"\nInvalid number of arguments\n", 2);
+		ft_putstr_fd(ERROR "\nInvalid number of arguments\n", 2);
 		return (1);
 	}
 	data = get_data();

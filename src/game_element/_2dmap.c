@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/21 00:40:48 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/21 01:40:53 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,14 +103,13 @@ void	_2dmap(t_map *map)
 		j = 0;
 		while (j < map->map_width)
 		{
-			point = (t_point){j * CUB_SIZE * MINI_MAP,
-				i * CUB_SIZE * MINI_MAP};
+			point = (t_point){j * CUB_SIZE * MINI_MAP, i * CUB_SIZE * MINI_MAP};
 			if (map->map[i][j] == '1')
-				fillrect(point, (CUB_SIZE - 2) * MINI_MAP,
-					(CUB_SIZE - 2) * MINI_MAP, 0x222222);
+				fillrect(point, (CUB_SIZE - 2) * MINI_MAP, (CUB_SIZE - 2)
+					* MINI_MAP, 0x222222);
 			else
-				fillrect(point, (CUB_SIZE - 2) * MINI_MAP,
-					(CUB_SIZE - 2) * MINI_MAP, 0xFFFFFF);
+				fillrect(point, (CUB_SIZE - 2) * MINI_MAP, (CUB_SIZE - 2)
+					* MINI_MAP, 0xFFFFFF);
 			j++;
 		}
 		i++;
@@ -120,19 +119,27 @@ void	_2dmap(t_map *map)
 /**
  * @brief Draws the 2D map on the screen.
  *
- * This function creates a new image using the MiniLibX library, checks if the image
- * creation was successful, and then retrieves the address of the image data. It then
- * draws the 2D map, initializes the player, and places the player on the map. Finally,
+ * This function creates a new image using the MiniLibX library,
+	checks if the image
+ * creation was successful,
+	and then retrieves the address of the image data. It then
+ * draws the 2D map, initializes the player,
+	and places the player on the map. Finally,
  * it puts the image to the window.
  *
- * @param data Pointer to the main data structure containing all necessary information
- *             for drawing the 2D map, including the MiniLibX instance, image, map, and player.
+
+* @param data Pointer to the main data structure containing all necessary
+ information
+ *             for drawing the 2D map, including the MiniLibX instance, image,
+	map, and player.
  */
 void	_2dmap_render(t_data *data)
 {
 	int		num_rays;
+	t_ray	*rays;
 
-	data->mlx.image.img = mlx_new_image(data->mlx.instance, data->mlx.win_width, data->mlx.win_height);
+	data->mlx.image.img = mlx_new_image(data->mlx.instance, data->mlx.win_width,
+			data->mlx.win_height);
 	if (!data->mlx.image.img)
 	{
 		ft_putstr_fd(ERROR "\nFailed to create image\n", 2);
@@ -141,8 +148,8 @@ void	_2dmap_render(t_data *data)
 	data->mlx.image.addr = mlx_get_data_addr(data->mlx.image.img,
 			&data->mlx.image.bpp, &data->mlx.image.line_len,
 			&data->mlx.image.endian);
-	num_rays = data->mlx.win_width / WALL_STRIP_WIDTH;
-	t_ray *rays = raycasting(data, num_rays);
+	num_rays = data->mlx.win_width / WALL_STRIP_W;
+	rays = raycasting(data, num_rays);
 	render_projection_walls(rays, num_rays);
 	_2dmap(data->map);
 	ray_render_many(rays, num_rays);

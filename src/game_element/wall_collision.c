@@ -5,19 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/03/21 01:21:59 by akhobba          ###   ########.fr       */
+/*   Created: 2025/03/21 01:40:20 by akhobba           #+#    #+#             */
+/*   Updated: 2025/03/21 01:40:23 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub3d.h"
 
 bool	is_wall(int x, int y)
 {
-	int x_cub;
-	int y_cub;
-	t_data *data;
+	t_data	*data;
+	int		x_cub;
+	int		y_cub;
 
 	data = get_data();
 	x_cub = floor(x / CUB_SIZE);

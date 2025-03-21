@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 07:00:19 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/17 01:26:58by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/21 01:37:52 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	cast_ray(t_ray *ray, t_data *data)
 
 	horz_wall_hit = horz_intersection(data, ray);
 	vert_wall_hit = vert_intersection(data, ray);
-	if(horz_wall_hit.x != INT_MAX && horz_wall_hit.y != INT_MAX)
+	if (horz_wall_hit.x != INT_MAX && horz_wall_hit.y != INT_MAX)
 		horz_hit_distance = cal_distance(data->player->pos, horz_wall_hit);
 	else
 		horz_hit_distance = INT_MAX;
