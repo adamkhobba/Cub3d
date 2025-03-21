@@ -66,8 +66,6 @@ t_point	cal_move_player(double angle, int direction)
 		move.x = sin(angle);
 		move.y = -cos(angle);
 	}
-	printf("move.x = %f\n", move.x);
-	printf("move.y = %f\n", move.y);
 	return (move);
 }
 
@@ -82,7 +80,8 @@ int	update_player(int keycode)
 	if (keycode == UP)
 	{
 		data->player->walk_direction = 1;
-		move = cal_move_player(data->player->rotation_angle, UP);
+		// move = cal_move_player(data->player->rotation_angle, UP);
+		printf("move.y = %f move.x = %f\n", move.y, move.x);
 	}
 	else if (keycode == DOWN)
 	{
