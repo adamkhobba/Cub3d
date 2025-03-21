@@ -18,7 +18,7 @@
  *
  * This function calculates the horizontal and vertical wall intersections
  * for a given ray and determines which intersection is closer to the player's
- * position. It updates the ray's properties with the closest wall hit point,
+ * pos. It updates the ray's properties with the closest wall hit point,
  * the distance to the wall, and whether the hit was vertical or horizontal.
  *
  * @param ray A pointer to the t_ray structure representing the ray being cast.
@@ -36,11 +36,11 @@ void	cast_ray(t_ray *ray, t_data *data)
 	horz_wall_hit = horz_intersection(data, ray);
 	vert_wall_hit = vert_intersection(data, ray);
 	if(horz_wall_hit.x != INT_MAX && horz_wall_hit.y != INT_MAX)
-		horz_hit_distance = cal_distance(data->player->position, horz_wall_hit);
+		horz_hit_distance = cal_distance(data->player->pos, horz_wall_hit);
 	else
 		horz_hit_distance = INT_MAX;
 	if (vert_wall_hit.x != INT_MAX && vert_wall_hit.y != INT_MAX)
-		vert_hit_distance = cal_distance(data->player->position, vert_wall_hit);
+		vert_hit_distance = cal_distance(data->player->pos, vert_wall_hit);
 	else
 		vert_hit_distance = INT_MAX;
 	if (horz_hit_distance < vert_hit_distance - 0.01)
@@ -87,7 +87,7 @@ t_ray	*raycasting(t_data *data, int num_rays)
 	if (!rays)
 		return (NULL);
 	fov_rad = degtorad(FOV);
-	ray_angle = data->player->rotation_angle - (fov_rad / (double)2);
+	ray_angle = data->player->rot_angle - (fov_rad / (double)2);
 	while (colum_id < num_rays)
 	{
 		rays[colum_id] = ray_create(ray_angle);

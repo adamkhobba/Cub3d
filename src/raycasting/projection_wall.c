@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 01:46:40 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/20 12:52:13 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/21 01:13:39 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	render_projection_walls(t_ray *rays, int num_rays)
 	proj_plane_distance = (data->mlx.win_width / (double)2) * tan(degtorad(FOV) / 2);
 	while (i < num_rays)
 	{
-		rays[i].distance *= cos(normalize_angle(rays[i].angle - data->player->rotation_angle));
+		rays[i].distance *= cos(normalize_angle(rays[i].angle - data->player->rot_angle));
 		wall_strip_height = (CUB_SIZE / rays[i].distance) * proj_plane_distance;
 		if (wall_strip_height > data->mlx.win_height)
 			wall_strip_height = data->mlx.win_height;

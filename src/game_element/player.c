@@ -16,19 +16,19 @@
 
 void	player_init(t_data *data)
 {
-	data->player->position.x = data->map->player_x * CUB_SIZE + (CUB_SIZE / 2);
-	data->player->position.y = data->map->player_y * CUB_SIZE + (CUB_SIZE / 2);
+	data->player->pos.x = data->map->player_x * CUB_SIZE + (CUB_SIZE / 2);
+	data->player->pos.y = data->map->player_y * CUB_SIZE + (CUB_SIZE / 2);
 	data->player->radius = 3;
 	data->player->turn_direction = 0;
 	data->player->walk_direction = 0;
 	if (data->map->map[data->map->player_y][data->map->player_x] == 'N')
-		data->player->rotation_angle = degtorad(270);
+		data->player->rot_angle = degtorad(270);
 	else if (data->map->map[data->map->player_y][data->map->player_x] == 'S')
-		data->player->rotation_angle = degtorad(90);
+		data->player->rot_angle = degtorad(90);
 	else if (data->map->map[data->map->player_y][data->map->player_x] == 'W')
-		data->player->rotation_angle = degtorad(180);
+		data->player->rot_angle = degtorad(180);
 	else if (data->map->map[data->map->player_y][data->map->player_x] == 'E')
-		data->player->rotation_angle = degtorad(0);
+		data->player->rot_angle = degtorad(0);
 	data->player->walk_speed = 3;
 	data->player->turn_speed = 6 * (M_PI / 180);
 }
@@ -37,8 +37,8 @@ void	put_player(t_player *player)
 {
 	if (player == NULL)
 		return ;
-	fillrect((t_point){(player->position.x - player->radius) * MINI_MAP,
-		(player->position.y - player->radius) * MINI_MAP}, player->radius * 2 * MINI_MAP,
+	fillrect((t_point){(player->pos.x - player->radius) * MINI_MAP,
+		(player->pos.y - player->radius) * MINI_MAP}, player->radius * 2 * MINI_MAP,
 		player->radius * 2 * MINI_MAP, 0x00FF00);
 }
 
@@ -68,40 +68,37 @@ t_point	cal_move_player(double angle, int direction)
 void change_input_destroy_img(t_point *steps, t_point move, t_data *data)
 {
 	mlx_destroy_image(data->mlx.instance, data->mlx.image.img);
-	data->player->rotation_angle += data->player->turn_direction
+	data->player->rot_angle += data->player->turn_direction
 		* data->player->turn_speed;
 	steps->x = data->player->walk_direction * data->player->walk_speed * move.x;
 	steps->y = data->player->walk_direction * data->player->walk_speed * move.y;
 }
 
-int	update_player(int keycode)
+int	update_player(int keycode, t_data *data)
 {
-	t_data		*data;
 	t_point		move;
 	t_point		steps;
 
-	data = get_data();
 	data->player->walk_direction = 1;
-	data->player->rotation_angle = normalize_angle(data->player->rotation_angle);
+	data->player->rot_angle = normalize_angle(data->player->rot_angle);
 	move = (t_point){0};
 	if (keycode == UP || keycode == DOWN)
 	{
-		move = cal_move_player(data->player->rotation_angle, UP);
+		move = cal_move_player(data->player->rot_angle, UP);
 		(keycode == DOWN) && (data->player->walk_direction = -1);
 	}
 	else if (keycode == RIGHT)
-		move = cal_move_player(data->player->rotation_angle, RIGHT);
+		move = cal_move_player(data->player->rot_angle, RIGHT);
 	else if (keycode == LEFT)
-		move = cal_move_player(data->player->rotation_angle, LEFT);
+		move = cal_move_player(data->player->rot_angle, LEFT);
 	(keycode == RIGHT_ARROW) && (data->player->turn_direction = 1);
 	(keycode == LEFT_ARROW) && (data->player->turn_direction = -1);
 	(keycode == EXIT) && (close_program());
 	change_input_destroy_img(&steps, move, data);
-	if (!is_wall(data->player->position.x + steps.x,
-		data->player->position.y + steps.y, data))
+	if (!is_wall(data->player->pos.x + steps.x, data->player->pos.y + steps.y))
 	{
-		data->player->position.x += steps.x;
-		data->player->position.y += steps.y;
+		data->player->pos.x += steps.x;
+		data->player->pos.y += steps.y;
 	}
 	_2dmap_render(data);
 	return (0);

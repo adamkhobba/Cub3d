@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/21 00:33:29 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/21 01:22:36 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,24 +63,24 @@ typedef struct s_point
 
 /**
  * struct s_player - Structure to represent a player in the game.
- * @param x: The x-coordinate of the player's position.
- * @param y: The y-coordinate of the player's position.
+ * @param x: The x-coordinate of the player's pos.
+ * @param y: The y-coordinate of the player's pos.
  * @param radius: The radius of the player.
  * @param turn_direction: The direction the player is turning (-1 for left,
 	+1 for right).
  * @param walk_direction: The direction the player is walking (-1 for back,
 	+1 for front).
- * @param rotation_angle: The current rotation angle of the player.
+ * @param rot_angle: The current rotation angle of the player.
  * @param walk_speed: The speed at which the player walks.
  * @param turn_speed: The speed at which the player turns.
  */
 typedef struct s_player
 {
-	t_point			position;
+	t_point			pos;
 	int				radius;
 	int				turn_direction;
 	int				walk_direction;
-	double			rotation_angle;
+	double			rot_angle;
 	double			walk_speed;
 	double			turn_speed;
 }					t_player;
@@ -127,8 +127,8 @@ typedef	struct s_ray
  * @param f_key 	Key identifier for the Floor color.
  * @param color_f 	Floor color in integer format.
  * @param color_c 	Ceiling color in integer format.
- * @param player_x 	Player's x position on the map.
- * @param player_y 	Player's y position on the map.
+ * @param player_x 	Player's x pos on the map.
+ * @param player_y 	Player's y pos on the map.
  * @param first_line_in_map 	Index of the first line in the map array.
  * @param last_line_in_map 	Index of the last line in the map array.
  */
@@ -288,7 +288,7 @@ void				fillline(t_point from, t_point to, double angle, int color);
 // @addindex game_element/player.c
 void				player_init(t_data *data);
 void				put_player(t_player *player);
-int					update_player(int keycode);
+int					update_player(int keycode, t_data *data);
 int					update_player_release(int keycode);
 
 // @addindex utilities/math.c
@@ -300,7 +300,7 @@ double				cal_distance(t_point point1, t_point point2);
 void				map_print(t_map *data);
 
 // @addindex game_element/check_fts.c
-bool				is_wall(int x, int y, t_data *data);
+bool				is_wall(int x, int y);
 
 // @addindex utilities/no_need.c
 t_map				*fake_map_init(void);
