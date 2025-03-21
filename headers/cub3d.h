@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/21 00:16:51 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/21 00:33:29 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef enum s_keys
 	DOWN = 115,
 	LEFT = 97,
 	RIGHT = 100,
-	LIFGHT_ARROW = XK_Left,
+	LEFT_ARROW = XK_Left,
 	RIGHT_ARROW = XK_Right,
 	EXIT = 65307
 }					t_keys;

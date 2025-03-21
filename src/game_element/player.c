@@ -47,12 +47,7 @@ t_point	cal_move_player(double angle, int direction)
 	t_point	move;
 
 	move = (t_point){0};
-	if (direction == UP)
-	{
-		move.x = cos(angle);
-		move.y = sin(angle);
-	}
-	else if (direction == DOWN)
+	if (direction == UP || direction == DOWN)
 	{
 		move.x = cos(angle);
 		move.y = sin(angle);
@@ -70,6 +65,15 @@ t_point	cal_move_player(double angle, int direction)
 	return (move);
 }
 
+void change_input_destroy_img(t_point *steps, t_point move, t_data *data)
+{
+	mlx_destroy_image(data->mlx.instance, data->mlx.image.img);
+	data->player->rotation_angle += data->player->turn_direction
+		* data->player->turn_speed;
+	steps->x = data->player->walk_direction * data->player->walk_speed * move.x;
+	steps->y = data->player->walk_direction * data->player->walk_speed * move.y;
+}
+
 int	update_player(int keycode)
 {
 	t_data		*data;
@@ -77,45 +81,24 @@ int	update_player(int keycode)
 	t_point		steps;
 
 	data = get_data();
+	data->player->walk_direction = 1;
 	data->player->rotation_angle = normalize_angle(data->player->rotation_angle);
-	if (keycode == 119)
+	move = (t_point){0};
+	if (keycode == UP || keycode == DOWN)
 	{
-		data->player->walk_direction = 1;
-		move.x = cos(data->player->rotation_angle);
-		move.y = sin(data->player->rotation_angle);
+		move = cal_move_player(data->player->rotation_angle, UP);
+		(keycode == DOWN) && (data->player->walk_direction = -1);
 	}
-	else if (keycode == 115)
-	{
-		data->player->walk_direction = -1;
-		move.x = cos(data->player->rotation_angle);
-		move.y = sin(data->player->rotation_angle);
-	}
-	else if (keycode == 100)
-	{
-		data->player->walk_direction = 1;
-		move.x = -sin(data->player->rotation_angle);
-		move.y = cos(data->player->rotation_angle);
-	}
-	else if (keycode == 97)
-	{
-		data->player->walk_direction = 1;
-		move.x = sin(data->player->rotation_angle);
-		move.y = -cos(data->player->rotation_angle);
-	}
-	else if (keycode == 65363)
-		data->player->turn_direction = 1;
-	else if (keycode == 65361)
-		data->player->turn_direction = -1;
-	else if (keycode == 65307)
-		close_program();
-	printf("x: %f, y: %f\n", data->player->position.x, data->player->position.y);
-	mlx_destroy_image(data->mlx.instance, data->mlx.image.img);
-	data->player->rotation_angle += data->player->turn_direction
-		* data->player->turn_speed;
-	steps.x = data->player->walk_direction * data->player->walk_speed * move.x;
-	steps.y = data->player->walk_direction * data->player->walk_speed * move.y;
-	if (!is_wall(data->player->position.x + steps.x, data->player->position.y + steps.y,
-		data))
+	else if (keycode == RIGHT)
+		move = cal_move_player(data->player->rotation_angle, RIGHT);
+	else if (keycode == LEFT)
+		move = cal_move_player(data->player->rotation_angle, LEFT);
+	(keycode == RIGHT_ARROW) && (data->player->turn_direction = 1);
+	(keycode == LEFT_ARROW) && (data->player->turn_direction = -1);
+	(keycode == EXIT) && (close_program());
+	change_input_destroy_img(&steps, move, data);
+	if (!is_wall(data->player->position.x + steps.x,
+		data->player->position.y + steps.y, data))
 	{
 		data->player->position.x += steps.x;
 		data->player->position.y += steps.y;
