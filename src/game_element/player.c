@@ -28,6 +28,7 @@ void	player_init(t_data *data)
 	else if (data->map->map[data->map->player_y][data->map->player_x] == 'W')
 		data->player->rotation_angle = degtorad(180);
 	else if (data->map->map[data->map->player_y][data->map->player_x] == 'E')
+		data->player->rotation_angle = degtorad(0);
 	data->player->walk_speed = 3;
 	data->player->turn_speed = 6 * (M_PI / 180);
 }
@@ -107,6 +108,7 @@ int	update_player(int keycode)
 		data->player->turn_direction = -1;
 	else if (keycode == 65307)
 		close_program();
+	printf("x: %f, y: %f\n", data->player->position.x, data->player->position.y);
 	mlx_destroy_image(data->mlx.instance, data->mlx.image.img);
 	data->player->rotation_angle += data->player->turn_direction
 		* data->player->turn_speed;
