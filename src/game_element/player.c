@@ -6,12 +6,11 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:40:06 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/21 01:42:54 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/21 22:21:56 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <math.h>
 
 void	player_init(t_data *data)
 {
@@ -28,8 +27,8 @@ void	player_init(t_data *data)
 		data->player->rot_angle = degtorad(180);
 	else if (data->map->map[data->map->player_y][data->map->player_x] == 'E')
 		data->player->rot_angle = degtorad(0);
-	data->player->walk_speed = 3;
-	data->player->turn_speed = 6 * (M_PI / 180);
+	data->player->walk_speed = 6;
+	data->player->turn_speed = 8 * (M_PI / 180);
 }
 
 void	put_player(t_player *player)

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 01:46:40 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/21 01:35:23 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/21 04:09:20 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	render_projection_walls(t_ray *rays, int num_rays)
 {
+	t_data	*data;
 	double	wall_strip_h;
 	int		i;
 	double	proj_plane_dis;
-	t_data	*data;
 
-	i = 0;
+	i = 0.0;
 	data = get_data();
 	wall_strip_h = 0;
 	proj_plane_dis = (data->mlx.win_width / 2) / tan(degtorad(FOV) / 2);
