@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 01:46:40 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/21 01:13:39 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/21 01:25:04 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	render_projection_walls(t_ray *rays, int num_rays)
 	i = 0;
 	data = get_data();
 	wall_strip_height = 0;
-	proj_plane_distance = (data->mlx.win_width / (double)2) * tan(degtorad(FOV) / 2);
+	proj_plane_distance = (data->mlx.win_width / (double)2) / tan(degtorad(FOV) / 2);
 	while (i < num_rays)
 	{
 		rays[i].distance *= cos(normalize_angle(rays[i].angle - data->player->rot_angle));
