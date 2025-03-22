@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/21 23:39:16 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/22 05:02:45 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,14 @@ void	free_memory(t_map *map)
 		free(map->map[k]);
 		k++;
 	}
+	k = 0;
+	while (map->kharita[k])
+	{
+		free(map->kharita[k]);
+		k++;
+	}
+	free(map->kharita);
+	free(map->map);
 	free(map->info);
 	free(map);
 }

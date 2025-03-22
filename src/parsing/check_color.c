@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:53:32 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 00:30:03 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/22 05:18:52 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,35 @@ int	create_trgb(int t, int r, int g, int b)
 void	free_elements(t_map *data)
 {
 	if (data->no)
+	{
+		free(data->info->no_key);
 		free(data->no);
+	}
 	if (data->so)
+	{
+		free(data->info->so_key);
 		free(data->so);
+	}
 	if (data->we)
+	{
+		free(data->info->we_key);
 		free(data->we);
+	}
 	if (data->ea)
+	{
+		free(data->info->ea_key);
 		free(data->ea);
+	}
 	if (data->info->c)
+	{
+		free(data->info->c_key);
 		free(data->info->c);
+	}
 	if (data->info->f)
+	{
+		free(data->info->f_key);
 		free(data->info->f);
+	}
 }
 
 void	free_gnawi(char **split)
