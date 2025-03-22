@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 07:00:19 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/21 01:37:52 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/21 23:30:26 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	cast_ray(t_ray *ray, t_data *data)
 		vert_hit_distance = cal_distance(data->player->pos, vert_wall_hit);
 	else
 		vert_hit_distance = INT_MAX;
-	if (horz_hit_distance < vert_hit_distance - 0.01)
+	if (horz_hit_distance < vert_hit_distance - 0.00001)
 	{
 		ray->wall_hit = horz_wall_hit;
 		ray->distance = horz_hit_distance;

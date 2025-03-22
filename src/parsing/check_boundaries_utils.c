@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_boundaries_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:39:51 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/20 23:42:24 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/21 23:40:02 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	cp_flkharita(t_map *data)
 	i = 0;
 	j = 0;
 	fd = open(data->info->file, O_RDONLY);
-	data->map= malloc(sizeof(char *) * (data->info->height + 1));
+	data->map = malloc(sizeof(char *) * (data->info->height + 1));
 	line = get_next_line(fd);
 	while (line && i < data->info->first_line_in_map)
 	{
