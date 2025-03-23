@@ -6,126 +6,75 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 07:00:19 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/17 01:26:58by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/21 23:30:26 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * @brief Casts a ray and determines the closest wall hit point, distance,
+ *        and whether the hit was vertical or horizontal.
+ *
+ * This function calculates the horizontal and vertical wall intersections
+ * for a given ray and determines which intersection is closer to the player's
+ * pos. It updates the ray's properties with the closest wall hit point,
+ * the distance to the wall, and whether the hit was vertical or horizontal.
+ *
+ * @param ray A pointer to the t_ray structure representing the ray being cast.
+ *            This structure will be updated with the results of the raycasting.
+ * @param data A pointer to the t_data structure containing the game state,
+ *             including the player's position and other relevant data.
+ */
 void	cast_ray(t_ray *ray, t_data *data)
 {
-	double	xintercept;
-	double	yintercept;
-	double		xstep;
-	double		ystep;
-	double	horz_hit_x;
-	double	horz_hit_y;
-	bool	found_horz_wall_hit;
-	double	horz_wall_hit_x;
-	double	horz_wall_hit_y;
-
-	// Horizontal Ray-Grid Intersection
-	found_horz_wall_hit = false;
-	horz_wall_hit_x = 0;
-	horz_wall_hit_y = 0;
-	yintercept = floor(data->player->position.y / CUB_SIZE) * CUB_SIZE;
-	yintercept += ray->is_ray_facing_down * CUB_SIZE;
-	xintercept = data->player->position.x
-		+ (yintercept - data->player->position.y) / tan(ray->angle);
-	ystep = CUB_SIZE;
-	ystep *= ray->is_ray_facing_up * -2 + 1;
-	xstep = CUB_SIZE / tan(ray->angle);
-	xstep *= (ray->is_ray_facing_left && xstep > 0) * -2 + 1;
-	xstep *= (ray->is_ray_facing_right && xstep < 0) * -2 + 1;
-	horz_hit_x = xintercept;
-	horz_hit_y = yintercept;
-	if (ray->is_ray_facing_up)
-		horz_hit_y -= 0.00001;
-	while ((horz_hit_x >= 0 && horz_hit_x < data->map->map_width * CUB_SIZE)
-		&& (horz_hit_y >= 0 && horz_hit_y < data->map->map_height * CUB_SIZE))
-	{
-		if (is_wall(horz_hit_x, horz_hit_y, data))
-		{
-			found_horz_wall_hit = true;
-			horz_wall_hit_x = horz_hit_x;
-			horz_wall_hit_y = horz_hit_y;
-			break ;
-		}
-		else
-		{
-			horz_hit_x += xstep;
-			horz_hit_y += ystep;
-		}
-	}
-	// Vertical Ray-Grid Intersection
-	double	vert_hit_x;
-	double	vert_hit_y;
-	double	vert_wall_hit_x;
-	double	vert_wall_hit_y;
-	bool	found_vert_wall_hit;
-
-	vert_wall_hit_x = 0;
-	vert_wall_hit_y = 0;
-	xintercept = floor(data->player->position.x / CUB_SIZE) * CUB_SIZE;
-	xintercept += ray->is_ray_facing_right * CUB_SIZE;
-	found_vert_wall_hit = false;
-	yintercept = data->player->position.y
-		+ (xintercept - data->player->position.x) * tan(ray->angle);
-	xstep = CUB_SIZE;
-	xstep *= ray->is_ray_facing_left * -2 + 1;
-	ystep = CUB_SIZE * tan(ray->angle);
-	ystep *= (ray->is_ray_facing_up && ystep > 0) * -2 + 1;
-	ystep *= (ray->is_ray_facing_down && ystep < 0) * -2 + 1;
-	vert_hit_x = xintercept;
-	vert_hit_y = yintercept;
-	if (ray->is_ray_facing_left)
-		vert_hit_x -= 0.00001;
-	while((vert_hit_x >= 0 && vert_hit_x < data->map->map_width * CUB_SIZE)
-		&& (vert_hit_y >= 0 && vert_hit_y < data->map->map_height * CUB_SIZE))
-	{
-		if (is_wall(vert_hit_x, vert_hit_y, data))
-		{
-			found_vert_wall_hit = true;
-			vert_wall_hit_x = vert_hit_x;
-			vert_wall_hit_y = vert_hit_y;
-			break ;
-		}
-		else
-		{
-			vert_hit_x += xstep;
-			vert_hit_y += ystep;
-		}
-	}
-	// Calculate both horizontal and vertical distances and choose the smallest one
 	double	horz_hit_distance;
 	double	vert_hit_distance;
+	t_point	horz_wall_hit;
+	t_point	vert_wall_hit;
 
-	if(found_horz_wall_hit)
-		horz_hit_distance = cal_distance((t_point){data->player->position.x, data->player->position.y},
-			(t_point){horz_wall_hit_x, horz_wall_hit_y});
+	horz_wall_hit = horz_intersection(data, ray);
+	vert_wall_hit = vert_intersection(data, ray);
+	if (horz_wall_hit.x != INT_MAX && horz_wall_hit.y != INT_MAX)
+		horz_hit_distance = cal_distance(data->player->pos, horz_wall_hit);
 	else
 		horz_hit_distance = INT_MAX;
-	if(found_vert_wall_hit)
-		vert_hit_distance = cal_distance((t_point){data->player->position.x, data->player->position.y},
-			(t_point){vert_wall_hit_x, vert_wall_hit_y});
+	if (vert_wall_hit.x != INT_MAX && vert_wall_hit.y != INT_MAX)
+		vert_hit_distance = cal_distance(data->player->pos, vert_wall_hit);
 	else
 		vert_hit_distance = INT_MAX;
-	if (horz_hit_distance < vert_hit_distance - 0.01)
+	if (horz_hit_distance < vert_hit_distance - 0.00001)
 	{
-		ray->wall_hit_x = horz_wall_hit_x;
-		ray->wall_hit_y = horz_wall_hit_y;
+		ray->wall_hit = horz_wall_hit;
 		ray->distance = horz_hit_distance;
 		ray->was_hit_vertical = false;
+		return ;
 	}
-	else
-	{
-		ray->wall_hit_x = vert_wall_hit_x;
-		ray->wall_hit_y = vert_wall_hit_y;
-		ray->distance = vert_hit_distance;
-		ray->was_hit_vertical = true;
-	}
+	ray->wall_hit = vert_wall_hit;
+	ray->distance = vert_hit_distance;
+	ray->was_hit_vertical = true;
 }
 
+/**
+ * @brief Performs raycasting to generate an array of rays based on the player's
+ *        position and field of view (FOV).
+ *
+ * This function calculates the direction of each ray within the player's FOV
+ * and casts the rays to detect intersections with the environment. The rays
+ * are stored in an array, which is dynamically allocated and returned to the
+ * caller.
+ *
+ * @param data Pointer to the main data structure containing the player's
+ *             position, rotation angle, and other game-related information.
+ * @param num_rays The number of rays to cast, which determines the resolution
+ *                 of the raycasting.
+ *
+ * @return A pointer to an array of t_ray structures representing the cast rays.
+ *         Returns NULL if memory allocation for the array fails.
+ *
+ * @note The caller is responsible for freeing the memory allocated for the
+ *       returned array of rays.
+ */
 t_ray	*raycasting(t_data *data, int num_rays)
 {
 	t_ray	*rays;
@@ -138,7 +87,7 @@ t_ray	*raycasting(t_data *data, int num_rays)
 	if (!rays)
 		return (NULL);
 	fov_rad = degtorad(FOV);
-	ray_angle = data->player->rotation_angle - (fov_rad / (double)2);
+	ray_angle = data->player->rot_angle - (fov_rad / (double)2);
 	while (colum_id < num_rays)
 	{
 		rays[colum_id] = ray_create(ray_angle);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/20 23:53:42 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/21 01:34:29 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,24 @@
 # include <unistd.h>
 
 # define CUB_SIZE 100
-# define WALL_STRIP_WIDTH 1
+# define WALL_STRIP_W 1
 # define FOV 60
 # define MINI_MAP 0.2
-# define WIDTH  1500
+# define WIDTH 1500
 # define HEIGHT 800
 # define NAME "\e[1;34mCub3D\e[0m"
 # define ERROR "\e[1;31mError\e[0m"
+
+typedef enum s_keys
+{
+	UP = 119,
+	DOWN = 115,
+	LEFT = 97,
+	RIGHT = 100,
+	LEFT_ARROW = XK_Left,
+	RIGHT_ARROW = XK_Right,
+	EXIT = 65307
+}					t_keys;
 
 /**
  * @struct s_point
@@ -46,39 +57,38 @@
  */
 typedef struct s_point
 {
-	double				x;
-	double				y;
+	double			x;
+	double			y;
 }					t_point;
 
 /**
  * struct s_player - Structure to represent a player in the game.
- * @param x: The x-coordinate of the player's position.
- * @param y: The y-coordinate of the player's position.
+ * @param x: The x-coordinate of the player's pos.
+ * @param y: The y-coordinate of the player's pos.
  * @param radius: The radius of the player.
  * @param turn_direction: The direction the player is turning (-1 for left,
 	+1 for right).
  * @param walk_direction: The direction the player is walking (-1 for back,
 	+1 for front).
- * @param rotation_angle: The current rotation angle of the player.
+ * @param rot_angle: The current rotation angle of the player.
  * @param walk_speed: The speed at which the player walks.
  * @param turn_speed: The speed at which the player turns.
  */
 typedef struct s_player
 {
-	t_point			position;
+	t_point			pos;
 	int				radius;
 	int				turn_direction;
 	int				walk_direction;
-	double			rotation_angle;
+	double			rot_angle;
 	double			walk_speed;
 	double			turn_speed;
 }					t_player;
 
-typedef	struct s_ray
+typedef struct s_ray
 {
 	double			angle;
-	double			wall_hit_x;
-	double			wall_hit_y;
+	t_point			wall_hit;
 	double			distance;
 	bool			was_hit_vertical;
 	int				is_ray_facing_down;
@@ -117,12 +127,12 @@ typedef	struct s_ray
  * @param f_key 	Key identifier for the Floor color.
  * @param color_f 	Floor color in integer format.
  * @param color_c 	Ceiling color in integer format.
- * @param player_x 	Player's x position on the map.
- * @param player_y 	Player's y position on the map.
+ * @param player_x 	Player's x pos on the map.
+ * @param player_y 	Player's y pos on the map.
  * @param first_line_in_map 	Index of the first line in the map array.
  * @param last_line_in_map 	Index of the last line in the map array.
  */
-typedef struct 		s_info
+typedef struct s_info
 {
 	int				height;
 	int				width;
@@ -137,18 +147,18 @@ typedef struct 		s_info
 	char			*f_key;
 	int				first_line_in_map;
 	int				last_line_in_map;
-	int 			boudaries_width;
-	int 			player_in_x;
-	int 			player_in_y;
+	int				boudaries_width;
+	int				player_in_x;
+	int				player_in_y;
 }					t_info;
 
 typedef struct s_map
 {
 	t_info			*info;
-	int 			map_width;
-	int 			map_height;
+	int				map_width;
+	int				map_height;
 	char			**kharita;
-	char 			**map;
+	char			**map;
 	char			*no;
 	char			*so;
 	char			*we;
@@ -157,7 +167,6 @@ typedef struct s_map
 	int				color_c;
 	int				player_x;
 	int				player_y;
-
 }					t_map;
 
 typedef struct s_img
@@ -196,7 +205,7 @@ void				cp_flkharita(t_map *data);
 
 // @addindex parsing/check_boundaries.c
 void				check_boundaries(t_map *data);
-void 				player_possitions(t_map *data);
+void				player_possitions(t_map *data);
 
 // @addindex parsing/check_cell_boundaries.c
 void				check_cell_boundaries(t_map *data, int i, int j);
@@ -221,11 +230,12 @@ int					last_line(t_map *data);
 int					check_player_valid_pos(t_map *data);
 
 //@addindex parsing/check_textures_2.c
-int					set_floor_and_ceiling_color(t_map *data, char **split, int i);
-	int				set_no_texture(t_map *data, char **split);
-	int				set_ea_texture(t_map *data, char **split);
-	int				set_we_texture(t_map *data, char **split);
-	int				set_so_texture(t_map *data, char **split);
+int					set_floor_and_ceiling_color(t_map *data, char **split,
+						int i);
+int					set_no_texture(t_map *data, char **split);
+int					set_ea_texture(t_map *data, char **split);
+int					set_we_texture(t_map *data, char **split);
+int					set_so_texture(t_map *data, char **split);
 
 // @addindex parsing/check_textures.c
 int					parse_textures(t_map *data);
@@ -245,7 +255,7 @@ void				map_height(t_map *data, char *av[]);
 int					count_split(char **split);
 
 // @addindex parsing/cub3d.c
-t_map		 		*parsing(int ac, char *av[]);
+t_map				*parsing(int ac, char *av[]);
 void				free_memory(t_map *data);
 void				cp_map_array(t_map *data, char *av[]);
 void				ft_error(char *str, t_map *data);
@@ -279,7 +289,7 @@ void				fillline(t_point from, t_point to, double angle, int color);
 // @addindex game_element/player.c
 void				player_init(t_data *data);
 void				put_player(t_player *player);
-int					update_player(int keycode);
+int					update_player(int keycode, t_data *data);
 int					update_player_release(int keycode);
 
 // @addindex utilities/math.c
@@ -291,7 +301,7 @@ double				cal_distance(t_point point1, t_point point2);
 void				map_print(t_map *data);
 
 // @addindex game_element/check_fts.c
-bool				is_wall(int x, int y, t_data *data);
+bool				is_wall(int x, int y);
 
 // @addindex utilities/no_need.c
 t_map				*fake_map_init(void);
@@ -310,7 +320,7 @@ void				ray_render_many(t_ray *rays, int num_rays);
 void				render_projection_walls(t_ray *rays, int num_rays);
 
 // @addindex raycasting/intersection.c
-t_point				horz_intersection(t_data *data , t_ray *ray);
-t_point				vert_intersection(t_data *data , t_ray *ray);
+t_point				horz_intersection(t_data *data, t_ray *ray);
+t_point				vert_intersection(t_data *data, t_ray *ray);
 
 #endif

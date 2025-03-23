@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 07:43:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/20 01:47:52 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/21 01:37:27 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 /**
  * @brief Normalize an angle to the range [0, 2*PI).
  *
- * This function takes an angle in radians and normalizes it to be within the range
- * [0, 2*PI). If the angle is negative, it adds 2*PI to ensure the result is positive.
+ * This function takes an angle in radians and normalizes
+ * it to be within the range
+ * [0, 2*PI). If the angle is negative, it adds 2*PI to ensure
+ * the result is positive.
  *
  * @param angle The angle in radians to be normalized.
  * @return The normalized angle in the range [0, 2*PI).
@@ -31,16 +33,14 @@ double	normalize_angle(double angle)
 
 void	ray_render(t_ray *ray, t_data *data)
 {
-	fillline((t_point){data->player->position.x * MINI_MAP,
-		data->player->position.y * MINI_MAP},
-		(t_point){ray->wall_hit_x * MINI_MAP,
-		ray->wall_hit_y * MINI_MAP}
-		, ray->angle, 0xFF0000);
+	fillline((t_point){data->player->pos.x * MINI_MAP, data->player->pos.y
+		* MINI_MAP}, (t_point){ray->wall_hit.x * MINI_MAP, ray->wall_hit.y
+		* MINI_MAP}, ray->angle, 0xFF0000);
 }
 
 void	ray_render_many(t_ray *rays, int num_rays)
 {
-	int	i;
+	int		i;
 	t_data	*data;
 
 	i = 0;
@@ -68,8 +68,8 @@ t_ray	ray_create(double angle)
 	t_ray	ray;
 
 	ray.angle = normalize_angle(angle);
-	ray.wall_hit_x = 0;
-	ray.wall_hit_y = 0;
+	ray.wall_hit.x = 0;
+	ray.wall_hit.y = 0;
 	ray.distance = 0;
 	ray.was_hit_vertical = 0;
 	ray.is_ray_facing_down = ray.angle > 0 && ray.angle < M_PI;

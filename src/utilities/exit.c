@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 01:06:09 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/16 02:30:37 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/22 05:13:42 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ int	close_program(void)
 	mlx_destroy_display(get_data()->mlx.instance);
 	free(get_data()->player);
 	free(get_data()->mlx.instance);
-	// free_elements(get_data()->map);
-	// free_memory(get_data()->map);
-	free_map(get_data()->map);
+	free_elements(get_data()->map);
+	free_memory(get_data()->map);
 	exit(0);
 	return (0);
 }

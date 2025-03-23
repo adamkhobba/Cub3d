@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/20 03:16:35 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/22 05:02:45 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,26 @@ void	cp_map_array(t_map *data, char *av[])
 	close(fd);
 }
 
-void	free_memory(t_map *data)
+void	free_memory(t_map *map)
 {
 	int	k;
 
 	k = 0;
-	while (data->kharita[k])
+	while (map->map[k])
 	{
-		free(data->kharita[k]);
+		free(map->map[k]);
 		k++;
 	}
-	free(data->info);
-	free(data);
-	exit(1);
+	k = 0;
+	while (map->kharita[k])
+	{
+		free(map->kharita[k]);
+		k++;
+	}
+	free(map->kharita);
+	free(map->map);
+	free(map->info);
+	free(map);
 }
 
 t_map	*parsing(int ac, char *av[])

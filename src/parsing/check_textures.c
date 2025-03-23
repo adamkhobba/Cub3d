@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:40:39 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/15 23:00:31 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/22 05:14:12 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ void	process_texture_line(t_map *data, char **split)
 void	process_texture_data(t_map *data, char *line, int *j)
 {
 	char	**split;
+	int		i;
 
+	i = 0;
 	split = ft_split00(line);
 	if (!check_empty(line))
 	{
@@ -61,6 +63,12 @@ void	process_texture_data(t_map *data, char *line, int *j)
 		return ;
 	}
 	process_texture_line(data, split);
+	while (split[i])
+	{
+		free(split[i]);
+		split[i] = NULL;
+		i++;
+	}
 	free(split);
 	free(line);
 	(*j)++;
