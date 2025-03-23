@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/21 01:34:29 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/23 02:29:02 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,18 @@ typedef struct s_ray
  * @param first_line_in_map 	Index of the first line in the map array.
  * @param last_line_in_map 	Index of the last line in the map array.
  */
+
+typedef struct s_img
+{
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				line_len;
+	int				endian;
+	int				width;
+	int				height;
+}
+					t_img;
 typedef struct s_info
 {
 	int				height;
@@ -150,6 +162,7 @@ typedef struct s_info
 	int				boudaries_width;
 	int				player_in_x;
 	int				player_in_y;
+	t_img 			*textures[4];
 }					t_info;
 
 typedef struct s_map
@@ -169,16 +182,6 @@ typedef struct s_map
 	int				player_y;
 }					t_map;
 
-typedef struct s_img
-{
-	void			*img;
-	char			*addr;
-	int				bpp;
-	int				line_len;
-	int				endian;
-	int				width;
-	int				height;
-}					t_img;
 
 typedef struct s_mlx
 {
