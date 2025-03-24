@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/23 02:29:02 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/24 01:46:48 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # include <string.h>
 # include <unistd.h>
 
-# define CUB_SIZE 100
+# define CUB_SIZE 64
 # define WALL_STRIP_W 1
 # define FOV 60
 # define MINI_MAP 0.2
@@ -162,7 +162,6 @@ typedef struct s_info
 	int				boudaries_width;
 	int				player_in_x;
 	int				player_in_y;
-	t_img 			*textures[4];
 }					t_info;
 
 typedef struct s_map
@@ -198,6 +197,7 @@ typedef struct s_data
 	t_list			*garbage;
 	t_map			*map;
 	t_player		*player;
+	t_img 			*textures[4];
 }					t_data;
 
 // @addindex main.c
@@ -321,6 +321,7 @@ void				ray_render_many(t_ray *rays, int num_rays);
 
 // @addindex raycasting/projection_wall.c
 void				render_projection_walls(t_ray *rays, int num_rays);
+void 				init_text(t_data *data);
 
 // @addindex raycasting/intersection.c
 t_point				horz_intersection(t_data *data, t_ray *ray);

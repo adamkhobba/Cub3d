@@ -31,6 +31,7 @@ void	mlx_setup_env(void)
 	data->mlx.instance = mlx_init();
 	data->mlx.win = mlx_new_window(data->mlx.instance, data->mlx.win_width,
 			data->mlx.win_height, "cub3d");
+	init_text(data);
 	mlx_hook(data->mlx.win, DestroyNotify, StructureNotifyMask, &close_program,
 		NULL);
 	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, update_player, data);

@@ -1,7 +1,7 @@
-SO ./textures/brick.xpm.xpm
-NO ./texture_north.xpm
-WE ./textures_west.xpm
-EA ./texture_east.xpm
+SO ./textures/brick.xpm
+NO ./textures/hitler.xpm
+WE ./textures/stone8.xpm
+EA ./textures/stone21.xpm
 F 50,25,255
 C 30,20,245
 
