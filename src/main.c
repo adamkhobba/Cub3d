@@ -51,7 +51,6 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	}
 	data = get_data();
 	data->map = parsing(ac, av);
-	map_print(data->map);
 	data->mlx.win_height = HEIGHT;
 	data->mlx.win_width = WIDTH;
 	mlx_setup_env();

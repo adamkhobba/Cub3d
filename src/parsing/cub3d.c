@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/23 02:50:42 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/25 03:43:41 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void	ft_error(char *str, t_map *data)
 {
 	ft_putstr_fd(str, 2);
-	free_elements(data);
-	free_memory(data);
 	free_elements(data);
 	free_memory(data);
 	exit(1);
@@ -67,6 +65,8 @@ void	free_memory(t_map *map)
 	int	k;
 
 	k = 0;
+	if (!map->map)
+		return ;
 	while (map->map[k])
 	{
 		free(map->map[k]);
