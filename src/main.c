@@ -37,7 +37,6 @@ void	mlx_setup_env(void)
 	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, update_player, data);
 	mlx_hook(data->mlx.win, KeyRelease, KeyReleaseMask, update_player_release,
 		NULL);
-	mlx_mouse_hook(data->mlx.win, NULL, NULL);
 }
 
 int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
@@ -51,8 +50,8 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	}
 	data = get_data();
 	data->map = parsing(ac, av);
-	data->mlx.win_height = HEIGHT;
-	data->mlx.win_width = WIDTH;
+	data->mlx.win_height = CUB_SIZE * data->map->map_height;
+	data->mlx.win_width = CUB_SIZE * data->map->map_width;
 	mlx_setup_env();
 	data->player = malloc(sizeof(t_player));
 	if (!data->player)
