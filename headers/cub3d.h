@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/25 00:32:50 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/25 01:05:31 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -328,5 +328,10 @@ void 				init_text(t_data *data);
 // @addindex raycasting/intersection.c
 t_point				horz_intersection(t_data *data, t_ray *ray);
 t_point				vert_intersection(t_data *data, t_ray *ray);
+
+// @addindex raycasting/texture.c
+unsigned int		get_pixel_img(t_img *data, int x, int y);
+t_img				*initialize_text(t_data *data, char *path);
+void				init_text(t_data *data);
 
 #endif
