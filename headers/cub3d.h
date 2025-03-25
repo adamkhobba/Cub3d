@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/23 23:23:25 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/24 01:38:05 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ typedef struct s_point
 	double			x;
 	double			y;
 }					t_point;
+
+
 
 /**
  * struct s_player - Structure to represent a player in the game.
