@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/24 01:38:05 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/25 00:32:50 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # include <string.h>
 # include <unistd.h>
 
-# define CUB_SIZE 100
+# define CUB_SIZE 64
 # define WALL_STRIP_W 1
 # define FOV 60
 # define MINI_MAP 0.2
@@ -134,6 +134,18 @@ typedef struct s_ray
  * @param first_line_in_map 	Index of the first line in the map array.
  * @param last_line_in_map 	Index of the last line in the map array.
  */
+
+typedef struct s_img
+{
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				line_len;
+	int				endian;
+	int				width;
+	int				height;
+}
+					t_img;
 typedef struct s_info
 {
 	int				height;
@@ -171,16 +183,6 @@ typedef struct s_map
 	int				player_y;
 }					t_map;
 
-typedef struct s_img
-{
-	void			*img;
-	char			*addr;
-	int				bpp;
-	int				line_len;
-	int				endian;
-	int				width;
-	int				height;
-}					t_img;
 
 typedef struct s_mlx
 {
@@ -197,6 +199,7 @@ typedef struct s_data
 	t_list			*garbage;
 	t_map			*map;
 	t_player		*player;
+	t_img 			*textures[4];
 }					t_data;
 
 // @addindex main.c
@@ -320,6 +323,7 @@ void				ray_render_many(t_ray *rays, int num_rays);
 
 // @addindex raycasting/projection_wall.c
 void				render_projection_walls(t_ray *rays, int num_rays);
+void 				init_text(t_data *data);
 
 // @addindex raycasting/intersection.c
 t_point				horz_intersection(t_data *data, t_ray *ray);
