@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 01:42:15 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/21 01:53:50 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/25 20:07:29 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,30 @@ int	update_player(int keycode, t_data *data)
 	t_point	move;
 	t_point	steps;
 
-	data->player->walk_direction = 1;
+	if (data == NULL)
+		return (0);
 	data->player->rot_angle = normalize_angle(data->player->rot_angle);
 	move = (t_point){0};
-	if (keycode == UP || keycode == DOWN)
+	if (keycode == UP)
 	{
 		move = cal_move_player(data->player->rot_angle, UP);
-		(keycode == DOWN) && (data->player->walk_direction = -1);
+		data->player->walk_direction = 1;
 	}
-	else if (keycode == RIGHT)
+	if (keycode == DOWN)
+	{
+		data->player->walk_direction = -1;
+		move = cal_move_player(data->player->rot_angle, DOWN);
+	}
+	if (keycode == RIGHT)
+	{
 		move = cal_move_player(data->player->rot_angle, RIGHT);
-	else if (keycode == LEFT)
+		data->player->walk_direction = 1;
+	}
+	if (keycode == LEFT)
+	{
 		move = cal_move_player(data->player->rot_angle, LEFT);
+		data->player->walk_direction = 1;
+	}
 	(keycode == RIGHT_ARROW) && (data->player->turn_direction = 1);
 	(keycode == LEFT_ARROW) && (data->player->turn_direction = -1);
 	(keycode == EXIT) && (close_program());
@@ -76,17 +88,9 @@ int	update_player_release(int keycode)
 	t_player	*player;
 
 	player = get_data()->player;
-	if (keycode == 119)
+	if (keycode == UP || keycode == DOWN || keycode == RIGHT || keycode == LEFT)
 		player->walk_direction = 0;
-	else if (keycode == 115)
-		player->walk_direction = 0;
-	else if (keycode == 97)
-		player->walk_direction = 0;
-	else if (keycode == 100)
-		player->walk_direction = 0;
-	else if (keycode == 65363)
-		player->turn_direction = 0;
-	else if (keycode == 65361)
+	if (keycode == RIGHT_ARROW || keycode == LEFT_ARROW)
 		player->turn_direction = 0;
 	if (keycode == 65307)
 		close_program();
