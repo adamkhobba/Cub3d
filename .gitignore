@@ -52,3 +52,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# vscode files
+.vscode/
+
+# Local files
+cub3d
+test.txt
+#.gitignore
+#README.md
+#LICENSE
