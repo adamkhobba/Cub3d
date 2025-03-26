@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:40:39 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/22 05:14:12 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 02:43:33 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	check_valid_file(char *line, t_map *data)
 		ft_putstr_fd("Error\nInvalid file\n", 2);
 		free_elements(data);
 		free_memory(data);
+		exit(1);
 	}
 }
 
@@ -29,6 +30,7 @@ void	validate_texture_format(char **split, t_map *data)
 		ft_putstr_fd("Error\nInvalid texture\n", 2);
 		free_elements(data);
 		free_memory(data);
+		exit(1);
 	}
 }
 
@@ -69,7 +71,11 @@ void	process_texture_data(t_map *data, char *line, int *j)
 		split[i] = NULL;
 		i++;
 	}
+	for(int k = 0 ; k < i ; k++)
+		free(split[k]);
 	free(split);
+	if(split)
+		free(split);
 	free(line);
 	(*j)++;
 }

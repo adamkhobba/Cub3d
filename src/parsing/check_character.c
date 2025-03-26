@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:37:56 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/17 00:37:27 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/25 23:32:58 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	handle_invalid_character_error(t_map *data)
 {
 	ft_putstr_fd("Error\nInvalid character in map\n", 2);
 	free_memory(data);
+	exit(1);
 }
 
 void	check_invalid_character(t_map *data)
@@ -63,5 +64,4 @@ void	check_invalid_character(t_map *data)
 		}
 		i++;
 	}
-	check_boundaries(data);
 }

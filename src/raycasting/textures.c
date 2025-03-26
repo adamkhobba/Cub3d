@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 00:57:48 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/25 00:58:02 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/25 23:30:49 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ unsigned int	get_pixel_img(t_img *data, int x, int y)
 t_img *initialize_text(t_data *data, char *path)
 {
     t_img *text = malloc(sizeof(t_img));
-    printf("path: %s\n", path);
     text->img = mlx_xpm_file_to_image(data->mlx.instance, path, &text->width, &text->height);
     if (!text->img)
     {
