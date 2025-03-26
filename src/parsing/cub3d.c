@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 20:15:48 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/26 23:54:54 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,13 @@ void	cp_map_array(t_map *data, char *av[])
 		line = get_next_line(fd);
 	}
 	data->kharita[i] = NULL;
+	if(count_len(data) == 0)
+	{
+		ft_putstr_fd("Error\nInvalid filew\n", 2);
+		free_elements(data);
+		free_memory(data);
+		exit(1);
+	}
 	close(fd);
 }
 
@@ -93,6 +100,14 @@ t_map	*parsing(int ac, char *av[])
 		exit(1);
 	}
 	ft_memset(data->info, 0, sizeof(t_info));
+	int fd = open(av[1], O_RDONLY);
+	if (fd < 0)
+	{
+		ft_putstr_fd("Error\nFile not found\n", 2);
+		free(data->info);
+		free(data);
+		exit(1);
+	}
 	ft_check_file_path(data, ac, av);
 	map_height(data, av);
 	cp_map_array(data, av);

@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:52:44 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 02:32:42 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/26 23:25:53 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*get_next_line(int fd)
 		buff = malloc(sizeof(char) * (len + 1));
 		if (!buff)
 			return (free(str), NULL);
-		strncpy(buff, str, len - 1);
+		ft_strncpy(buff, str, len - 1);
 		free(str);
 	}
 	if (len == 1)

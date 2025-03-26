@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 02:34:30 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/15 23:01:07 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/26 23:34:49 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,10 @@ static char	**list00(char **lst, char *s)
 			i = while_loop(s, i, c);
 			lst[j] = malloc_word00(s, start, i);
 			if (!lst[j])
-				return (freefun00(lst, j));
+			{
+				free_2d(lst); // Free the allocated memory
+				return (NULL);
+			}
 			j++;
 		}
 		else

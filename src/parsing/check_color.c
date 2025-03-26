@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:53:32 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/22 05:18:52 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 22:20:55 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	free_elements(t_map *data)
 	}
 }
 
-void	free_gnawi(char **split)
+void	free_2d(char **split)
 {
 	int	i;
 
@@ -82,11 +82,17 @@ int	handle_colors(char *line, t_map *data)
 		ft_error("Error\nInvalid color\n", data);
 	split = ft_split(line, ',');
 	if (count_split(split) != 3)
+	{
+		free_2d(split);	
 		ft_error("Error\nInvalid color\n", data);
+	}
 	color = create_trgb(1, ft_atoi00(split[0]), ft_atoi00(split[1]),
 			ft_atoi00(split[2]));
 	if (color == -1)
+	{
+		free_2d(split);
 		ft_error("Error\nInvalid color\n", data);
-	free_gnawi(split);
+	}
+	free_2d(split);
 	return (color);
 }

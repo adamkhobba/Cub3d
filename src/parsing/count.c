@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:04:43 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/25 21:41:25 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/26 23:53:19 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,13 @@ void	map_height(t_map *data, char *av[])
 		i++;
 		free(line);
 		line = get_next_line(fd);
+	}
+	if (i == 0)
+	{
+		ft_putstr_fd("Error\nEmpty file\n", 2);
+		free(data->info);
+		free(data);
+		exit(1);
 	}
 	data->info->height = i;
 }

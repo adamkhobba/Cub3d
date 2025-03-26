@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 20:21:12 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/26 23:33:10 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,7 @@ void				check_invalid_character(t_map *data);
 int					parse_element(t_map *data, int *i);
 
 // @addindex parsing/check_color.c
+void				free_2d(char **split);
 int					handle_colors(char *line, t_map *data);
 void				free_elements(t_map *data);
 int					create_trgb(int t, int r, int g, int b);
@@ -269,6 +270,7 @@ void				ft_error(char *str, t_map *data);
 
 // @addindex parsing/ft_atoi00.c
 long				ft_atoi00(char *str);
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
 
 // @addindex parsing/ft_split_utils.c
 char				**freefun00(char **p, int j);

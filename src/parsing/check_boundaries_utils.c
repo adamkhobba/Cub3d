@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:39:51 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 21:23:58 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/26 21:52:38 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void fill_map_array(t_map *data)
     for (i = 0; i < data->map_height; i++)
     {
         data->null_map[i] = malloc(sizeof(char) * (data->map_width + 1));
-        ft_memset(data->null_map[i], '\0', data->map_width + 1);
+        ft_memset(data->null_map[i], '6', data->map_width + 1);
         for (j = 0; data->map[i] && data->map[i][j] && j < data->map_width; j++)
         {
             char current = data->map[i][j];
