@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/25 20:18:29 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 20:21:12 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ typedef struct s_map
 	int				color_c;
 	int				player_x;
 	int				player_y;
+	char 			**null_map;
 }					t_map;
 
 
@@ -211,6 +212,7 @@ void				cp_flkharita(t_map *data);
 // @addindex parsing/check_boundaries.c
 void				check_boundaries(t_map *data);
 void				player_possitions(t_map *data);
+void				fill_map_array(t_map *data);
 
 // @addindex parsing/check_cell_boundaries.c
 void				check_cell_boundaries(t_map *data, int i, int j);

@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:40:39 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 02:43:33 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/26 19:52:11 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,7 @@ void	process_texture_data(t_map *data, char *line, int *j)
 		split[i] = NULL;
 		i++;
 	}
-	for(int k = 0 ; k < i ; k++)
-		free(split[k]);
 	free(split);
-	if(split)
-		free(split);
 	free(line);
 	(*j)++;
 }
