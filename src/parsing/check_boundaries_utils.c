@@ -3,14 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   check_boundaries_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:39:51 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/21 23:40:02 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 21:23:58 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void fill_map_array(t_map *data)
+{
+    int i, j;
+
+    data->null_map = malloc(sizeof(char *) * (data->map_height + 1));
+    if (!data->null_map)
+        return;
+    for (i = 0; i < data->map_height; i++)
+    {
+        data->null_map[i] = malloc(sizeof(char) * (data->map_width + 1));
+        ft_memset(data->null_map[i], '\0', data->map_width + 1);
+        for (j = 0; data->map[i] && data->map[i][j] && j < data->map_width; j++)
+        {
+            char current = data->map[i][j];
+            if (current == '0' || current == '1' || 
+                current == 'N' || current == 'S' || 
+                current == 'E' || current == 'W')
+            {
+                data->null_map[i][j] = current;
+            }
+        }
+    }
+    data->null_map[i] = NULL;
+	i = 0;
+	j = 0;
+	while (i < data->map_height)
+	{
+		j = 0;
+		while (j < data->map_width)
+		{
+			printf("%c", data->null_map[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}
 
 int	cp_in_kharita(char *line, t_map *data, int fd)
 {

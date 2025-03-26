@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 08:03:15 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 21:25:45 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ typedef struct s_map
 	int				color_c;
 	int				player_x;
 	int				player_y;
+	char 			**null_map;
 }					t_map;
 
 typedef struct s_mlx
@@ -207,6 +208,7 @@ void				cp_flkharita(t_map *data);
 // @addindex parsing/check_boundaries.c
 void				check_boundaries(t_map *data);
 void				player_possitions(t_map *data);
+void				fill_map_array(t_map *data);
 
 // @addindex parsing/check_cell_boundaries.c
 void				check_cell_boundaries(t_map *data, int i, int j);
