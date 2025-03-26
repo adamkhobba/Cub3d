@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 02:13:44 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 07:00:54 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct s_ray
 	double			angle;
 	t_point			wall_hit;
 	double			distance;
-	bool			was_hit_vertical;
+	bool			was_hit_vert;
 	int				is_ray_facing_down;
 	int				is_ray_facing_up;
 	int				is_ray_facing_right;
@@ -322,7 +322,7 @@ void				ray_render(t_ray *ray, t_data *data);
 void				ray_render_many(t_ray *rays, int num_rays);
 
 // @addindex raycasting/projection_wall.c
-void				render_projection_walls(t_ray *rays, int num_rays);
+void				render_projection_walls(t_data *data, t_ray *rays, int num_rays);
 void 				init_text(t_data *data);
 
 // @addindex raycasting/intersection.c

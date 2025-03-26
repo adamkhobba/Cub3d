@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/26 02:01:49 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 07:06:39 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void	_2dmap_render(t_data *data)
 			&data->mlx.image.endian);
 	num_rays = WIDTH / WALL_STRIP_W;
 	rays = raycasting(data, num_rays);
-	render_projection_walls(rays, num_rays);
+	render_projection_walls(data, rays, num_rays);
 	_2dmap(data->map);
 	ray_render_many(rays, num_rays);
 	put_player(data->player);
