@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 02:34:56 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/14 00:37:49 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/25 23:33:52 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ void	check_valid_texture(t_map *data)
 		ft_putstr_fd("Error\nMissing texture\n", 2);
 		free_elements(data);
 		free_memory(data);
+		exit(1);
 	}
 }

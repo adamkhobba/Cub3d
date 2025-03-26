@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:36:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/17 00:37:27 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/25 21:31:55 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	find_map_start(t_map *data, int *first_line, int *last_line)
 	i = 0;
 	*first_line = -1;
 	*last_line = -1;
-	data->info->boudaries_width = 0;
 	while (i < data->info->height)
 	{
 		if (parse_element(data, &i))

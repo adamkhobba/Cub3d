@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:01:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/17 00:37:27 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/25 21:52:21 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	first_and_last_lines_check(t_map *data)
 				&& (!(data->kharita[i][j] >= 9 && data->kharita[i][j] <= 13)))
 			&& data->kharita[i][j] != '\n')
 		{
-			ft_putstr_fd("Error\nMap is not clossssssssssed\n", 2);
+			ft_putstr_fd("Error\nMap is not clossssssssssedsssssss\n", 2);
 			return (1);
 		}
 		j++;
