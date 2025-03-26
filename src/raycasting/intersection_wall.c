@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 02:36:19 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/21 22:21:15 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 00:11:59 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_point	horz_intersection(t_data *data, t_ray *ray)
 	while ((intercept.x >= 0 && intercept.x < data->map->map_width * CUB_SIZE)
 		&& (intercept.y >= 0 && intercept.y < data->map->map_height * CUB_SIZE))
 	{
+		// printf("y = %d x = %d\n", (int)intercept.y, (int)intercept.x);
 		if (is_wall(intercept.x, intercept.y))
 			return (horz_wall_hit = intercept);
 		intercept.x += step.x;

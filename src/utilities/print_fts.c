@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 03:07:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/20 03:15:32 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 00:13:09 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	map_print(t_map *map)
 	printf("map->player_y: %d\n", map->player_y);
 	while (i < map->map_height)
 	{
-		printf("%s", map->map[i]);
-		printf("\n");
+		printf("|%s|", map->map[i]);
 		i++;
 	}
 	printf("printing is done !\n");

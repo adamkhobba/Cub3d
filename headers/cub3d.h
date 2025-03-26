@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/25 16:03:13 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 02:13:44 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define FOV 60
 # define MINI_MAP 0.2
 # define WIDTH 1500
-# define HEIGHT 800
+# define HEIGHT 900
 # define NAME "\e[1;34mCub3D\e[0m"
 # define ERROR "\e[1;31mError\e[0m"
 

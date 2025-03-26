@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 01:42:15 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/25 20:07:29 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/25 21:55:55 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	update_player(int keycode, t_data *data)
 	if (data == NULL)
 		return (0);
 	data->player->rot_angle = normalize_angle(data->player->rot_angle);
-	move = (t_point){0};
+	move = (t_point){1, 1};
 	if (keycode == UP)
 	{
 		move = cal_move_player(data->player->rot_angle, UP);
