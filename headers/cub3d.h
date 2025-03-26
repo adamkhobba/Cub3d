@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 07:00:54 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 08:03:15 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define CUB_SIZE 64
 # define WALL_STRIP_W 1
 # define FOV 60
-# define MINI_MAP 0.2
+# define MINI_MAP 0
 # define WIDTH 1500
 # define HEIGHT 900
 # define NAME "\e[1;34mCub3D\e[0m"
@@ -60,8 +60,6 @@ typedef struct s_point
 	double			x;
 	double			y;
 }					t_point;
-
-
 
 /**
  * struct s_player - Structure to represent a player in the game.
@@ -144,8 +142,7 @@ typedef struct s_img
 	int				endian;
 	int				width;
 	int				height;
-}
-					t_img;
+}					t_img;
 typedef struct s_info
 {
 	int				height;
@@ -183,7 +180,6 @@ typedef struct s_map
 	int				player_y;
 }					t_map;
 
-
 typedef struct s_mlx
 {
 	void			*instance;
@@ -199,7 +195,7 @@ typedef struct s_data
 	t_list			*garbage;
 	t_map			*map;
 	t_player		*player;
-	t_img 			*textures[4];
+	t_img			*textures[4];
 }					t_data;
 
 // @addindex main.c
@@ -322,8 +318,9 @@ void				ray_render(t_ray *ray, t_data *data);
 void				ray_render_many(t_ray *rays, int num_rays);
 
 // @addindex raycasting/projection_wall.c
-void				render_projection_walls(t_data *data, t_ray *rays, int num_rays);
-void 				init_text(t_data *data);
+void				render_projection_walls(t_data *data, t_ray *rays,
+						int num_rays);
+void				init_text(t_data *data);
 
 // @addindex raycasting/intersection.c
 t_point				horz_intersection(t_data *data, t_ray *ray);

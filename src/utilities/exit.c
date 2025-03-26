@@ -6,15 +6,15 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 01:06:09 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/26 05:25:22 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 08:01:15 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void free_textures(t_img **textures)
+void	free_textures(t_img **textures)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)

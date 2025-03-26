@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 01:46:40 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/26 06:13:29by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 08:02:38 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,25 @@ int	set_texture_index(t_ray *rays, int i)
 int	set_tex_x(t_data *data, t_ray ray, int tex_i)
 {
 	if (ray.was_hit_vert)
-		return (fmod(ray.wall_hit.y, CUB_SIZE)
-			* data->textures[tex_i]->width / CUB_SIZE);
+		return (fmod(ray.wall_hit.y, CUB_SIZE) * data->textures[tex_i]->width
+			/ CUB_SIZE);
 	else
-		return (fmod(ray.wall_hit.x, CUB_SIZE)
-			* data->textures[tex_i]->width / CUB_SIZE);
+		return (fmod(ray.wall_hit.x, CUB_SIZE) * data->textures[tex_i]->width
+			/ CUB_SIZE);
 }
 
 void	render_ceiling_floor(t_data *data, double wall_strip_h, int start)
 {
 	fillrect((t_point){start * WALL_STRIP_W, 0}, WALL_STRIP_W, (HEIGHT
-		- wall_strip_h) / 2, data->map->color_c);
-	fillrect((t_point){start * WALL_STRIP_W, (HEIGHT + wall_strip_h) / 2}
-		,WALL_STRIP_W, (HEIGHT - wall_strip_h) / 2, data->map->color_f);
+			- wall_strip_h) / 2, data->map->color_c);
+	fillrect((t_point){start * WALL_STRIP_W, (HEIGHT + wall_strip_h) / 2},
+		WALL_STRIP_W, (HEIGHT - wall_strip_h) / 2, data->map->color_f);
 }
 
-void	put_texture_color (t_data *data, int tex_i[3], t_point tex, double wall_strip_h)
+void	put_texture_color(t_data *data, int tex_i[3], t_point tex,
+		double wall_strip_h)
 {
-	double o_v[2];
+	double	o_v[2];
 
 	o_v[1] = data->textures[tex_i[1]]->height / wall_strip_h;
 	tex_i[2] = 0;
@@ -68,21 +69,23 @@ void	put_texture_color (t_data *data, int tex_i[3], t_point tex, double wall_str
 
 void	render_projection_walls(t_data *data, t_ray *rays, int num_rays)
 {
-	double			wall_strip_h;
-	double			proj_plane_dis;
-	t_point			tex;
-	int				tex_i[3];
+	double	wall_strip_h;
+	double	proj_plane_dis;
+	t_point	tex;
+	int		tex_i[3];
 
-	(tex_i[0] = 0) && (tex_i[1] = 0);
+	tex_i[0] = 0;
+	tex_i[1] = 0;
 	proj_plane_dis = (WIDTH / (double)2) / tan(degtorad(FOV) / 2);
-	while (tex_i[0]++ < num_rays - 1)
+	while (tex_i[0]++ < num_rays - 2)
 	{
 		rays[tex_i[0]].distance *= cos(normalize_angle(rays[tex_i[0]].angle
 					- data->player->rot_angle));
 		wall_strip_h = (CUB_SIZE / rays[tex_i[0]].distance) * proj_plane_dis;
 		render_ceiling_floor(data, wall_strip_h, tex_i[0]);
 		tex_i[1] = set_texture_index(rays, tex_i[0]);
-		(tex.x = set_tex_x(data, rays[tex_i[0]], tex_i[1])) && (tex_i[2] = 0);
+		tex.x = set_tex_x(data, rays[tex_i[0]], tex_i[1]);
+		tex_i[2] = 0;
 		put_texture_color(data, tex_i, tex, wall_strip_h);
 	}
 }
