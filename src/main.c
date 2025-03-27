@@ -42,6 +42,8 @@ void	mlx_setup_env(void)
 int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 {
 	t_data	*data;
+	int i;
+	i = 0;
 
 	if (ac != 2)
 	{
@@ -59,9 +61,16 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 		ft_putstr_fd(ERROR "\nFailed to allocate memory\n", 2);
 		close_program();
 	}
+	// exit(1);
+	// while (data->map->map[i])
+	// {
+	// 	printf("%s\n", data->map->map[i]);
+	// 	i++;
+	// }
 	player_init(data);
 	_2dmap_render(data);
 	mlx_loop(data->mlx.instance);
+	printf("Map:\n");
 	free_memory(data->map);
-	parsing(ac ,av);
+	// parsing(ac ,av);
 }
