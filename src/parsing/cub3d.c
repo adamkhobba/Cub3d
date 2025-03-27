@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 00:42:52 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 01:20:01 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ char	**init_split_memory(t_map *data)
 	{
 		ft_putstr_fd("Error\nMemory allocation failed\n", 2);
 		free_memory(data);
-		exit(1);;
+		exit(1);
+		;
+		exit(1);
+		;
 	}
 	return (split);
 }
@@ -58,6 +61,13 @@ void	cp_map_array(t_map *data, char *av[])
 		line = get_next_line(fd);
 	}
 	data->kharita[i] = NULL;
+	if (count_len(data) == 0)
+	{
+		ft_putstr_fd("Error\nInvalid filew\n", 2);
+		free_elements(data);
+		free_memory(data);
+		exit(1);
+	}
 	close(fd);
 }
 
@@ -82,6 +92,7 @@ void	free_memory(t_map *map)
 t_map	*parsing(int ac, char *av[])
 {
 	t_map	*data;
+	int		fd;
 
 	data = malloc(sizeof(t_map));
 	ft_memset(data, 0, sizeof(t_map));
@@ -93,6 +104,14 @@ t_map	*parsing(int ac, char *av[])
 		exit(1);
 	}
 	ft_memset(data->info, 0, sizeof(t_info));
+	fd = open(av[1], O_RDONLY);
+	if (fd < 0)
+	{
+		ft_putstr_fd("Error\nFile not found\n", 2);
+		free(data->info);
+		free(data);
+		exit(1);
+	}
 	ft_check_file_path(data, ac, av);
 	map_height(data, av);
 	cp_map_array(data, av);

@@ -39,15 +39,16 @@ int	is_valide(char c)
 int	check_neighboring_cells(t_map *data, int i, int j)
 {
 	if (!check_empty(data->kharita[i + 1]) || !check_empty(data->kharita[i - 1])
-		|| !check_empty(data->kharita[i] + j + 1) || !check_empty(data->kharita[i] + j
-			- 1))
+		|| !check_empty(data->kharita[i] + j + 1)
+		|| !check_empty(data->kharita[i] + j - 1))
 	{
 		return (0);
 	}
 	if (i == 0 || i == data->info->height - 1 || j == 0
-		|| j == (int)ft_strlen(data->kharita[i]) - 1 || !is_valide(data->kharita[i][j
-			+ 1]) || !is_valide(data->kharita[i][j - 1]) || !is_valide(data->kharita[i
-			+ 1][j]) || !is_valide(data->kharita[i - 1][j]))
+		|| j == (int)ft_strlen(data->kharita[i]) - 1
+		|| !is_valide(data->kharita[i][j + 1]) || !is_valide(data->kharita[i][j
+			- 1]) || !is_valide(data->kharita[i + 1][j])
+		|| !is_valide(data->kharita[i - 1][j]))
 	{
 		return (0);
 	}

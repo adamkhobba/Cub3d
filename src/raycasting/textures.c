@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 00:57:48 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/26 21:27:00 by akhobba          ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/03/27 01:18:20 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "cub3d.h"
 
@@ -43,3 +44,4 @@ void	init_text(t_data *data)
 	data->textures[2] = initialize_text(data, data->map->we);
 	data->textures[3] = initialize_text(data, data->map->ea);
 }
+

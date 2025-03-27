@@ -6,11 +6,11 @@ git add . && git commit -m "hi" && git push
 player positions
 
 
-empty file 
+empty file
 
 
 
-no map 
+no map
 
 
 

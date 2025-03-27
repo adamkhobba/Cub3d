@@ -14,10 +14,12 @@
 
 int	parse_element(t_map *data, int *i)
 {
-	if (ft_strncmp(data->kharita[*i], "NO", 2) == 0 || ft_strncmp(data->kharita[*i],
-			"SO", 2) == 0 || ft_strncmp(data->kharita[*i], "WE", 2) == 0
-		|| ft_strncmp(data->kharita[*i], "EA", 2) == 0 || ft_strncmp(data->kharita[*i],
-			"F", 1) == 0 || ft_strncmp(data->kharita[*i], "C", 1) == 0)
+	if (ft_strncmp(data->kharita[*i], "NO", 2) == 0
+		|| ft_strncmp(data->kharita[*i], "SO", 2) == 0
+		|| ft_strncmp(data->kharita[*i], "WE", 2) == 0
+		|| ft_strncmp(data->kharita[*i], "EA", 2) == 0
+		|| ft_strncmp(data->kharita[*i], "F", 1) == 0
+		|| ft_strncmp(data->kharita[*i], "C", 1) == 0)
 	{
 		return (1);
 	}
