@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projection_wall.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 01:46:40 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/27 02:59:12 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 04:16:36 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	render_ceiling_floor(t_data *data, double wall_strip_h, int start)
 {
 	if (wall_strip_h > HEIGHT)
 		wall_strip_h = HEIGHT;
-	fillrect((t_point){start * WALL_STRIP_W, 0}, WALL_STRIP_W, (HEIGHT
+	fillrect((t_point){start * WALL_STRIP_W, 1}, WALL_STRIP_W, (HEIGHT
 			- wall_strip_h) / 2, data->map->color_c);
 	fillrect((t_point){start * WALL_STRIP_W, (HEIGHT + wall_strip_h) / 2},
 		WALL_STRIP_W, (HEIGHT - wall_strip_h) / 2, data->map->color_f);
