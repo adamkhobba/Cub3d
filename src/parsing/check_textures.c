@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:40:39 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 00:19:54 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 03:30:15 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void	check_valid_file(char *line, t_map *data)
 	if ((!line && data->info->height == 0) || count_len(data) == 0)
 	{
 		ft_putstr_fd("Error\nInvalid file\n", 2);
-		free_elements(data);
-		free_memory(data);
+		free_elements(data);;
+		free_2d(data->kharita);
+		free(data->info);
+		free(data);
 		exit(1);
 	}
 }
@@ -29,26 +31,29 @@ void	validate_texture_format(char **split, t_map *data)
 	{
 		ft_putstr_fd("Error\nInvalid texture\n", 2);
 		free_elements(data);
-		free_memory(data);
+		free_2d(data->kharita);
+		free(data->info);
+		free(data);
 		exit(1);
 	}
 }
 
-void	process_texture_line(t_map *data, char **split)
+int	process_texture_line(t_map *data, char **split)
 {
 	validate_texture_format(split, data);
 	if (!strcmp(split[0], "NO"))
-		set_no_texture(data, split);
+		return (set_no_texture(data, split));
 	else if (!strcmp(split[0], "SO"))
-		set_so_texture(data, split);
+		return (set_so_texture(data, split));
 	else if (!strcmp(split[0], "WE"))
-		set_we_texture(data, split);
+		return (set_we_texture(data, split));
 	else if (!strcmp(split[0], "EA"))
-		set_ea_texture(data, split);
+		return (set_ea_texture(data, split));
 	else if (!strcmp(split[0], "F"))
-		set_floor_and_ceiling_color(data, split, 1);
+		return (set_floor_and_ceiling_color(data, split, 1));
 	else if (!strcmp(split[0], "C"))
-		set_floor_and_ceiling_color(data, split, 0);
+		return (set_floor_and_ceiling_color(data, split, 0));
+	return (0);
 }
 
 void	process_texture_data(t_map *data, char *line, int *j)
@@ -65,7 +70,11 @@ void	process_texture_data(t_map *data, char *line, int *j)
 		data->info->first_line_in_map++;
 		return ;
 	}
-	process_texture_line(data, split);
+	if (process_texture_line(data, split) == -1)
+	{
+		free(line);
+		exit(1);
+	}
 	free_2d(split);
 	free(line);
 	(*j)++;
@@ -87,8 +96,7 @@ int	parse_textures(t_map *data)
 		line = get_next_line(fd);
 	}
 	check_valid_texture(data);
-	if (line)
-		free(line);
+	free(line);
 	close(fd);
 	return (1);
 }

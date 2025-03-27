@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 01:46:40 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/27 01:17:37 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 04:19:35 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ int	set_tex_x(t_data *data, t_ray ray, int tex_i)
 
 void	render_ceiling_floor(t_data *data, double wall_strip_h, int start)
 {
-	fillrect((t_point){start * WALL_STRIP_W, 0}, WALL_STRIP_W, (HEIGHT
+	if (wall_strip_h > HEIGHT)
+		wall_strip_h = HEIGHT;
+	fillrect((t_point){start * WALL_STRIP_W, 1}, WALL_STRIP_W, (HEIGHT
 			- wall_strip_h) / 2, data->map->color_c);
 	fillrect((t_point){start * WALL_STRIP_W, (HEIGHT + wall_strip_h) / 2},
 		WALL_STRIP_W, (HEIGHT - wall_strip_h) / 2, data->map->color_f);

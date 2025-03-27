@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:39:51 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 01:19:56 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 04:19:20 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	cp_flkharita(t_map *data)
 {
 	char	*line;
 
-	int(i), (j), (fd);
+	int (i), (j), (fd);
 	i = 0;
 	j = 0;
 	fd = open(data->info->file, O_RDONLY);

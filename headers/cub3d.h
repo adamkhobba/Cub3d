@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 01:16:36 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 04:18:54 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,7 +245,7 @@ int					set_so_texture(t_map *data, char **split);
 // @addindex parsing/check_textures.c
 int					parse_textures(t_map *data);
 void				process_texture_data(t_map *data, char *line, int *j);
-void				process_texture_line(t_map *data, char **split);
+int					process_texture_line(t_map *data, char **split);
 void				validate_texture_format(char **split, t_map *data);
 
 // @addindex parsing/check_valid_texture.c
@@ -267,7 +267,7 @@ void				ft_error(char *str, t_map *data);
 
 // @addindex parsing/ft_atoi00.c
 long				ft_atoi00(char *str);
-char	*ft_strncpy(char *dest, char *src, unsigned int n);
+char*				ft_strncpy(char* dest, const char* src, size_t n);
 
 // @addindex parsing/ft_split_utils.c
 char				**freefun00(char **p, int j);
