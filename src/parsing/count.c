@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:04:43 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 00:20:20 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 02:17:11 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	map_height(t_map *data, char *av[])
 	{
 		i++;
 		free(line);
+		line = NULL;
 		line = get_next_line(fd);
 	}
 	if (i == 0)
@@ -73,5 +74,6 @@ void	map_height(t_map *data, char *av[])
 		free(data);
 		exit(1);
 	}
+	close(fd);
 	data->info->height = i;
 }

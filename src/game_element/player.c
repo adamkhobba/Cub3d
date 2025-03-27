@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:40:06 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/27 01:01:52 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 01:33:27 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	player_init(t_data *data)
 	data->player->radius = 3;
 	data->player->turn_direction = 0;
 	data->player->walk_direction = 0;
-	if (data->map->null_map[data->map->player_y][data->map->player_x] == 'N')
+	if (data->map->map[data->map->player_y][data->map->player_x] == 'N')
 		data->player->rot_angle = degtorad(270);
-	else if (data->map->null_map[data->map->player_y][data->map->player_x] == 'S')
+	else if (data->map->map[data->map->player_y][data->map->player_x] == 'S')
 		data->player->rot_angle = degtorad(90);
-	else if (data->map->null_map[data->map->player_y][data->map->player_x] == 'W')
+	else if (data->map->map[data->map->player_y][data->map->player_x] == 'W')
 		data->player->rot_angle = degtorad(180);
-	else if (data->map->null_map[data->map->player_y][data->map->player_x] == 'E')
+	else if (data->map->map[data->map->player_y][data->map->player_x] == 'E')
 		data->player->rot_angle = degtorad(0);
 	data->player->walk_speed = 6;
 	data->player->turn_speed = 6 * (M_PI / 180);
