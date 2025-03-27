@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 21:26:17 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 00:42:52 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,10 @@ t_map	*parsing(int ac, char *av[])
 	check_player_valid_pos(data);
 	cp_flkharita(data);
 	player_possitions(data);
-	printf("last line in map %d\n", data->info->last_line_in_map);
-	printf("first line in map %d\n", data->info->first_line_in_map);
-	printf("map height %d\n", data->map_height);
-	printf("map width %d\n", data->map_width);
+	// printf("last line in map %d\n", data->info->last_line_in_map);
+	// printf("first line in map %d\n", data->info->first_line_in_map);
+	// printf("map height %d\n", data->map_height);
+	// printf("map width %d\n", data->map_width);
 	fill_map_array(data);
 	return (data);
 }
