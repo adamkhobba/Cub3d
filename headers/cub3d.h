@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 21:25:45 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 01:16:36 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ typedef struct s_map
 	int				map_width;
 	int				map_height;
 	char			**kharita;
-	char			**map;
+	char			**null_map;
 	char			*no;
 	char			*so;
 	char			*we;
@@ -178,7 +178,7 @@ typedef struct s_map
 	int				color_c;
 	int				player_x;
 	int				player_y;
-	char 			**null_map;
+	char 			**map;
 }					t_map;
 
 typedef struct s_mlx
@@ -209,6 +209,7 @@ void				cp_flkharita(t_map *data);
 void				check_boundaries(t_map *data);
 void				player_possitions(t_map *data);
 void				fill_map_array(t_map *data);
+void				fill_map_array(t_map *data);
 
 // @addindex parsing/check_cell_boundaries.c
 void				check_cell_boundaries(t_map *data, int i, int j);
@@ -219,6 +220,7 @@ void				check_invalid_character(t_map *data);
 int					parse_element(t_map *data, int *i);
 
 // @addindex parsing/check_color.c
+void				free_2d(char **split);
 int					handle_colors(char *line, t_map *data);
 void				free_elements(t_map *data);
 int					create_trgb(int t, int r, int g, int b);
@@ -265,6 +267,7 @@ void				ft_error(char *str, t_map *data);
 
 // @addindex parsing/ft_atoi00.c
 long				ft_atoi00(char *str);
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
 
 // @addindex parsing/ft_split_utils.c
 char				**freefun00(char **p, int j);

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/26 21:26:02 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 01:16:51 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	_2dmap(t_map *map)
 	int		i;
 	int		j;
 
-	if (map->map == NULL)
+	if (map->null_map == NULL)
 		return ;
 	i = 0;
 	while (i < map->map_height)
@@ -141,6 +141,9 @@ void	_2dmap_render(t_data *data)
 	rays = NULL;
 	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH,
 			HEIGHT);
+	rays = NULL;
+	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH,
+			HEIGHT);
 	if (!data->mlx.image.img)
 	{
 		ft_putstr_fd(ERROR "\nFailed to create image\n", 2);
@@ -150,7 +153,9 @@ void	_2dmap_render(t_data *data)
 			&data->mlx.image.bpp, &data->mlx.image.line_len,
 			&data->mlx.image.endian);
 	num_rays = WIDTH / WALL_STRIP_W;
+	num_rays = WIDTH / WALL_STRIP_W;
 	rays = raycasting(data, num_rays);
+	render_projection_walls(data, rays, num_rays);
 	render_projection_walls(data, rays, num_rays);
 	_2dmap(data->map);
 	ray_render_many(rays, num_rays);

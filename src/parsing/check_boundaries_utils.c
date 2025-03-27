@@ -6,48 +6,43 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:39:51 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 21:23:58 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 01:06:01 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void fill_map_array(t_map *data)
+void	fill_map_array(t_map *data)
 {
-    int i, j;
+	char	current;
+	char	*line;
 
-    data->null_map = malloc(sizeof(char *) * (data->map_height + 1));
-    if (!data->null_map)
-        return;
-    for (i = 0; i < data->map_height; i++)
-    {
-        data->null_map[i] = malloc(sizeof(char) * (data->map_width + 1));
-        ft_memset(data->null_map[i], '\0', data->map_width + 1);
-        for (j = 0; data->map[i] && data->map[i][j] && j < data->map_width; j++)
-        {
-            char current = data->map[i][j];
-            if (current == '0' || current == '1' || 
-                current == 'N' || current == 'S' || 
-                current == 'E' || current == 'W')
-            {
-                data->null_map[i][j] = current;
-            }
-        }
-    }
-    data->null_map[i] = NULL;
+	int (i), (j);
 	i = 0;
 	j = 0;
+	data->map = malloc(sizeof(char *) * (data->map_height + 1));
+	if (!data->map)
+		return ;
 	while (i < data->map_height)
 	{
-		j = 0;
-		while (j < data->map_width)
+		data->map[i] = malloc(sizeof(char) * (data->map_width + 1));
+		ft_memset(data->map[i], '\0', data->map_width + 1);
+		line = ft_strtrim(data->null_map[i], "\n");
+		while (line && line[j] && j < data->map_width)
 		{
-			printf("%c", data->null_map[i][j]);
+			current = line[j];
+			if (current == '0' || current == '1' || current == 'N'
+				|| current == 'S' || current == 'E' || current == 'W')
+			{
+				data->map[i][j] = current;
+			}
 			j++;
 		}
-		printf("\n");
+		free(line);
+		j = 0;
 		i++;
 	}
+	data->map[i] = NULL;
 }
 
 int	cp_in_kharita(char *line, t_map *data, int fd)
@@ -59,7 +54,7 @@ int	cp_in_kharita(char *line, t_map *data, int fd)
 	j = 0;
 	while (line && i < data->info->last_line_in_map)
 	{
-		data->map[j] = ft_strdup(line);
+		data->null_map[j] = ft_strdup(line);
 		j++;
 		if (line)
 			free(line);
@@ -69,20 +64,23 @@ int	cp_in_kharita(char *line, t_map *data, int fd)
 	return (j);
 }
 
-void player_possitions(t_map *data)
+void	player_possitions(t_map *data)
 {
-	int i = 0;
-	int j = 0;
+	int	i;
+	int	j;
 
-	while (data->map[i] && i <= data->info->last_line_in_map)
+	i = 0;
+	j = 0;
+	while (data->null_map[i] && i <= data->info->last_line_in_map)
 	{
 		j = 0;
-		while (data->map[i][j] && data->map[i][j] != '\n')
+		while (data->null_map[i][j] && data->null_map[i][j] != '\n')
 		{
-			if (data->map[i][j] == 'W' || data->map[i][j] == 'E' || data->map[i][j] == 'N' || data->map[i][j] == 'S')
+			if (data->null_map[i][j] == 'W' || data->null_map[i][j] == 'E'
+				|| data->null_map[i][j] == 'N' || data->null_map[i][j] == 'S')
 			{
 				data->player_x = j;
-				data->player_y= i;
+				data->player_y = i;
 			}
 			j++;
 		}
@@ -94,11 +92,11 @@ void	cp_flkharita(t_map *data)
 {
 	char	*line;
 
-	int (i), (j), (fd);
+	int(i), (j), (fd);
 	i = 0;
 	j = 0;
 	fd = open(data->info->file, O_RDONLY);
-	data->map = malloc(sizeof(char *) * (data->info->height + 1));
+	data->null_map = malloc(sizeof(char *) * (data->info->height + 1));
 	line = get_next_line(fd);
 	while (line && i < data->info->first_line_in_map)
 	{
@@ -113,6 +111,6 @@ void	cp_flkharita(t_map *data)
 	}
 	i = 0;
 	j = cp_in_kharita(line, data, fd);
-	data->map[j] = NULL;
+	data->null_map[j] = NULL;
 	close(fd);
 }

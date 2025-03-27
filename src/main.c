@@ -64,5 +64,5 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	_2dmap_render(data);
 	mlx_loop(data->mlx.instance);
 	free_memory(data->map);
-	// parsing(ac ,av);
+	parsing(ac ,av);
 }

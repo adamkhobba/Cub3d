@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 01:40:20 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/26 02:10:40 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 01:17:12 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	is_wall(int x, int y)
 	if (x < 0 || y < 0 || x_cub >= data->map->map_width
 		|| y_cub >= data->map->map_height)
 		return (true);
-	if (data->map->map[y_cub][x_cub] == '1')
+	if (data->map->null_map[y_cub][x_cub] == '1')
 		return (true);
 	return (false);
 }

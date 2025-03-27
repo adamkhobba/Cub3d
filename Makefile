@@ -6,13 +6,13 @@
 #    By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-#    Updated: 2025/03/26 21:25:43 by akhobba          ###   ########.fr        #
+#    Updated: 2025/03/27 01:16:32 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # CFLAGS
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror -g3 #-fsanitize=address
 MLXFLAGS	=	-lmlx -lX11 -lXext -lm
 HEADERS		=	headers/cub3d.h
 INCLUDES	=	-I./headers -I./libft/headers
@@ -36,7 +36,7 @@ SRC			=	src/main.c src/parsing/check_boundaries.c src/parsing/check_color.c src/
 				src/utilities/math.c src/utilities/exit.c  src/utilities/mlx_utils.c  \
 				src/game_element/player.c src/game_element/_2dmap.c src/game_element/wall_collision.c \
 				src/parsing/check_valid_texture.c src/utilities/print_fts.c \
-				src/utilities/no_need.c src/raycasting/raycasting.c src/raycasting/projection_wall.c src/raycasting/ray_functions.c \
+				src/raycasting/raycasting.c src/raycasting/projection_wall.c src/raycasting/ray_functions.c \
 				src/raycasting/intersection_wall.c src/game_element/hooks.c src/raycasting/textures.c\
 				src/parsing/check_boundaries_utils.c src/parsing/check_cell_boundaries.c \
 				src/parsing/ft_split_utils.c
