@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_fts.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 03:07:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/26 00:13:09 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 01:01:52 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	map_print(t_map *map)
 	printf("map->player_y: %d\n", map->player_y);
 	while (i < map->map_height)
 	{
-		printf("|%s|", map->map[i]);
+		printf("|%s|", map->null_map[i]);
 		i++;
 	}
 	printf("printing is done !\n");

@@ -31,8 +31,9 @@ void	validate_player_position(t_map *data, int i, int j, int *count)
 	}
 	data->player_x = i;
 	data->player_y = j;
-	if (one_or_zero(data->kharita[i + 1][j]) || one_or_zero(data->kharita[i - 1][j])
-		|| one_or_zero(data->kharita[i][j + 1]) || one_or_zero(data->kharita[i][j - 1]))
+	if (one_or_zero(data->kharita[i + 1][j]) || one_or_zero(data->kharita[i
+			- 1][j]) || one_or_zero(data->kharita[i][j + 1])
+		|| one_or_zero(data->kharita[i][j - 1]))
 	{
 		ft_putstr_fd("Error\nInvalid player position\n", 2);
 		free_elements(data);
@@ -45,7 +46,7 @@ void	validate_player_position(t_map *data, int i, int j, int *count)
 
 int	check_player_valid_pos(t_map *data)
 {
-	int (i), (j), (count);
+	int(i), (j), (count);
 	i = data->info->first_line_in_map;
 	count = 0;
 	while (i < data->info->height)

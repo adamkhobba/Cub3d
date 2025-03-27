@@ -32,7 +32,7 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 
 long	ft_atoi00(char *str)
 {
-	long (i), (sig), (res);
+	long(i), (sig), (res);
 	res = 0;
 	i = 0;
 	sig = 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _2dmap.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/27 00:18:30 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 01:01:52 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,16 +95,16 @@ void	_2dmap(t_map *map)
 	int		i;
 	int		j;
 
-	if (map->map == NULL)
+	if (map->null_map == NULL)
 		return ;
 	i = 0;
 	while (i < map->map_height)
 	{
 		j = 0;
-		while (map->map[i] && map->map[i][j])
+		while (map->null_map[i] && map->null_map[i][j])
 		{
 			point = (t_point){j * CUB_SIZE * MINI_MAP, i * CUB_SIZE * MINI_MAP};
-			if (map->map[i] && map->map[i][j] == '1')
+			if (map->null_map[i] && map->null_map[i][j] == '1')
 				fillrect(point, (CUB_SIZE - 2) * MINI_MAP, (CUB_SIZE - 2)
 					* MINI_MAP, 0x222222);
 			else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:06:40 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 00:20:07 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 00:39:16 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ void	ft_check_file_path(t_map *data, int ac, char *av[])
 	len = ft_strlen(av[1]);
 	if (len < 4 || av[1][len - 1] != 'b' || av[1][len - 2] != 'u' || av[1][len
 		- 3] != 'c' || av[1][len - 4] != '.')
-		{
-			ft_putstr_fd("Error\nInvalid file extension\n", 2);
-			free_memory(data);
-			exit(1);
-		}
+	{
+		ft_putstr_fd("Error\nInvalid file extension\n", 2);
+		free_memory(data);
+		exit(1);
+	}
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		ft_error("Error\nInvalid file path\n", data);

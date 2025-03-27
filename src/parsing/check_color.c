@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:53:32 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 00:19:32 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 00:43:22 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,9 @@ void	free_2d(char **split)
 
 int	handle_colors(char *line, t_map *data)
 {
-	int		i;
-	int		count;
 	char	**split;
-	int		color;
 
+	int (i), (count), (color);
 	i = 0;
 	count = 0;
 	while (line[i])
