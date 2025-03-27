@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wall_collision.c                                   :+:      :+:    :+:   */
+/*   ft_split_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 01:40:20 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/27 03:55:36 by csouita          ###   ########.fr       */
+/*   Created: 2025/03/15 23:01:09 by csouita           #+#    #+#             */
+/*   Updated: 2025/03/26 02:36:15 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	is_wall(int x, int y)
+int	ft_is_void(char c)
 {
-	t_data	*data;
-	int		x_cub;
-	int		y_cub;
+	return (c == 32 || (c >= 9 && c <= 13));
+}
 
-	data = get_data();
-	x_cub = floor(x / CUB_SIZE);
-	y_cub = floor(y / CUB_SIZE);
-	if (x < 0 || y < 0 || x_cub >= data->map->map_width
-		|| y_cub >= data->map->map_height)
-		return (true);
-	if (data->map->map[y_cub][x_cub] == '1')
-		return (true);
-	return (false);
+int	handle_quotes3(char *str, int *i, char quote_char)
+{
+	(*i)++;
+	while (str[*i] && str[*i] != quote_char)
+		(*i)++;
+	if (str[*i] && str[*i] == quote_char)
+		(*i)++;
+	return (1);
+}
+
+char	**freefun00(char **p, int j)
+{
+	while (j >= 0)
+	{
+		free(p[j]);
+		j--;
+	}
+	free(p);
+	return (NULL);
 }

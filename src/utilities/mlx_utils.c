@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wall_collision.c                                   :+:      :+:    :+:   */
+/*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 01:40:20 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/27 03:55:36 by csouita          ###   ########.fr       */
+/*   Created: 2025/03/11 01:12:23 by akhobba           #+#    #+#             */
+/*   Updated: 2025/03/25 23:28:59 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	is_wall(int x, int y)
+/**
+ * Put a pixel to the image
+ * @param x: the x coordinate of the pixel
+ * @param y: the y coordinate of the pixel
+ * @param color: the color of the pixel
+ * @return void
+ */
+void	my_put_pixel_to_image(int x, int y, int color)
 {
-	t_data	*data;
-	int		x_cub;
-	int		y_cub;
+	int	offset;
 
-	data = get_data();
-	x_cub = floor(x / CUB_SIZE);
-	y_cub = floor(y / CUB_SIZE);
-	if (x < 0 || y < 0 || x_cub >= data->map->map_width
-		|| y_cub >= data->map->map_height)
-		return (true);
-	if (data->map->map[y_cub][x_cub] == '1')
-		return (true);
-	return (false);
+	offset = (y * get_data()->mlx.image.line_len + x
+			* (get_data()->mlx.image.bpp / 8));
+	*(unsigned int *)(get_data()->mlx.image.addr + offset) = color;
 }
