@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 07:00:19 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/21 23:30:26 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 05:46:07 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void	cast_ray(t_ray *ray, t_data *data)
 	{
 		ray->wall_hit = horz_wall_hit;
 		ray->distance = horz_hit_distance;
-		ray->was_hit_vertical = false;
+		ray->was_hit_vert = false;
 		return ;
 	}
 	ray->wall_hit = vert_wall_hit;
 	ray->distance = vert_hit_distance;
-	ray->was_hit_vertical = true;
+	ray->was_hit_vert = true;
 }
 
 /**

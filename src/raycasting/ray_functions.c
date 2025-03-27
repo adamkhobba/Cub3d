@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 07:43:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/21 01:37:27 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 05:46:07 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_ray	ray_create(double angle)
 	ray.wall_hit.x = 0;
 	ray.wall_hit.y = 0;
 	ray.distance = 0;
-	ray.was_hit_vertical = 0;
+	ray.was_hit_vert = 0;
 	ray.is_ray_facing_down = ray.angle > 0 && ray.angle < M_PI;
 	ray.is_ray_facing_up = !ray.is_ray_facing_down;
 	ray.is_ray_facing_right = ray.angle < 0.5 * M_PI || ray.angle > 1.5 * M_PI;

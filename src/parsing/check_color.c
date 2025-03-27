@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:53:32 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 22:20:55 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 00:19:32 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,36 +21,20 @@ int	create_trgb(int t, int r, int g, int b)
 
 void	free_elements(t_map *data)
 {
-	if (data->no)
-	{
-		free(data->info->no_key);
-		free(data->no);
-	}
-	if (data->so)
-	{
-		free(data->info->so_key);
-		free(data->so);
-	}
-	if (data->we)
-	{
-		free(data->info->we_key);
-		free(data->we);
-	}
-	if (data->ea)
-	{
-		free(data->info->ea_key);
-		free(data->ea);
-	}
-	if (data->info->c)
-	{
-		free(data->info->c_key);
-		free(data->info->c);
-	}
-	if (data->info->f)
-	{
-		free(data->info->f_key);
-		free(data->info->f);
-	}
+	if (!data)
+		return ;
+	free(data->info->no_key);
+	free(data->no);
+	free(data->info->so_key);
+	free(data->so);
+	free(data->info->we_key);
+	free(data->we);
+	free(data->info->ea_key);
+	free(data->ea);
+	free(data->info->c_key);
+	free(data->info->c);
+	free(data->info->f_key);
+	free(data->info->f);
 }
 
 void	free_2d(char **split)
@@ -83,7 +67,7 @@ int	handle_colors(char *line, t_map *data)
 	split = ft_split(line, ',');
 	if (count_split(split) != 3)
 	{
-		free_2d(split);	
+		free_2d(split);
 		ft_error("Error\nInvalid color\n", data);
 	}
 	color = create_trgb(1, ft_atoi00(split[0]), ft_atoi00(split[1]),

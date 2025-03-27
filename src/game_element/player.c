@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:40:06 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/21 22:21:56 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 01:05:07 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	player_init(t_data *data)
 	else if (data->map->map[data->map->player_y][data->map->player_x] == 'E')
 		data->player->rot_angle = degtorad(0);
 	data->player->walk_speed = 6;
-	data->player->turn_speed = 8 * (M_PI / 180);
+	data->player->turn_speed = 6 * (M_PI / 180);
 }
 
 void	put_player(t_player *player)

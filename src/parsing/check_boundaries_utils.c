@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_boundaries_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:39:51 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 21:52:38 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 00:19:20 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void fill_map_array(t_map *data)
     for (i = 0; i < data->map_height; i++)
     {
         data->null_map[i] = malloc(sizeof(char) * (data->map_width + 1));
-        ft_memset(data->null_map[i], '6', data->map_width + 1);
+        ft_memset(data->null_map[i], '\0', data->map_width + 1);
         for (j = 0; data->map[i] && data->map[i][j] && j < data->map_width; j++)
         {
             char current = data->map[i][j];
-            if (current == '0' || current == '1' || 
-                current == 'N' || current == 'S' || 
+            if (current == '0' || current == '1' ||
+                current == 'N' || current == 'S' ||
                 current == 'E' || current == 'W')
             {
                 data->null_map[i][j] = current;

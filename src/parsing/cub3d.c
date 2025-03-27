@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 23:54:54 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 00:21:18 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char	**init_split_memory(t_map *data)
 	{
 		ft_putstr_fd("Error\nMemory allocation failed\n", 2);
 		free_memory(data);
+		exit(1);;
 		exit(1);;
 	}
 	return (split);
@@ -70,6 +71,7 @@ void	cp_map_array(t_map *data, char *av[])
 
 void	free_memory(t_map *map)
 {
+	int	i;
 	int	i;
 
 	i = 0;

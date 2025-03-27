@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _2dmap.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:54:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/25 23:46:01 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 00:18:30 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,10 @@ void	_2dmap(t_map *map)
 	while (i < map->map_height)
 	{
 		j = 0;
-		while (j < map->map_width)
+		while (map->map[i] && map->map[i][j])
 		{
 			point = (t_point){j * CUB_SIZE * MINI_MAP, i * CUB_SIZE * MINI_MAP};
-			if (map->map[i][j] == '1')
+			if (map->map[i] && map->map[i][j] == '1')
 				fillrect(point, (CUB_SIZE - 2) * MINI_MAP, (CUB_SIZE - 2)
 					* MINI_MAP, 0x222222);
 			else
@@ -138,8 +138,9 @@ void	_2dmap_render(t_data *data)
 	int		num_rays;
 	t_ray	*rays;
 
-	data->mlx.image.img = mlx_new_image(data->mlx.instance, data->mlx.win_width,
-			data->mlx.win_height);
+	rays = NULL;
+	data->mlx.image.img = mlx_new_image(data->mlx.instance, WIDTH,
+			HEIGHT);
 	if (!data->mlx.image.img)
 	{
 		ft_putstr_fd(ERROR "\nFailed to create image\n", 2);
@@ -148,9 +149,9 @@ void	_2dmap_render(t_data *data)
 	data->mlx.image.addr = mlx_get_data_addr(data->mlx.image.img,
 			&data->mlx.image.bpp, &data->mlx.image.line_len,
 			&data->mlx.image.endian);
-	num_rays = data->mlx.win_width / WALL_STRIP_W;
+	num_rays = WIDTH / WALL_STRIP_W;
 	rays = raycasting(data, num_rays);
-	render_projection_walls(rays, num_rays);
+	render_projection_walls(data, rays, num_rays);
 	_2dmap(data->map);
 	ray_render_many(rays, num_rays);
 	put_player(data->player);

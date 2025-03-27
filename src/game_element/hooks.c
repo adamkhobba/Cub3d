@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 01:42:15 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/25 20:07:29 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/26 05:31:42 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,28 +51,18 @@ int	update_player(int keycode, t_data *data)
 
 	if (data == NULL)
 		return (0);
+	data->player->walk_direction = 1;
 	data->player->rot_angle = normalize_angle(data->player->rot_angle);
 	move = (t_point){0};
-	if (keycode == UP)
+	if (keycode == UP || keycode == DOWN)
 	{
 		move = cal_move_player(data->player->rot_angle, UP);
-		data->player->walk_direction = 1;
-	}
-	if (keycode == DOWN)
-	{
-		data->player->walk_direction = -1;
-		move = cal_move_player(data->player->rot_angle, DOWN);
+		(keycode == DOWN) && (data->player->walk_direction = -1);
 	}
 	if (keycode == RIGHT)
-	{
 		move = cal_move_player(data->player->rot_angle, RIGHT);
-		data->player->walk_direction = 1;
-	}
 	if (keycode == LEFT)
-	{
 		move = cal_move_player(data->player->rot_angle, LEFT);
-		data->player->walk_direction = 1;
-	}
 	(keycode == RIGHT_ARROW) && (data->player->turn_direction = 1);
 	(keycode == LEFT_ARROW) && (data->player->turn_direction = -1);
 	(keycode == EXIT) && (close_program());

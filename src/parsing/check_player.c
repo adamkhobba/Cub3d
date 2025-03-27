@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:57:19 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 23:40:35 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 00:19:38 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	validate_player_position(t_map *data, int i, int j, int *count)
 		free_elements(data);
 		free_memory(data);
 		exit(1);
+		exit(1);
 	}
 	data->player_x = i;
 	data->player_y = j;
@@ -36,6 +37,7 @@ void	validate_player_position(t_map *data, int i, int j, int *count)
 		ft_putstr_fd("Error\nInvalid player position\n", 2);
 		free_elements(data);
 		free_memory(data);
+		exit(1);
 		exit(1);
 	}
 	(*count)++;
@@ -65,6 +67,7 @@ int	check_player_valid_pos(t_map *data)
 		ft_putstr_fd("Error\nInvalid player position\n", 2);
 		free_elements(data);
 		free_memory(data);
+		exit(1);
 		exit(1);
 	}
 	return (0);

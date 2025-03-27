@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 00:57:48 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/25 23:30:49 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 00:21:57 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 unsigned int	get_pixel_img(t_img *data, int x, int y)
 {
-	return (*(unsigned int *)(data->addr + (y * data->line_len + x
-			* (data->bpp / 8))));
+	return (*(unsigned int *)(data->addr + (y * data->line_len + x * (data->bpp
+				/ 8))));
 }
 
-
-t_img *initialize_text(t_data *data, char *path)
+t_img	*initialize_text(t_data *data, char *path)
 {
     t_img *text = malloc(sizeof(t_img));
     text->img = mlx_xpm_file_to_image(data->mlx.instance, path, &text->width, &text->height);
@@ -37,10 +36,10 @@ t_img *initialize_text(t_data *data, char *path)
     return text;
 }
 
-void init_text(t_data *data)
+void	init_text(t_data *data)
 {
-    data->textures[0] = initialize_text(data, data->map->no);
-    data->textures[1] = initialize_text(data, data->map->so);
-    data->textures[2] = initialize_text(data, data->map->we);
-    data->textures[3] = initialize_text(data, data->map->ea);
+	data->textures[0] = initialize_text(data, data->map->no);
+	data->textures[1] = initialize_text(data, data->map->so);
+	data->textures[2] = initialize_text(data, data->map->we);
+	data->textures[3] = initialize_text(data, data->map->ea);
 }

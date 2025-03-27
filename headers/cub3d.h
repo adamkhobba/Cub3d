@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/26 23:33:10 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 00:18:12 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@
 # define CUB_SIZE 64
 # define WALL_STRIP_W 1
 # define FOV 60
-# define MINI_MAP 0.2
+# define MINI_MAP 0
 # define WIDTH 1500
-# define HEIGHT 800
+# define HEIGHT 900
 # define NAME "\e[1;34mCub3D\e[0m"
 # define ERROR "\e[1;31mError\e[0m"
 
@@ -60,8 +60,6 @@ typedef struct s_point
 	double			x;
 	double			y;
 }					t_point;
-
-
 
 /**
  * struct s_player - Structure to represent a player in the game.
@@ -92,7 +90,7 @@ typedef struct s_ray
 	double			angle;
 	t_point			wall_hit;
 	double			distance;
-	bool			was_hit_vertical;
+	bool			was_hit_vert;
 	int				is_ray_facing_down;
 	int				is_ray_facing_up;
 	int				is_ray_facing_right;
@@ -144,8 +142,7 @@ typedef struct s_img
 	int				endian;
 	int				width;
 	int				height;
-}
-					t_img;
+}					t_img;
 typedef struct s_info
 {
 	int				height;
@@ -182,8 +179,8 @@ typedef struct s_map
 	int				player_x;
 	int				player_y;
 	char 			**null_map;
+	char 			**null_map;
 }					t_map;
-
 
 typedef struct s_mlx
 {
@@ -200,7 +197,7 @@ typedef struct s_data
 	t_list			*garbage;
 	t_map			*map;
 	t_player		*player;
-	t_img 			*textures[4];
+	t_img			*textures[4];
 }					t_data;
 
 // @addindex main.c
@@ -212,6 +209,7 @@ void				cp_flkharita(t_map *data);
 // @addindex parsing/check_boundaries.c
 void				check_boundaries(t_map *data);
 void				player_possitions(t_map *data);
+void				fill_map_array(t_map *data);
 void				fill_map_array(t_map *data);
 
 // @addindex parsing/check_cell_boundaries.c
@@ -326,8 +324,9 @@ void				ray_render(t_ray *ray, t_data *data);
 void				ray_render_many(t_ray *rays, int num_rays);
 
 // @addindex raycasting/projection_wall.c
-void				render_projection_walls(t_ray *rays, int num_rays);
-void 				init_text(t_data *data);
+void				render_projection_walls(t_data *data, t_ray *rays,
+						int num_rays);
+void				init_text(t_data *data);
 
 // @addindex raycasting/intersection.c
 t_point				horz_intersection(t_data *data, t_ray *ray);
