@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 01:46:40 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/27 04:16:36 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 15:08:31 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,20 +74,48 @@ void	render_projection_walls(t_data *data, t_ray *rays, int num_rays)
 	double	wall_strip_h;
 	double	proj_plane_dis;
 	t_point	tex;
+	int		i;
 	int		tex_i[3];
 
-	tex_i[0] = 0;
 	tex_i[1] = 0;
+	i = -1;
 	proj_plane_dis = (WIDTH / (double)2) / tan(degtorad(FOV) / 2);
-	while (tex_i[0]++ < num_rays - 2)
+	while (i++ < num_rays - 1)
 	{
-		rays[tex_i[0]].distance *= cos(normalize_angle(rays[tex_i[0]].angle
+		rays[i].distance *= cos(normalize_angle(rays[i].angle
 					- data->player->rot_angle));
-		wall_strip_h = (CUB_SIZE / rays[tex_i[0]].distance) * proj_plane_dis;
-		render_ceiling_floor(data, wall_strip_h, tex_i[0]);
-		tex_i[1] = set_texture_index(rays, tex_i[0]);
-		tex.x = set_tex_x(data, rays[tex_i[0]], tex_i[1]);
+		wall_strip_h = (CUB_SIZE / rays[i].distance) * proj_plane_dis;
+		render_ceiling_floor(data, wall_strip_h, i);
+		tex_i[1] = set_texture_index(rays, i);
+		tex.x = set_tex_x(data, rays[i], tex_i[1]);
 		tex_i[2] = 0;
+		tex_i[0] = i;
 		put_texture_color(data, tex_i, tex, wall_strip_h);
 	}
 }
+
+// void	render_projection_walls(t_data *data, t_ray *rays, int num_rays)
+// {
+// 	double	wall_strip_h;
+// 	int		i;
+// 	double	proj_plane_dis;
+
+// 	i = 0;
+// 	wall_strip_h = 0;
+// 	proj_plane_dis = (data->mlx.win_width / 2) / tan(degtorad(FOV) / 2);
+// 	while (i < num_rays)
+// 	{
+// 		rays[i].distance *= cos(normalize_angle(rays[i].angle
+// 					- data->player->rot_angle));
+// 		wall_strip_h = (CUB_SIZE / rays[i].distance) * proj_plane_dis;
+// 		if (wall_strip_h > data->mlx.win_height)
+// 			wall_strip_h = data->mlx.win_height;
+// 		if (rays[i].was_hit_vert)
+// 			fillrect((t_point){i * WALL_STRIP_W, (data->mlx.win_height / 2)
+// 				- (wall_strip_h / 2)}, WALL_STRIP_W, wall_strip_h, 0x0000FF);
+// 		else
+// 			fillrect((t_point){i * WALL_STRIP_W, (data->mlx.win_height / 2)
+// 				- (wall_strip_h / 2)}, WALL_STRIP_W, wall_strip_h, 0x00FF00);
+// 		i++;
+// 	}
+// }

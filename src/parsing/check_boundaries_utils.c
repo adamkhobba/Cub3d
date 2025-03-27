@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_boundaries_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:39:51 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 03:55:51 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 15:09:39 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	fill_map_array(t_map *data)
 	while (i < data->map_height)
 	{
 		data->map[i] = malloc(sizeof(char) * (data->map_width + 1));
-		ft_memset(data->map[i], '\0', data->map_width + 1);
+		ft_memset(data->map[i], '1', data->map_width + 1);
 		line = ft_strtrim(data->null_map[i], "\n");
 		while (line && line[j] && j < data->map_width)
 		{

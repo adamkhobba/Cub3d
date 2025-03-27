@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: csouita <csouita@student.42.fr>            +#+  +:+       +#+         #
+#    By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-#    Updated: 2025/03/27 03:47:57 by csouita          ###   ########.fr        #
+#    Updated: 2025/03/27 15:02:00 by akhobba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,11 +46,15 @@ OBJ			=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o,$(SRC))
 
 # Libft
 LIBFT		=	libft/libft.a
+LIBFTPATH	=	libft
 
-# Rules
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(LIBFT):
+	@echo "$(YELLOW)Building libft...$(NC)"
+	@make -C $(LIBFTPATH) > /dev/null
+
+$(NAME): $(LIBFT) $(OBJ)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) $(MLXFLAGS) -o $(NAME)
 	@echo "\e[K$(GREEN)$(NAME) is ready to use.$(NC)"
 
@@ -82,5 +86,4 @@ fclean: clean
 	@echo "$(RED)$(NAME) is removed.$(NC)"
 re: fclean all
 
-# PHONY
 .PHONY: all clean fclean re

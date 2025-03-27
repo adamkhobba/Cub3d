@@ -54,6 +54,7 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	data->mlx.win_width = CUB_SIZE * data->map->map_width;
 	mlx_setup_env();
 	data->player = malloc(sizeof(t_player));
+	map_print(data->map);
 	if (!data->player)
 	{
 		ft_putstr_fd(ERROR "\nFailed to allocate memory\n", 2);
