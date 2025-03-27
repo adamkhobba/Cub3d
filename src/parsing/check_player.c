@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:57:19 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 00:19:38 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 02:36:10 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ void	validate_player_position(t_map *data, int i, int j, int *count)
 {
 	if (i == data->info->last_line_in_map || i == data->info->first_line_in_map)
 	{
-		ft_putstr_fd("Invalid player position\n", 2);
+		ft_putstr_fd("Error\nInvalid player position\n", 2);
 		free_elements(data);
-		free_memory(data);
-		exit(1);
+		free_2d(data->kharita);
+		free(data->info);
+		free(data);
 		exit(1);
 	}
 	data->player_x = i;
@@ -37,8 +38,9 @@ void	validate_player_position(t_map *data, int i, int j, int *count)
 	{
 		ft_putstr_fd("Error\nInvalid player position\n", 2);
 		free_elements(data);
-		free_memory(data);
-		exit(1);
+		free_2d(data->kharita);
+		free(data->info);
+		free(data);
 		exit(1);
 	}
 	(*count)++;
@@ -46,7 +48,7 @@ void	validate_player_position(t_map *data, int i, int j, int *count)
 
 int	check_player_valid_pos(t_map *data)
 {
-	int(i), (j), (count);
+	int (i), (j), (count);
 	i = data->info->first_line_in_map;
 	count = 0;
 	while (i < data->info->height)
@@ -56,9 +58,7 @@ int	check_player_valid_pos(t_map *data)
 		{
 			if (data->kharita[i][j] == 'N' || data->kharita[i][j] == 'S'
 				|| data->kharita[i][j] == 'E' || data->kharita[i][j] == 'W')
-			{
 				validate_player_position(data, i, j, &count);
-			}
 			j++;
 		}
 		i++;
@@ -67,8 +67,9 @@ int	check_player_valid_pos(t_map *data)
 	{
 		ft_putstr_fd("Error\nInvalid player position\n", 2);
 		free_elements(data);
-		free_memory(data);
-		exit(1);
+		free_2d(data->kharita);
+		free(data->info);
+		free(data);
 		exit(1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:53:32 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 01:17:20 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 14:35:45 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	handle_colors(char *line, t_map *data)
 {
 	char	**split;
 
+	(void)data;
 	int (i), (count), (color);
 	i = 0;
 	count = 0;
@@ -61,20 +62,14 @@ int	handle_colors(char *line, t_map *data)
 		i++;
 	}
 	if (count != 2)
-		ft_error("Error\nInvalid color\n", data);
+		return (ft_putstr_fd("Error\nInvalid color\n", 2), -1);
 	split = ft_split(line, ',');
 	if (count_split(split) != 3)
-	{
-		free_2d(split);
-		ft_error("Error\nInvalid color\n", data);
-	}
+		return (ft_putstr_fd("Error\nInvalid color\n", 2), free_2d(split),-1);
 	color = create_trgb(1, ft_atoi00(split[0]), ft_atoi00(split[1]),
 			ft_atoi00(split[2]));
 	if (color == -1)
-	{
-		free_2d(split);
-		ft_error("Error\nInvalid color\n", data);
-	}
+		return (ft_putstr_fd("Error\nInvalid color\n", 2), free_2d(split),-1);
 	free_2d(split);
 	return (color);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_texture.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 02:34:56 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 00:20:02 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 02:47:45 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	check_valid_texture(t_map *data)
 	{
 		ft_putstr_fd("Error\nMissing texture\n", 2);
 		free_elements(data);
-		free_memory(data);
+		free_2d(data->kharita);
+		free(data->info);
+		free(data);
 		exit(1);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 01:17:28 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 14:35:50 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void	ft_error(char *str, t_map *data)
 {
 	ft_putstr_fd(str, 2);
 	free_elements(data);
-	free_memory(data);
-	exit(1);
+	free_2d(data->kharita);
+	free(data->info);
+	free(data);
 }
 
 char	**init_split_memory(t_map *data)
@@ -28,11 +29,10 @@ char	**init_split_memory(t_map *data)
 	if (!split)
 	{
 		ft_putstr_fd("Error\nMemory allocation failed\n", 2);
-		free_memory(data);
+		free_2d(data->kharita);
+		free(data->info);
+		free(data);
 		exit(1);
-		;
-		exit(1);
-		;
 	}
 	return (split);
 }
@@ -40,16 +40,18 @@ char	**init_split_memory(t_map *data)
 void	cp_map_array(t_map *data, char *av[])
 {
 	char	*line;
-	int		i;
-	int		fd;
 
+	int (i), (fd);
 	i = 0;
 	fd = open(av[1], O_RDONLY);
 	data->kharita = malloc(sizeof(char *) * (data->info->height + 1));
 	if (!data->kharita)
 	{
 		ft_putstr_fd("Error\nMemory allocation failed\n", 2);
-		free_memory(data);
+		free_elements(data);
+		free_2d(data->kharita);
+		free(data->info);
+		free(data);
 		exit(1);
 	}
 	line = get_next_line(fd);
@@ -65,7 +67,10 @@ void	cp_map_array(t_map *data, char *av[])
 	{
 		ft_putstr_fd("Error\nInvalid filew\n", 2);
 		free_elements(data);
-		free_memory(data);
+		free_elements(data);
+		free_2d(data->kharita);
+		free(data->info);
+		free(data);
 		exit(1);
 	}
 	close(fd);
@@ -73,22 +78,13 @@ void	cp_map_array(t_map *data, char *av[])
 
 void	free_memory(t_map *map)
 {
-	int	i;
-
-	i = 0;
-	if (map->info)
-		free(map->info);
-	if (map->kharita)
-	{
-		while (map->kharita[i])
-		{
-			free(map->kharita[i]);
-			i++;
-		}
-		free(map->kharita);
-	}
+	free(map->info);
+	free_2d(map->kharita);
+	free_2d(map->null_map);
+	free_2d(map->map);
 	free(map);
 }
+
 t_map	*parsing(int ac, char *av[])
 {
 	t_map	*data;
@@ -121,19 +117,11 @@ t_map	*parsing(int ac, char *av[])
 	parse_textures(data);
 	if (first_and_last_lines_check(data))
 		exit(1);
-	if (check_xpm(data))
-	{
-		free_elements(data);
-		free_memory(data);
-	}
+	check_xpm(data);
 	first_line_in_map(data);
 	check_player_valid_pos(data);
 	cp_flkharita(data);
 	player_possitions(data);
-	printf("last line in map %d\n", data->info->last_line_in_map);
-	printf("first line in map %d\n", data->info->first_line_in_map);
-	printf("map height %d\n", data->map_height);
-	printf("map width %d\n", data->map_width);
 	fill_map_array(data);
 	return (data);
 }
