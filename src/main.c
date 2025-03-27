@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/27 00:44:20 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 01:24:16 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	data->mlx.win_height = CUB_SIZE * data->map->map_height;
 	data->mlx.win_width = CUB_SIZE * data->map->map_width;
 	mlx_setup_env();
-	map_print(data->map); // to remove
+	// map_print(data->map); // to remove
 	data->player = malloc(sizeof(t_player));
 	if (!data->player)
 	{

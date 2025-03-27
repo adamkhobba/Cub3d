@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 03:07:08 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/27 01:20:04 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/27 01:20:30 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	map_print(t_map *map)
 	while (i < map->map_height)
 	{
 		printf("|%s|", map->map[i]);
+		printf("\n");
 		i++;
 	}
 }
