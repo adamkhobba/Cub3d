@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 02:34:30 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 01:12:04 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 23:37:40 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,8 @@ int	while_loop(char *s, int i, char c)
 static char	**list00(char **lst, char *s)
 {
 	char	c;
-	int		i;
-	int		j;
-	int		start;
 
+	int (i), (j), (start);
 	c = 0;
 	i = 0;
 	j = 0;
@@ -98,10 +96,7 @@ static char	**list00(char **lst, char *s)
 			i = while_loop(s, i, c);
 			lst[j] = malloc_word00(s, start, i);
 			if (!lst[j])
-			{
-				free_2d(lst);
-				return (NULL);
-			}
+				return (free_2d(lst), NULL);
 			j++;
 		}
 		else

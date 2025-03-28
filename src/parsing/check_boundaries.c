@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:36:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 02:43:49 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 21:51:19 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,18 @@ void	validate_map_cells(t_map *data, int first_line, int last_line)
 	int	i;
 	int	j;
 
+	if (!data || !data->kharita)
+		return ;
 	i = first_line;
 	while (i <= last_line)
 	{
+		if (!data->kharita[i])
+		{
+			i++;
+			continue ;
+		}
 		j = 0;
-		while (data->kharita[i][j])
+		while (data->kharita[i][j] != '\0')
 		{
 			if (data->kharita[i][j] == '0')
 				check_cell_boundaries(data, i, j);
@@ -50,6 +57,8 @@ void	process_map_line(t_map *data, int i, int *first_line, int *last_line)
 	int		j;
 	char	c;
 
+	if (!data || !data->kharita || !data->kharita[i])
+		return ;
 	j = 0;
 	while (data->kharita[i][j])
 	{
@@ -68,6 +77,8 @@ void	find_map_start(t_map *data, int *first_line, int *last_line)
 {
 	int	i;
 
+	if (!data || !data->info)
+		return ;
 	i = 0;
 	*first_line = -1;
 	*last_line = -1;
@@ -88,8 +99,12 @@ void	check_boundaries(t_map *data)
 	int	first_map_line;
 	int	last_map_line;
 
+	if (!data || !data->info)
+		return ;
 	data->info->boudaries_width = 0;
 	find_map_start(data, &first_map_line, &last_map_line);
+	if (first_map_line == -1 || last_map_line == -1)
+		return ;
 	data->map_height = last_map_line - first_map_line + 1;
 	data->map_width = data->info->boudaries_width;
 	validate_map_cells(data, first_map_line, last_map_line);

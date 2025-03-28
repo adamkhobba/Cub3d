@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:49:04 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 03:50:18 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 23:35:45 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,6 @@ void	cp_map_array(t_map *data, char *av[])
 	i = 0;
 	fd = open(av[1], O_RDONLY);
 	data->kharita = malloc(sizeof(char *) * (data->info->height + 1));
-	if (!data->kharita)
-	{
-		ft_putstr_fd("Error\nMemory allocation failed\n", 2);
-		free_elements(data);
-		free_2d(data->kharita);
-		free(data->info);
-		free(data);
-		exit(1);
-	}
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -67,22 +58,12 @@ void	cp_map_array(t_map *data, char *av[])
 	{
 		ft_putstr_fd("Error\nInvalid filew\n", 2);
 		free_elements(data);
-		free_elements(data);
 		free_2d(data->kharita);
 		free(data->info);
 		free(data);
 		exit(1);
 	}
 	close(fd);
-}
-
-void	free_memory(t_map *map)
-{
-	free(map->info);
-	free_2d(map->kharita);
-	free_2d(map->null_map);
-	free_2d(map->map);
-	free(map);
 }
 
 t_map	*parsing(int ac, char *av[])
@@ -93,12 +74,6 @@ t_map	*parsing(int ac, char *av[])
 	data = malloc(sizeof(t_map));
 	ft_memset(data, 0, sizeof(t_map));
 	data->info = malloc(sizeof(t_info));
-	if (!data->info)
-	{
-		ft_putstr_fd("Error\nMemory allocation failed for info struct\n", 2);
-		free(data);
-		exit(1);
-	}
 	ft_memset(data->info, 0, sizeof(t_info));
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
@@ -108,20 +83,14 @@ t_map	*parsing(int ac, char *av[])
 		free(data);
 		exit(1);
 	}
-	ft_check_file_path(data, ac, av);
-	map_height(data, av);
-	cp_map_array(data, av);
-	check_invalid_character(data);
-	check_boundaries(data);
-	last_line(data);
+	(ft_check_file_path(data, ac, av), map_height(data, av));
+	(cp_map_array(data, av), check_invalid_character(data));
+	(check_boundaries(data), last_line(data));
 	parse_textures(data);
 	if (first_and_last_lines_check(data))
 		exit(1);
-	check_xpm(data);
-	first_line_in_map(data);
-	check_player_valid_pos(data);
-	cp_flkharita(data);
-	player_possitions(data);
-	fill_map_array(data);
+	(check_xpm(data), first_line_in_map(data));
+	(check_player_valid_pos(data), cp_flkharita(data));
+	(player_possitions(data), fill_map_array(data));
 	return (data);
 }

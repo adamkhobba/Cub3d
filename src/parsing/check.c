@@ -6,43 +6,46 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:06:40 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 03:52:17 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 23:41:14 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_xpm(t_map *data)
+int	check_xpm_extension(char *filename)
 {
 	int	len;
 
-	len = ft_strlen(data->no);
-	if (data->no[len - 1] != 'm' || data->no[len - 2] != 'p' || data->no[len
-			- 3] != 'x' || data->no[len - 4] != '.')
+	len = ft_strlen(filename);
+	if (len < 4 || filename[len - 1] != 'm' || filename[len - 2] != 'p'
+		|| filename[len - 3] != 'x' || filename[len - 4] != '.')
 	{
-		ft_error("Error\nInvalid file extension1\n", data);
-		exit(1);	
+		return (0);
 	}
-	len = ft_strlen(data->so);
-	if (data->so[len - 1] != 'm' || data->so[len - 2] != 'p' || data->so[len
-			- 3] != 'x' || data->so[len - 4] != '.')
+	return (1);
+}
+
+int	check_xpm(t_map *data)
+{
+	if (!check_xpm_extension(data->no))
 	{
-		ft_error("Error\nInvalid file extension1\n", data);
-		exit(1);	
+		ft_error("Error\nInvalid file extension for North texture\n", data);
+		exit(1);
 	}
-	len = ft_strlen(data->we);
-	if (data->we[len - 1] != 'm' || data->we[len - 2] != 'p' || data->we[len
-			- 3] != 'x' || data->we[len - 4] != '.')
+	if (!check_xpm_extension(data->so))
 	{
-		ft_error("Error\nInvalid file extension1\n", data);
-		exit(1);	
+		ft_error("Error\nInvalid file extension for South texture\n", data);
+		exit(1);
 	}
-	len = ft_strlen(data->ea);
-	if (data->ea[len - 1] != 'm' || data->ea[len - 2] != 'p' || data->ea[len
-			- 3] != 'x' || data->ea[len - 4] != '.')
+	if (!check_xpm_extension(data->we))
 	{
-		ft_error("Error\nInvalid file extension1\n", data);
-		exit(1);	
+		ft_error("Error\nInvalid file extension for West texture\n", data);
+		exit(1);
+	}
+	if (!check_xpm_extension(data->ea))
+	{
+		ft_error("Error\nInvalid file extension for East texture\n", data);
+		exit(1);
 	}
 	return (0);
 }

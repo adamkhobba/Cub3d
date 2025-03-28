@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/13 03:16:50y akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/28 00:22:08 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ void	mlx_setup_env(void)
 
 	data = get_data();
 	data->mlx.instance = mlx_init();
-	data->mlx.win = mlx_new_window(data->mlx.instance, WIDTH,
-			HEIGHT, "cub3d");
+	data->mlx.win = mlx_new_window(data->mlx.instance, WIDTH, HEIGHT, "cub3d");
 	init_text(data);
 	mlx_hook(data->mlx.win, DestroyNotify, StructureNotifyMask, &close_program,
 		NULL);
@@ -42,7 +41,9 @@ void	mlx_setup_env(void)
 int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 {
 	t_data	*data;
+	int		i;
 
+	i = 0;
 	if (ac != 2)
 	{
 		ft_putstr_fd(ERROR "\nInvalid number of arguments\n", 2);
@@ -64,5 +65,4 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	_2dmap_render(data);
 	mlx_loop(data->mlx.instance);
 	free_memory(data->map);
-	parsing(ac ,av);
 }
