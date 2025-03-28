@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 01:46:40 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/27 15:49:59 by akhobba          ###   ########.fr       */
+/*   Updated: 2025/03/28 00:42:05 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	put_texture_color(t_data *data, int tex_i[3], t_point tex,
 	}
 }
 
-
 void	render_ceiling_floor(t_data *data, double wall_strip_h, int start)
 {
 	if (wall_strip_h > HEIGHT)
@@ -60,17 +59,15 @@ void	render_ceiling_floor(t_data *data, double wall_strip_h, int start)
 		WALL_STRIP_W, (HEIGHT - wall_strip_h) / 2, data->map->color_f);
 }
 
-// Improved texture x coordinate calculation
 int	set_tex_x(t_data *data, t_ray ray, int tex_i)
 {
-	double tex_pos;
+	double	tex_pos;
+
 	if (ray.was_hit_vert)
 		tex_pos = fmod(ray.wall_hit.y, CUB_SIZE);
 	else
 		tex_pos = fmod(ray.wall_hit.x, CUB_SIZE);
-
-	// Ensure precise mapping
-	return (int)((tex_pos / CUB_SIZE) * data->textures[tex_i]->width);
+	return ((int)((tex_pos / CUB_SIZE) * data->textures[tex_i]->width));
 }
 
 void	render_projection_walls(t_data *data, t_ray *rays, int num_rays)
@@ -97,29 +94,3 @@ void	render_projection_walls(t_data *data, t_ray *rays, int num_rays)
 		put_texture_color(data, tex_i, tex, wall_strip_h);
 	}
 }
-
-// void	render_projection_walls(t_data *data, t_ray *rays, int num_rays)
-// {
-// 	double	wall_strip_h;
-// 	int		i;
-// 	double	proj_plane_dis;
-
-// 	i = 0;
-// 	wall_strip_h = 0;
-// 	proj_plane_dis = (data->mlx.win_width / 2) / tan(degtorad(FOV) / 2);
-// 	while (i < num_rays)
-// 	{
-// 		rays[i].distance *= cos(normalize_angle(rays[i].angle
-// 					- data->player->rot_angle));
-// 		wall_strip_h = (CUB_SIZE / rays[i].distance) * proj_plane_dis;
-// 		if (wall_strip_h > data->mlx.win_height)
-// 			wall_strip_h = data->mlx.win_height;
-// 		if (rays[i].was_hit_vert)
-// 			fillrect((t_point){i * WALL_STRIP_W, (data->mlx.win_height / 2)
-// 				- (wall_strip_h / 2)}, WALL_STRIP_W, wall_strip_h, 0x0000FF);
-// 		else
-// 			fillrect((t_point){i * WALL_STRIP_W, (data->mlx.win_height / 2)
-// 				- (wall_strip_h / 2)}, WALL_STRIP_W, wall_strip_h, 0x00FF00);
-// 		i++;
-// 	}
-// }

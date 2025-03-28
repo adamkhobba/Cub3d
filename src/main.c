@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhobba <akhobba@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 23:18:46 by akhobba           #+#    #+#             */
-/*   Updated: 2025/03/28 00:22:08 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/28 00:41:01 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	main(__attribute((unused)) int ac, __attribute((unused)) char **av)
 	data->mlx.win_width = CUB_SIZE * data->map->map_width;
 	mlx_setup_env();
 	data->player = malloc(sizeof(t_player));
-	map_print(data->map);
 	if (!data->player)
 	{
 		ft_putstr_fd(ERROR "\nFailed to allocate memory\n", 2);
