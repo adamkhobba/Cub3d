@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:59:48 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 02:46:17 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 23:15:16 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	check_cell_boundaries(t_map *data, int i, int j)
 			free_2d(data->kharita);
 			free(data->info);
 			free(data);
-			exit(1);;
 			exit(1);
 			if (i != 0 && i != data->info->height - 1 && j != 0
 				&& j != (int)ft_strlen(data->kharita[i]) - 1)

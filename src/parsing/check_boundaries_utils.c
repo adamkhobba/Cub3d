@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:39:51 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 22:28:57 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/28 00:26:55 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 void	fill_map_array(t_map *data)
 {
-	char	current;
-	char	*line;
-
+	char (current), (*line);
 	int (i), (j);
 	i = 0;
 	j = 0;
 	data->map = malloc(sizeof(char *) * (data->map_height + 1));
-	if (!data->map)
-		return ;
 	while (i < data->map_height)
 	{
-		data->map[i] = malloc(sizeof(char) * (data->map_width + 1));
+		data->map[i] = malloc(sizeof(char) * (data->map_width + 2));
 		ft_memset(data->map[i], '1', data->map_width + 1);
 		line = ft_strtrim(data->null_map[i], "\n");
 		while (line && line[j] && j < data->map_width)
@@ -33,11 +29,10 @@ void	fill_map_array(t_map *data)
 			current = line[j];
 			if (current == '0' || current == '1' || current == 'N'
 				|| current == 'S' || current == 'E' || current == 'W')
-			{
 				data->map[i][j] = current;
-			}
 			j++;
 		}
+		data->map[i][j] = 0;
 		free(line);
 		j = 0;
 		i++;

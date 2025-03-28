@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:43:24 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 03:26:23 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/27 23:50:46 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,7 @@ int	set_floor_and_ceiling_color(t_map *data, char **split, int i)
 		data->color_f = handle_colors(split[1], data);
 		if (data->color_f == -1)
 		{
-			free_2d(split);
-			free_elements(data);
-			free_2d(data->kharita);
-			free(data->info);
-			free(data);
+			(free_(data), free_2d(split));
 			return (-1);
 		}
 		data->info->f = ft_strdup(split[1]);
@@ -68,11 +64,7 @@ int	set_floor_and_ceiling_color(t_map *data, char **split, int i)
 		data->color_c = handle_colors(split[1], data);
 		if (data->color_c == -1)
 		{
-			free_2d(split);
-			free_elements(data);
-			free_2d(data->kharita);
-			free(data->info);
-			free(data);
+			(free_(data), free_2d(split));
 			return (-1);
 		}
 		data->info->c = ft_strdup(split[1]);

@@ -6,13 +6,13 @@
 #    By: csouita <csouita@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 01:30:15 by akhobba           #+#    #+#              #
-#    Updated: 2025/03/27 22:29:30 by csouita          ###   ########.fr        #
+#    Updated: 2025/03/27 23:33:07 by csouita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # CFLAGS
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror -g3 #-fsanitize=address
 MLXFLAGS	=	-lmlx -lX11 -lXext -lm
 HEADERS		=	headers/cub3d.h
 INCLUDES	=	-I./headers -I./libft/headers
@@ -39,7 +39,7 @@ SRC			=	src/main.c src/parsing/check_boundaries.c src/parsing/check_color.c src/
 				src/raycasting/raycasting.c src/raycasting/projection_wall.c src/raycasting/ray_functions.c \
 				src/raycasting/intersection_wall.c src/game_element/hooks.c src/raycasting/textures.c\
 				src/parsing/check_boundaries_utils.c src/parsing/check_cell_boundaries.c \
-				src/parsing/ft_split_utils.c
+				src/parsing/ft_split_utils.c src/parsing/free.c
 
 OBJDIR		=	obj
 OBJ			=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o,$(SRC))

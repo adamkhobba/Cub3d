@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:40:39 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 03:30:15 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/28 00:09:45 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,6 @@ void	check_valid_file(char *line, t_map *data)
 	if ((!line && data->info->height == 0) || count_len(data) == 0)
 	{
 		ft_putstr_fd("Error\nInvalid file\n", 2);
-		free_elements(data);;
-		free_2d(data->kharita);
-		free(data->info);
-		free(data);
-		exit(1);
-	}
-}
-
-void	validate_texture_format(char **split, t_map *data)
-{
-	if (count_split(split) != 2)
-	{
-		ft_putstr_fd("Error\nInvalid texture\n", 2);
 		free_elements(data);
 		free_2d(data->kharita);
 		free(data->info);
@@ -38,9 +25,25 @@ void	validate_texture_format(char **split, t_map *data)
 	}
 }
 
+int	validate_texture_format(char **split, t_map *data)
+{
+	if (count_split(split) != 2)
+	{
+		ft_putstr_fd("Error\nInvalid texture\n", 2);
+		free_2d(split);
+		free_elements(data);
+		free_2d(data->kharita);
+		free(data->info);
+		free(data);
+		return (-1);
+	}
+	return (0);
+}
+
 int	process_texture_line(t_map *data, char **split)
 {
-	validate_texture_format(split, data);
+	if (validate_texture_format(split, data) == -1)
+		return (-1);
 	if (!strcmp(split[0], "NO"))
 		return (set_no_texture(data, split));
 	else if (!strcmp(split[0], "SO"))

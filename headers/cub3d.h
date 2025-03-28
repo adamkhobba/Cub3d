@@ -6,7 +6,7 @@
 /*   By: csouita <csouita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:35:09 by csouita           #+#    #+#             */
-/*   Updated: 2025/03/27 03:29:01 by csouita          ###   ########.fr       */
+/*   Updated: 2025/03/28 00:10:21 by csouita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ typedef struct s_map
 	int				color_c;
 	int				player_x;
 	int				player_y;
-	char 			**map;
+	char			**map;
 }					t_map;
 
 typedef struct s_mlx
@@ -246,7 +246,7 @@ int					set_so_texture(t_map *data, char **split);
 int					parse_textures(t_map *data);
 void				process_texture_data(t_map *data, char *line, int *j);
 int					process_texture_line(t_map *data, char **split);
-void				validate_texture_format(char **split, t_map *data);
+int					validate_texture_format(char **split, t_map *data);
 
 // @addindex parsing/check_valid_texture.c
 void				check_valid_texture(t_map *data);
@@ -265,9 +265,13 @@ void				free_memory(t_map *data);
 void				cp_map_array(t_map *data, char *av[]);
 void				ft_error(char *str, t_map *data);
 
+// @addindex parsing/free.c
+void				free_(t_map *data);
+void				free_memory(t_map *map);
+
 // @addindex parsing/ft_atoi00.c
 long				ft_atoi00(char *str);
-char*				ft_strncpy(char* dest, const char* src, size_t n);
+char				*ft_strncpy(char *dest, const char *src, size_t n);
 
 // @addindex parsing/ft_split_utils.c
 char				**freefun00(char **p, int j);
